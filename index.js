@@ -1,3 +1,9 @@
+// Ensure dark mode is applied by default
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('dark-mode');
+});
+
+// Original content
 import {
   bio,
   skills,
@@ -456,3 +462,4 @@ populateExp_Edu(experience, "experience");
 populateExp_Edu(education, "education");
 
 populateLinks(footer, "footer");
+
