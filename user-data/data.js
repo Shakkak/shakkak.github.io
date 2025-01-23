@@ -1,80 +1,73 @@
+
 export const bio = [
-  "Hello, I'm Vinay Somawat!",
-  "I’m a passionate and experienced <strong>Frontend Engineer</strong> specializing in developing dynamic web applications using Angular and React. I thrive on optimizing performance and delivering innovative, user-focused solutions.",
-  "Beyond coding, I enjoy traveling through the serene <strong>Himalayan mountains</strong> and experimenting with new recipes in the <strong>kitchen</strong>.",
+  "Hello, I'm Shakib Hosseinzadeh!",
+  "I’m a Machine Learning engineer in training, passionate about solving real-world problems using AI algorithms. My focus areas include Data Science and Computer Vision, with a strong interest in algorithms and problem-solving in image and data analysis. I thoroughly enjoy coding and creating innovative solutions, and I embrace challenges that foster personal and professional growth.",
+  "Beyond coding, I enjoy competitive deep learning contests and collaborating with teams to approach problems from diverse perspectives.",
+];
+export const skills = [
+  "Python, MATLAB/Octave, C/C++",
+  "TensorFlow, Keras, PyTorch, OpenCV, Scikit-Learn, NumPy, Pandas, Matplotlib",
+  "Git, Docker, Image Processing, Data Scraping, Problem Solving, Automation",
+  "Languages: English (Fluent), Persian (Native)",
 ];
 
-export const skills = [
-  "JavaScript, TypeScript, Angular, RxJS, NGRX/NGXS",
-  "HTML, Bootstrap, Tailwind",
-  "GitHub, Debugging, Chrome DevTools",
+
+export const education = [
+  {
+    title: "MSc in Computer Science",
+    duration: "September 2023 - Present",
+    subtitle: "Amirkabir University of Technology - Tehran Polytechnic, Tehran, IR",
+    details: [
+      "Self-supervised learning in computational histopathology, focusing on knowledge distillation and generative diffusion-based SSL for medical images.",
+      "Aim: Improve medical diagnosis and treatment without the need for human-labeled data.",
+    ],
+    tags: ["Self-Supervised Learning", "Medical Imaging", "AI"],
+    icon: "graduation-cap",
+  },
+  {
+    title: "BSc in Computer Science",
+    duration: "September 2018 - February 2023",
+    subtitle: "University of Science and Technology of Mazandaran, Mazandaran, IR",
+    details: [
+      "Ranked 1st with a GPA of 19.1/20.",
+      "Applied an enhanced YOLO architecture for object detection on satellite imagery, optimized for detecting and tracking multiple vehicles under challenging conditions.",
+    ],
+    tags: ["YOLO", "Object Detection", "Satellite Imagery"],
+    icon: "graduation-cap",
+  },
 ];
 
 export const experience = [
   {
-    title: "Shiprocket Private Limited",
-    duration: "September 2023 - Present",
-    subtitle: "Software Engineer",
-    details: ["Working in support and escalation team."],
-    tags: ["JavaScript", "Angular", "Bootstrap", "AngularJs"],
-    icon: "truck ",
+    title: "Teaching Assistant",
+    duration: "Sep 2024 - Jan 2024",
+    subtitle: "",
+    details: [
+      "MSc: Machine Learning, Computational Data Mining.",
+      "BSc: Introduction to Computer & Programming, Data Structures & Algorithms, Foundation of Matrix and Linear Algebra (Various).",
+    ],
+    tags: ["Teaching", "Mentorship"],
+    icon: "book",
   },
   {
-    title: "Biofourmis India Private Limited",
-    duration: "April 2022 - Jul 2023",
-    subtitle: "Software Engineer",
+    title: "Competitive Experience",
+    duration: "Oct 2024 - Dec 2024",
+    subtitle: "Top 10 Team - Rayan International AI Contest",
     details: [
-      `Implemented microfrontends using the Module Federation Plugin in Angular.
-            Rendered components from remote modules/repositories, enabling a modular and scalable architecture`,
-      `Upgraded application with a dynamic base URL for flexible operation across multiple regions and verticals, leading to
-            recognition with the Biofourmis Bravo award in Q1, 2023.`,
-      `Implemented RxState for managing local state in components, resulting in elegant and reactive facades.`,
-      `Utilized Twilio-Video for group video call rooms and Countly for Web Analytics.`,
-      `Integrated NGXS WebSocket, enhancing state management and replacing legacy service injections.`,
-      `Implemented extensive RxJS usage for reactive programming, resulting in efficient data handling, improved state
-            management, and enhanced application performance.`,
-      `Dramatically optimized load time and performance through code splitting, lazy loading, caching, and preload`,
-      `Enhanced video call experience by implementing real-time switching of I/O devices and audio level indicators,
-            resulting in reduced audio issues and increased user satisfaction.`,
-      `Owned and led successful Angular application upgrades from version 12 to 13 and 14, improving performance
-            and enhancing features.`,
+      "Focused on building high-performance and robust AI models across diverse challenges, including classification of noisy, unlabeled images, teeth segmentation with poisoned and limited data, and defending against backdoor attacks.",
     ],
-    tags: [
-      "JavaScript",
-      "Angular",
-      "RxJS",
-      "NGXS",
-      "TypeScript",
-      "RxState",
-      "Webpack",
-      "Optimization",
+    tags: ["AI", "Competitions"],
+    icon: "trophy",
+  },
+  {
+    title: "Prediction of Obstructive Sleep Apnea",
+    duration: "Aug 2024 - Oct 2024",
+    subtitle: "Top 6 Team",
+    details: [
+      "Analyzed patient respiratory sound recordings to develop predictive models for obstructive sleep apnea, utilizing advanced signal processing and machine learning techniques.",
     ],
+    tags: ["Signal Processing", "ML", "Healthcare"],
     icon: "heartbeat",
-  },
-  {
-    title: "Novopay Solutions Private Limited",
-    duration: "June 2020 - April 2022",
-    subtitle: "Software Engineer",
-    details: [
-      `Implemented AePS Services, including Bio-metric eKYC, Cash Withdrawal, Balance Enquiry, Mini-Statements,
-            and Money transfer.`,
-      `Implemented QR Code integration for retailer wallet money loading, Clevertap events for user action tracking,
-            Freshdesk ticketing, Chatbot services, and Retailer onboarding/admin interfaces.`,
-      `Developed retailer QR code system for seamless money loading into wallets, resulting in improved user transactions.`,
-      `Achieved 70 percent code coverage of the entire application by writing unit tests for legacy code.`,
-    ],
-    tags: ["JavaScript", "Angular", "Bootstrap", "Nodejs", "Jenkins"],
-    icon: "qrcode",
-  },
-  {
-    title: "ThinkPedia LLP",
-    duration: "May 2019 - June 2019",
-    subtitle: "SDE Intern",
-    details: [
-      `Developed a customer web application for social media management, supporting the advertisement domain.`,
-    ],
-    tags: ["JavaScript", "Angular", "Bootstrap", "Java", "Spring Boot"],
-    icon: "group",
   },
 ];
 
@@ -86,31 +79,7 @@ export const trekking = [
   '<strong>Vaishno Devi Trek</strong>, Jammu & Kashmir (5,200 feet)',
 ];
 
-export const education = [
-  {
-    title: "B.Tech. in Computer Science and Engineering",
-    duration: "2016 - 2020",
-    subtitle: "National Institute of Technology, Warangal",
-    details: [],
-    tags: [
-      "Data Structures & Algorithms",
-      "Operating Systems",
-      "Database Management System",
-      "Computer Networks",
-      "Compiler Designing",
-      "Cloud Computing",
-    ],
-    icon: "graduation-cap",
-  },
-  {
-    title: "Class 12th in Science and Mathematics",
-    duration: "",
-    subtitle: "Board of Secondary Education, Rajasthan",
-    details: [],
-    tags: ["Physics", "Chemistry", "Mathematics"],
-    icon: "book",
-  },
-];
+
 
 export const footer = [
   //   {
@@ -158,18 +127,115 @@ export const footer = [
       //     text: "Twitter",
       //     link: "https://twitter.com/thesigmakid",
       //   },
-      {
-        text: "Buy me a coffee",
-        link: "https://www.buymeacoffee.com/r194dME8y",
-      },
+
       {
         text: "Github",
-        link: "https://github.com/vinaysomawat/vinaysomawat.github.io",
+        link: "https://shakkak.github.com",
       },
     ],
   },
   {
     label: "copyright-text",
-    data: ["Made with &hearts; by Vinay Somawat"],
+    data: ["Thanks to Vinay Somawat for template"],
   },
 ];
+
+
+
+
+
+
+// export const skills = [
+//   "Python, MATLAB/Octave, C/C++",
+//   "TensorFlow, Keras, PyTorch, OpenCV, Scikit-Learn, NumPy, Pandas, Matplotlib",
+//   "Git, Docker, Image Processing, Data Scraping, Problem Solving, Automation",
+//   "Languages: English (Fluent), Persian (Native)",
+// ];
+
+// export const experience = [
+//   {
+//     title: "MSc - Computer Science",
+//     duration: "September 2023 - Present",
+//     subtitle: "Amirkabir University of Technology - Tehran Polytechnic, Tehran, IR",
+//     details: [
+//       "Self-supervised learning in computational histopathology, focusing on knowledge distillation and generative diffusion-based SSL for medical images.",
+//       "Aim: Improve medical diagnosis and treatment without the need for human-labeled data.",
+//     ],
+//     tags: ["Self-Supervised Learning", "Medical Imaging", "AI"],
+//     icon: "university",
+//   },
+//   {
+//     title: "BSc - Computer Science",
+//     duration: "September 2018 - February 2023",
+//     subtitle: "University of Science and Technology of Mazandaran, Mazandaran, IR",
+//     details: [
+//       "Ranked 1st with a GPA of 19.1/20.",
+//       "Applied an enhanced YOLO architecture for object detection on satellite imagery, optimized for detecting and tracking multiple vehicles under challenging conditions.",
+//     ],
+//     tags: ["YOLO", "Object Detection", "Satellite Imagery"],
+//     icon: "graduation-cap",
+//   },
+//   {
+//     title: "Teaching Assistant",
+//     duration: "Various",
+//     subtitle: "",
+//     details: [
+//       "MSc: Machine Learning, Computational Data Mining (Sep 2024 - Jan 2024).",
+//       "BSc: Introduction to Computer & Programming, Data Structures & Algorithms, Foundation of Matrix and Linear Algebra (Various).",
+//     ],
+//     tags: ["Teaching", "Mentorship"],
+//     icon: "chalkboard-teacher",
+//   },
+//   {
+//     title: "Competitive Experience",
+//     duration: "Oct 2024 - Dec 2024",
+//     subtitle: "Top 10 Team - Rayan International AI Contest",
+//     details: [
+//       "Focused on building high-performance and robust AI models across diverse challenges, including classification of noisy, unlabeled images, teeth segmentation with poisoned and limited data, and defending against backdoor attacks.",
+//     ],
+//     tags: ["AI", "Competitions"],
+//     icon: "trophy",
+//   },
+//   {
+//     title: "Prediction of Obstructive Sleep Apnea",
+//     duration: "Aug 2024 - Oct 2024",
+//     subtitle: "Top 6 Team",
+//     details: [
+//       "Analyzed patient respiratory sound recordings to develop predictive models for obstructive sleep apnea, utilizing advanced signal processing and machine learning techniques.",
+//     ],
+//     tags: ["Signal Processing", "ML", "Healthcare"],
+//     icon: "heartbeat",
+//   },
+// ];
+
+// export const certificates = [
+//   "Machine Learning Specialization by Andrew Ng, Coursera, August 2022",
+//   "Neural Networks and Deep Learning by Andrew Ng, Coursera, October 2022",
+//   "Learning How to Learn by Barb Oakley, Coursera, November 2023",
+// ];
+
+// export const honors = [
+//   "Achieved the highest CGPA in Computer Science among BSc students in the past 10 years - February 2023",
+//   "Secured the highest GPA in the first MSc semester (19.64/20).",
+// ];
+
+// export const footer = [
+//   {
+//     label: "Links",
+//     data: [
+//       {
+//         text: "LinkedIn",
+//         link: "https://linkedin.com/in/M-Shakib-Hosseinzadeh",
+//       },
+//       {
+//         text: "GitHub",
+//         link: "https://github.com/Shakkak",
+//       },
+//     ],
+//   },
+//   {
+//     label: "copyright-text",
+//     data: ["Created by M. Shakib Hosseinzadeh with ❤️"],
+//   },
+// ];
+
