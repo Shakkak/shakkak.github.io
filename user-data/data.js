@@ -119,10 +119,10 @@ export const footer = [
   {
     label: "Links",
     data: [
-      //   {
-      //     text: "Linkedin",
-      //     link: "https://www.linkedin.com/in/vinaysomawat/",
-      //   },
+        {
+          text: "Linkedin",
+          link: "https://www.linkedin.com/in/m-shakib-hosseinzadeh/",
+        },
       //   {
       //     text: "Twitter",
       //     link: "https://twitter.com/thesigmakid",

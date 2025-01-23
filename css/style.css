@@ -17,6 +17,7 @@
 body {
 	font-family: "Montserrat", sans-serif !important;
 	font-weight: 400;
+	text-align: justify;
 	font-size: 15px;
 	line-height: 1.8 !important;
 	color: rgb(255, 255, 255);
@@ -640,6 +641,7 @@ body.offcanvas .colorlib-nav-toggle {
 
 .about-desc h3 {
 	font-size: 18px;
+	text-align: justify;
 	text-transform: uppercase;
 	letter-spacing: 5px;
 	font-weight: 500;
@@ -647,6 +649,7 @@ body.offcanvas .colorlib-nav-toggle {
 
 .about-desc h1 {
 	margin-bottom: 20px;
+	text-align: justify;
 	font-size: 38px;
 	font-weight: 600;
 	font-family: "Montserrat", Georgia, serif;
@@ -2189,7 +2192,7 @@ hr {
   }
 
   strong {
-	color: #a34597;
+	color: #572ad1;
   }
 
   .dark-mode {

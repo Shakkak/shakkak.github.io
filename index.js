@@ -128,7 +128,7 @@ function populateBlogs(items, id) {
           border-radius: 12px;
           padding: 16px;
           font-size: 14px;
-          background: linear-gradient(135deg, rgb(255, 221, 153), rgb(249, 191, 63));
+          background: linear-gradient(90deg, rgba(4,1,62,1) 0%, rgb(22, 32, 138) 33%, #053d79 93%);
           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
           min-height: 150px;
           cursor: pointer;
@@ -212,7 +212,7 @@ function populateRepo(items, id) {
           border-radius: 12px;
           padding: 16px;
           font-size: 14px;
-          background: linear-gradient(135deg, #ffdd99, #f9bf3f);
+          background: linear-gradient(90deg, rgba(4,1,62,1) 0%, rgb(22, 32, 138) 33%, #053d79 93%);
           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
           transition: transform 0.2s ease-in-out;
           cursor: pointer;
@@ -452,7 +452,7 @@ fetchReposFromGit(gitRepo);
 fetchGitConnectedData(gitConnected);
 
 populateExp_Edu(experience, "experience");
-populateTrekking(trekking);
+// populateTrekking(trekking);
 populateExp_Edu(education, "education");
 
 populateLinks(footer, "footer");
