@@ -78,21 +78,44 @@ education:
       - Satellite Imagery
 
 work:
-  - position: Teaching Assistant
-    company_name: Amirkabir University of Technology (MSc)
-    company_url: ""
-    company_logo: ""
-    date_start: 2024-09-01
-    date_end: 2025-01-31
-    company_name: University of Science and Technology of Mazandaran (BSc)
-    date_start: 2019-09-01
-    date_end: 2022-09-01
-    summary: |
-      Courses Supported:
-      ▪ MSc: Machine Learning, Computational Data Mining  
-      ▪ BSc: Introduction to Computer & Programming, Data Structures & Algorithms, Foundation of Matrix and Linear Algebra
+  # - position: Teaching Assistant
+  #   company_name: Amirkabir University of Technology (MSc)
+  #   company_url: ""
+  #   company_logo: ""
+  #   date_start: 2024-09-01
+  #   date_end: 2025-01-31
+  #   company_name: University of Science and Technology of Mazandaran (BSc)
+  #   date_start: 2019-09-01
+  #   date_end: 2022-09-01
+  #   summary: |
+  #     Courses Supported:
+  #     ▪ MSc: Machine Learning, Computational Data Mining
+  #     ▪ BSc: Introduction to Computer & Programming, Data Structures & Algorithms, Foundation of Matrix and Linear Algebra
 
-      Focused on student mentorship, grading, and facilitating learning through discussions and project guidance.
+  #     Focused on student mentorship, grading, and facilitating learning through discussions and project guidance.
+
+  - position: Teaching Assistant
+    roles:
+      - institution: Amirkabir University of Technology (MSc)
+        date_start: 2024-09-01
+        date_end: 2025-01-31
+        courses:
+          - Machine Learning
+          - Computational Data Mining
+      - institution: University of Science and Technology of Mazandaran (BSc)
+        date_start: 2019-09-01
+        date_end: 2022-09-01
+        courses:
+          - Introduction to Computer & Programming
+          - Data Structures & Algorithms
+          - Foundation of Matrix and Linear Algebra
+    summary: |
+      Supported a range of undergraduate and graduate courses across two institutions.
+
+      Responsibilities included:
+      ▪ Student mentorship and project guidance  
+      ▪ Grading assignments and exams  
+      ▪ Conducting tutorials and office hours
 
   - position: AI Competitor
     company_name: Rayan International AI Contest
