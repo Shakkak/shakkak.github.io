@@ -52,7 +52,7 @@ education:
   - area: MSc Computer Science
     institution: Amirkabir University of Technology - Tehran Polytechnic, Tehran, IR
     date_start: 2023-09-01
-    date_end: Present
+    date_end: ""
     summary: |
       Focus: Self-supervised learning in computational histopathology, emphasizing knowledge distillation and generative diffusion-based SSL for medical imaging.
 
