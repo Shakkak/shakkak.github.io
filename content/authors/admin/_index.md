@@ -191,8 +191,8 @@ skills:
 #   Add/remove as many awards below as you like.
 #   Only `title`, `awarder`, and `date` are required.
 #   Begin multi-line `summary` with YAML's `|` or `|2-` multi-line prefix and indent 2 spaces below.
-awards:
-  - title: Medical Image Captioning with BLIP2-OPT-6.7B
+awards1:
+  - title: Medicalaaaaaaaaaaaaaaaaaaaa Image Captioning with BLIP2-OPT-6.7B
     url: https://github.com/Shakkak/Medical-Image-Captioning-blip2-opt-6.7b
     date: ""
     awarder: ""
