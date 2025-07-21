@@ -126,15 +126,15 @@ skills:
     items:
       - name: Python
         description: ""
-        percent: 80
+        # percent: 80
         icon: devicon/python
       - name: RStudio
         description: ""
-        percent: 100
+        # percent: 100
         icon: devicon/rstudio
       - name: PyTorch
         description: ""
-        percent: 40
+        # percent: 40
         icon: devicon/pytorch
   - name: Hobbies
     color: "#eeac02"
@@ -142,22 +142,22 @@ skills:
     items:
       - name: Hiking
         description: ""
-        percent: 60
+        # percent: 60
         icon: person-simple-walk
-      - name: Cats
+      - name: gamer
         description: ""
-        percent: 100
-        icon: cat
+        # percent: 100
+        icon: game
       - name: Photography
         description: ""
-        percent: 80
+        # percent: 80
         icon: camera
 
 languages:
   - name: English
-    percent: 100
+    # percent: 100
   - name: Farsi
-    percent: 75
+    # percent: 75
   # - name: Portuguese
   #   percent: 25
 
