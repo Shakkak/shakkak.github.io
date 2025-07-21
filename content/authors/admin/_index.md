@@ -94,28 +94,29 @@ work:
 
   #     Focused on student mentorship, grading, and facilitating learning through discussions and project guidance.
 
-  - position: Teaching Assistant
-    roles:
-      - institution: Amirkabir University of Technology (MSc)
-        date_start: 2024-09-01
-        date_end: 2025-01-31
-        courses:
-          - Machine Learning
-          - Computational Data Mining
-      - institution: University of Science and Technology of Mazandaran (BSc)
-        date_start: 2019-09-01
-        date_end: 2022-09-01
-        courses:
-          - Introduction to Computer & Programming
-          - Data Structures & Algorithms
-          - Foundation of Matrix and Linear Algebra
-    summary: |
-      Supported a range of undergraduate and graduate courses across two institutions.
+- position: Teaching Assistant
+  company_name: Amirkabir University of Technology (MSc)
+  date_start: 2024-09-01
+  date_end: 2025-01-31
+  summary: |
+    Courses Supported:
+    ▪ Machine Learning  
+    ▪ Computational Data Mining
 
-      Responsibilities included:
-      ▪ Student mentorship and project guidance  
-      ▪ Grading assignments and exams  
-      ▪ Conducting tutorials and office hours
+    Focused on student mentorship, grading, and facilitating learning through discussions and project guidance.
+
+- position: Teaching Assistant
+  company_name: University of Science and Technology of Mazandaran (BSc)
+  date_start: 2019-09-01
+  date_end: 2022-09-01
+  summary: |
+    Courses Supported:
+    ▪ Introduction to Computer & Programming  
+    ▪ Data Structures & Algorithms  
+    ▪ Foundation of Matrix and Linear Algebra
+
+    Responsible for helping students with assignments, holding office hours, and supporting instructors in course delivery.
+
 
   - position: AI Competitor
     company_name: Rayan International AI Contest
