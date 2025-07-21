@@ -1,9 +1,9 @@
 ---
 # Display name
-title: 吳健雄
+title: M. Shakib Hosseinzadeh
 
 # Name pronunciation (optional)
-name_pronunciation: Chien Shiung Wu
+# name_pronunciation: Chien Shiung Wu
 
 # Full name (for SEO)
 first_name: M. Shakib
@@ -79,7 +79,7 @@ education:
 
 work:
   - position: Teaching Assistant
-    company_name: Amirkabir University of Technology
+    company_name: Amirkabir University of Technology (MSc) / University of Science and Technology of Mazandaran (BSc)
     company_url: ""
     company_logo: ""
     date_start: 2024-09-01
@@ -87,13 +87,9 @@ work:
     summary: |
       Courses Supported:
       ▪ MSc: Machine Learning, Computational Data Mining  
-      ▪ BSc: Introduction to Computer & Programming, Data Structures & Algorithms, Foundation of Matrix and Linear Algebra (various)
+      ▪ BSc: Introduction to Computer & Programming, Data Structures & Algorithms, Foundation of Matrix and Linear Algebra
 
       Focused on student mentorship, grading, and facilitating learning through discussions and project guidance.
-
-      Skills:
-      - Teaching
-      - Mentorship
 
   - position: AI Competitor
     company_name: Rayan International AI Contest
@@ -109,10 +105,6 @@ work:
       ▪ Teeth segmentation under poisoned/limited data  
       ▪ Defense strategies against backdoor attacks
 
-      Skills:
-      - AI
-      - Competitions
-
   - position: Machine Learning Researcher
     company_name: Prediction of Obstructive Sleep Apnea Challenge
     company_url: ""
@@ -126,11 +118,6 @@ work:
       ▪ Patient respiratory sound recordings  
       ▪ Advanced signal processing  
       ▪ Machine learning techniques for biomedical data
-
-      Skills:
-      - Signal Processing
-      - ML
-      - Healthcare
 
 # Skills
 # Add your own SVG icons to `assets/media/icons/`
@@ -169,10 +156,10 @@ skills:
 languages:
   - name: English
     percent: 100
-  - name: Chinese
+  - name: Farsi
     percent: 75
-  - name: Portuguese
-    percent: 25
+  # - name: Portuguese
+  #   percent: 25
 
 # Awards.
 #   Add/remove as many awards below as you like.
@@ -206,4 +193,8 @@ awards:
       Object-oriented programming (OOP) lets you specify relationships between functions and the objects that they can act on, helping you manage complexity in your code. This is an intermediate level course, providing an introduction to OOP, using the S3 and R6 systems. S3 is a great day-to-day R programming tool that simplifies some of the functions that you write. R6 is especially useful for industry-specific analyses, working with web APIs, and building GUIs.
 ---
 
-I am currently Director of Cloud Infrastructure at GenCoin where I am leading teams on edge computing, deep sea data center architecture, and hivemind optimization.
+Hello, I'm Shakib Hosseinzadeh!
+
+I’m a Machine Learning engineer in training, passionate about solving real-world problems using AI algorithms. My focus areas include Data Science and Computer Vision, with a strong interest in algorithms and problem-solving in image and data analysis. I thoroughly enjoy coding and creating innovative solutions, and I embrace challenges that foster personal and professional growth.
+
+Beyond coding, I enjoy competitive deep learning contests and collaborating with teams to approach problems from diverse perspectives.
