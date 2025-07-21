@@ -94,28 +94,28 @@ work:
 
   #     Focused on student mentorship, grading, and facilitating learning through discussions and project guidance.
 
-  - position: Teaching Assistant
-    company_name: Amirkabir University of Technology (MSc)
-    date_start: 2024-09-01
-    date_end: 2025-01-31
+  - role: Teaching Assistant
+    roles:
+      - institution: Amirkabir University of Technology (MSc)
+        date_start: 2024-09-01
+        date_end: 2025-01-31
+        courses:
+          - Machine Learning
+          - Computational Data Mining
+      - institution: University of Science and Technology of Mazandaran (BSc)
+        date_start: 2019-09-01
+        date_end: 2022-09-01
+        courses:
+          - Introduction to Computer & Programming
+          - Data Structures & Algorithms
+          - Foundation of Matrix and Linear Algebra
     summary: |
-      Courses Supported:
-      ▪ Machine Learning  
-      ▪ Computational Data Mining
+      Supported a range of undergraduate and graduate courses across two institutions.
 
-      Focused on student mentorship, grading, and facilitating learning through discussions and project guidance.
-
-  - position: Teaching Assistant
-    company_name: University of Science and Technology of Mazandaran (BSc)
-    date_start: 2019-09-01
-    date_end: 2022-09-01
-    summary: |
-      Courses Supported:
-      ▪ Introduction to Computer & Programming  
-      ▪ Data Structures & Algorithms  
-      ▪ Foundation of Matrix and Linear Algebra
-
-      Responsible for helping students with assignments, holding office hours, and supporting instructors in course delivery.
+      Responsibilities included:
+      ▪ Student mentorship and project guidance  
+      ▪ Grading assignments and exams  
+      ▪ Conducting tutorials and office hours
 
   - position: AI Competitor
     company_name: Rayan International AI Contest
@@ -191,8 +191,8 @@ skills:
 #   Add/remove as many awards below as you like.
 #   Only `title`, `awarder`, and `date` are required.
 #   Begin multi-line `summary` with YAML's `|` or `|2-` multi-line prefix and indent 2 spaces below.
-awards1:
-  - title: Medicalaaaaaaaaaaaaaaaaaaaa Image Captioning with BLIP2-OPT-6.7B
+awards:
+  - title: Medical Image Captioning with BLIP2-OPT-6.7B
     url: https://github.com/Shakkak/Medical-Image-Captioning-blip2-opt-6.7b
     date: ""
     awarder: ""

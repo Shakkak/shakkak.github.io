@@ -25,7 +25,7 @@ sections:
       biography:
         # Customize the style of your biography text
         style: "text-align: justify; font-size: 0.8em;"
-  - block: experience
+  - block: works_
     content:
       username: admin
     design:
@@ -37,7 +37,7 @@ sections:
     content:
       title: Skills & Hobbies
       username: admin
-  - block: awards1
+  - block: awards
     content:
       title: Projects
       username: admin
