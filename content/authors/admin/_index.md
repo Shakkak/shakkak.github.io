@@ -86,7 +86,7 @@ work:
     date_end: 2025-01-31
     company_name: University of Science and Technology of Mazandaran (BSc)
     date_start: 2019-09-01
-    date_end: 2022-09-31
+    date_end: 2022-09-01
     summary: |
       Courses Supported:
       ▪ MSc: Machine Learning, Computational Data Mining  
