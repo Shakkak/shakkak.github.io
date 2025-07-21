@@ -37,9 +37,9 @@ sections:
     content:
       title: Skills & Hobbies
       username: admin
-  - block: awards
+  - block: Projects
     content:
-      title: Awards
+      title: Projects
       username: admin
   # - block: languages
   #   content:
