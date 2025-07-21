@@ -81,9 +81,10 @@
           {{ i18n "present" | default "Present" }}
         {{end}}
       </time>
-        <ul>
+        <p>Courses: </p>
+        <ul class="list-group list-group-flush mb-2">
         {{ range $sub2_idx, $sub2_key := $sub_key.courses }}
-            <li>{{ . }}</li>
+            <li class="list-group-item block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">- {{ . }}</li>
         {{ end }}
         </ul>
       {{ end }}
