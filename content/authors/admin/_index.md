@@ -115,9 +115,9 @@ work:
       Supported a range of undergraduate and graduate courses across two institutions.
 
       Responsibilities included:
-      ▪ Student mentorship and project guidance  
-      ▪ Grading assignments and exams  
-      ▪ Conducting tutorials and office hours
+      - Student mentorship and project guidance  
+      - Grading assignments and exams  
+      - Conducting tutorials and office hours
 
   - role: AI Competitor
     roles:
@@ -129,9 +129,9 @@ work:
           - Top 10 Team
         summary: |
           Developed robust AI models across diverse tasks:
-          ▪ Noisy, unlabeled image classification  
-          ▪ Teeth segmentation under poisoned/limited data  
-          ▪ Defense strategies against backdoor attacks
+          - Noisy, unlabeled image classification  
+          - Teeth segmentation under poisoned/limited data  
+          - Defense strategies against backdoor attacks
 
       - institution: Prediction of Obstructive Sleep Apnea Challenge
         date_start: 2024-08-01
@@ -141,11 +141,10 @@ work:
           - Top 6 Team
 
     summary: |
-
       Developed predictive models for obstructive sleep apnea using:
-      ▪ Patient respiratory sound recordings  
-      ▪ Advanced signal processing  
-      ▪ Machine learning techniques for biomedical data
+      - Patient respiratory sound recordings  
+      - Advanced signal processing  
+      - Machine learning techniques for biomedical data
 
   # - position: AI Competitor
   #   company_name: Rayan International AI Contest
