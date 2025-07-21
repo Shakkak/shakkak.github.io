@@ -99,13 +99,15 @@ work:
       - institution: Amirkabir University of Technology (MSc)
         date_start: 2024-09-01
         date_end: 2025-01-31
-        courses:
+        list_name: Courses
+        list:
           - Machine Learning
           - Computational Data Mining
       - institution: University of Science and Technology of Mazandaran (BSc)
         date_start: 2019-09-01
         date_end: 2022-09-01
-        courses:
+        list_name: Courses
+        list:
           - Introduction to Computer & Programming
           - Data Structures & Algorithms
           - Foundation of Matrix and Linear Algebra
@@ -117,33 +119,61 @@ work:
       ▪ Grading assignments and exams  
       ▪ Conducting tutorials and office hours
 
-  - position: AI Competitor
-    company_name: Rayan International AI Contest
-    company_url: ""
-    company_logo: ""
-    date_start: 2024-10-01
-    date_end: 2024-12-31
-    summary: |
-      Achievement: Top 10 Team
+  - role: AI Competitor
+    roles:
+      - institution: Rayan International AI Contest
+        date_start: 2024-10-01
+        date_end: 2024-12-31
+        list_name: Achievement
+        list:
+          - Top 10 Team
+        summary: |
+          Developed robust AI models across diverse tasks:
+          ▪ Noisy, unlabeled image classification  
+          ▪ Teeth segmentation under poisoned/limited data  
+          ▪ Defense strategies against backdoor attacks
 
-      Developed robust AI models across diverse tasks:
-      ▪ Noisy, unlabeled image classification  
-      ▪ Teeth segmentation under poisoned/limited data  
-      ▪ Defense strategies against backdoor attacks
+      - institution: Prediction of Obstructive Sleep Apnea Challenge
+        date_start: 2024-08-01
+        date_end: 2024-10-31
+        list_name: Achievement
+        list:
+          - Top 6 Team
 
-  - position: Machine Learning Researcher
-    company_name: Prediction of Obstructive Sleep Apnea Challenge
-    company_url: ""
-    company_logo: ""
-    date_start: 2024-08-01
-    date_end: 2024-10-31
     summary: |
-      Achievement: Top 6 Team
 
       Developed predictive models for obstructive sleep apnea using:
       ▪ Patient respiratory sound recordings  
       ▪ Advanced signal processing  
       ▪ Machine learning techniques for biomedical data
+
+  # - position: AI Competitor
+  #   company_name: Rayan International AI Contest
+  #   company_url: ""
+  #   company_logo: ""
+  #   date_start: 2024-10-01
+  #   date_end: 2024-12-31
+  #   summary: |
+  #     Achievement: Top 10 Team
+
+  #     Developed robust AI models across diverse tasks:
+  #     ▪ Noisy, unlabeled image classification
+  #     ▪ Teeth segmentation under poisoned/limited data
+  #     ▪ Defense strategies against backdoor attacks
+
+  # - position: Machine Learning Researcher
+  #   company_name: Prediction of Obstructive Sleep Apnea Challenge
+  #   company_url: ""
+  #   company_logo: ""
+  #   date_start: 2024-08-01
+  #   date_end: 2024-10-31
+  #   summary: |
+  #     Achievement: Top 6 Team
+
+  #     Developed predictive models for obstructive sleep apnea using:
+  #     ▪ Patient respiratory sound recordings
+  #     ▪ Advanced signal processing
+  #     ▪ Machine learning techniques for biomedical data
 
 # Skills
 # Add your own SVG icons to `assets/media/icons/`

@@ -82,12 +82,15 @@
             {{ i18n "present" | default "Present" }}
             {{end}}
         </time>
-            <p>Courses: </p>
+            <p>{{.list_name}}: </p>
             <ul class="list-group list-group-flush my-2">
-            {{ range $sub2_idx, $sub2_key := $sub_key.courses }}
+            {{ range $sub2_idx, $sub2_key := $sub_key.list }}
                 <li class="list-group-item block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">- {{ . }}</li>
             {{ end }}
             </ul>
+            {{ if .summary}}
+            <div class="mb-4 text-base font-normal text-gray-500 dark:text-gray-300 text-wrap prose prose-slate dark:prose-invert">{{.summary | $page.RenderString}}</div>
+            {{ end }}
         </div>
       {{ end }}
       <div class="mb-4 text-base font-normal text-gray-500 dark:text-gray-300 text-wrap prose prose-slate dark:prose-invert">{{.summary | $page.RenderString}}</div>
