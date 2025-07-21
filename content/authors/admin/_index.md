@@ -79,11 +79,14 @@ education:
 
 work:
   - position: Teaching Assistant
-    company_name: Amirkabir University of Technology (MSc) / University of Science and Technology of Mazandaran (BSc)
+    company_name: Amirkabir University of Technology (MSc)
     company_url: ""
     company_logo: ""
     date_start: 2024-09-01
     date_end: 2025-01-31
+    company_name: University of Science and Technology of Mazandaran (BSc)
+    date_start: 2019-09-01
+    date_end: 2022-09-31
     summary: |
       Courses Supported:
       ▪ MSc: Machine Learning, Computational Data Mining  
