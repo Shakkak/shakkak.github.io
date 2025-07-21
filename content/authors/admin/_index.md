@@ -94,29 +94,28 @@ work:
 
   #     Focused on student mentorship, grading, and facilitating learning through discussions and project guidance.
 
-- position: Teaching Assistant
-  company_name: Amirkabir University of Technology (MSc)
-  date_start: 2024-09-01
-  date_end: 2025-01-31
-  summary: |
-    Courses Supported:
-    ▪ Machine Learning  
-    ▪ Computational Data Mining
+  - position: Teaching Assistant
+    company_name: Amirkabir University of Technology (MSc)
+    date_start: 2024-09-01
+    date_end: 2025-01-31
+    summary: |
+      Courses Supported:
+      ▪ Machine Learning  
+      ▪ Computational Data Mining
 
-    Focused on student mentorship, grading, and facilitating learning through discussions and project guidance.
+      Focused on student mentorship, grading, and facilitating learning through discussions and project guidance.
 
-- position: Teaching Assistant
-  company_name: University of Science and Technology of Mazandaran (BSc)
-  date_start: 2019-09-01
-  date_end: 2022-09-01
-  summary: |
-    Courses Supported:
-    ▪ Introduction to Computer & Programming  
-    ▪ Data Structures & Algorithms  
-    ▪ Foundation of Matrix and Linear Algebra
+  - position: Teaching Assistant
+    company_name: University of Science and Technology of Mazandaran (BSc)
+    date_start: 2019-09-01
+    date_end: 2022-09-01
+    summary: |
+      Courses Supported:
+      ▪ Introduction to Computer & Programming  
+      ▪ Data Structures & Algorithms  
+      ▪ Foundation of Matrix and Linear Algebra
 
-    Responsible for helping students with assignments, holding office hours, and supporting instructors in course delivery.
-
+      Responsible for helping students with assignments, holding office hours, and supporting instructors in course delivery.
 
   - position: AI Competitor
     company_name: Rayan International AI Contest
@@ -181,12 +180,12 @@ skills:
         icon: camera
 
 #languages:
-  #- name: English
-    # percent: 100
-  #- name: Farsi
-    # percent: 75
-  # - name: Portuguese
-  #   percent: 25
+#- name: English
+# percent: 100
+#- name: Farsi
+# percent: 75
+# - name: Portuguese
+#   percent: 25
 
 # Awards.
 #   Add/remove as many awards below as you like.
