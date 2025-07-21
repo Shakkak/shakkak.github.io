@@ -180,10 +180,10 @@ skills:
         # percent: 80
         icon: camera
 
-languages:
-  - name: English
+#languages:
+  #- name: English
     # percent: 100
-  - name: Farsi
+  #- name: Farsi
     # percent: 75
   # - name: Portuguese
   #   percent: 25
