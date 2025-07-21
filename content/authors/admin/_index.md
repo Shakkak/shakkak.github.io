@@ -49,51 +49,88 @@ education:
   #   button:
   #     text: 'Read Thesis'
   #     url: 'https://example.com'
-  - area: MEng Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    date_start: 2016-01-01
-    date_end: 2020-12-31
+  - area: MSc Computer Science
+    institution: Amirkabir University of Technology - Tehran Polytechnic, Tehran, IR
+    date_start: 2023-09-01
+    date_end: Present
     summary: |
-      GPA: 3.8/4.0
+      Focus: Self-supervised learning in computational histopathology, emphasizing knowledge distillation and generative diffusion-based SSL for medical imaging.
 
-      Courses included:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - area: BSc Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    date_start: 2016-01-01
-    date_end: 2020-12-31
+      Aim: Enhance medical diagnosis and treatment pipelines without reliance on human-labeled data.
+
+      Relevant Topics:
+      - Self-Supervised Learning
+      - Medical Imaging
+      - AI for Healthcare
+
+  - area: BSc Computer Science
+    institution: University of Science and Technology of Mazandaran, Mazandaran, IR
+    date_start: 2018-09-01
+    date_end: 2023-02-28
     summary: |
-      GPA: 3.4/4.0
+      GPA: 19.1/20 — Ranked 1st in the program.
 
-      Courses included:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      Thesis/Project: Designed and implemented an enhanced YOLO-based object detection model for satellite imagery. Optimized for real-time tracking and multi-vehicle detection under complex visual conditions.
+
+      Key Areas:
+      - YOLO
+      - Object Detection
+      - Satellite Imagery
+
 work:
-  - position: Director of Cloud Infrastructure
-    company_name: GenCoin
+  - position: Teaching Assistant
+    company_name: Amirkabir University of Technology
     company_url: ""
     company_logo: ""
-    date_start: 2021-01-01
-    date_end: ""
-    summary: |2-
-      Responsibilities include:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - position: Backend Software Engineer
-    company_name: X
-    company_url: ""
-    company_logo: ""
-    date_start: 2016-01-01
-    date_end: 2020-12-31
+    date_start: 2024-09-01
+    date_end: 2025-01-31
     summary: |
-      Responsibilities include:
-      - Migrated infrastructure to a new data center
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      Courses Supported:
+      ▪ MSc: Machine Learning, Computational Data Mining  
+      ▪ BSc: Introduction to Computer & Programming, Data Structures & Algorithms, Foundation of Matrix and Linear Algebra (various)
+
+      Focused on student mentorship, grading, and facilitating learning through discussions and project guidance.
+
+      Skills:
+      - Teaching
+      - Mentorship
+
+  - position: AI Competitor
+    company_name: Rayan International AI Contest
+    company_url: ""
+    company_logo: ""
+    date_start: 2024-10-01
+    date_end: 2024-12-31
+    summary: |
+      Achievement: Top 10 Team
+
+      Developed robust AI models across diverse tasks:
+      ▪ Noisy, unlabeled image classification  
+      ▪ Teeth segmentation under poisoned/limited data  
+      ▪ Defense strategies against backdoor attacks
+
+      Skills:
+      - AI
+      - Competitions
+
+  - position: Machine Learning Researcher
+    company_name: Prediction of Obstructive Sleep Apnea Challenge
+    company_url: ""
+    company_logo: ""
+    date_start: 2024-08-01
+    date_end: 2024-10-31
+    summary: |
+      Achievement: Top 6 Team
+
+      Developed predictive models for obstructive sleep apnea using:
+      ▪ Patient respiratory sound recordings  
+      ▪ Advanced signal processing  
+      ▪ Machine learning techniques for biomedical data
+
+      Skills:
+      - Signal Processing
+      - ML
+      - Healthcare
 
 # Skills
 # Add your own SVG icons to `assets/media/icons/`
