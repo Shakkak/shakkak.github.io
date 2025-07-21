@@ -71,7 +71,7 @@
       </h3>
       {{ range $sub_idx, $sub_key := $key.roles }}
       <div class="mb-5">
-        <span class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">▪ {{.institution}}</span>
+        <span class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-300" style="margin-left: -0.75rem;">▪ {{.institution}}</span>
         <time class="block mb-3 text-sm font-normal leading-none text-gray-500 dark:text-gray-300">
             {{ if .date_start}}
             {{ (time .date_start) | time.Format ($block.design.date_format | default "January 2006") }} –
