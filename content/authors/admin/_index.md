@@ -189,16 +189,16 @@ skills:
         icon: devicon/pytorch
       - name: Hugging Face
         description: "Transformer-based models for NLP and multimodal AI"
-        icon: assets/media/icons/hugging-face-svgrepo-com.svg
+        icon: assets/media/icons/hugging-face-svgrepo-com
       - name: Docker
         description: "Containerized ML environments for reproducible research"
-        icon: assets/media/icons/docker-svgrepo-com.svg
+        icon: assets/media/icons/docker-svgrepo-com
       - name: Git & GitHub
         description: "Version control and collaborative research"
-        icon: assets/media/icons/git-merge-svgrepo-com.svg
+        icon: assets/media/icons/git-merge-svgrepo-com
       - name: LaTeX
         description: "Academic writing, research documentation, and publications"
-        icon: assets/media/icons/latex-svgrepo-com.svg
+        icon: assets/media/icons/latex-svgrepo-com
 
   - name: Hobbies
     color: "#eeac02"
@@ -272,7 +272,6 @@ awards:
     summary: |
       This study explores the application of YOLO-based object detection models to satellite imagery. We compare the performance of YOLOV5, YOLOv7,..., YOLOv9, and various architectural modifications With ultralytics using a dataset of annotated satellite images.
 
-
 awards_:
   - title: Anki Vocab Generator
     url: https://github.com/Shakkak/anki-vocab-generator
@@ -280,7 +279,7 @@ awards_:
     awarder: ""
     icon: github
     summary: |
-      Automatically generate Anki decks for learning English vocabulary with audio with one csv. 
+      Automatically generate Anki decks for learning English vocabulary with audio with one csv.
 ---
 
 Hello, I'm Shakib Hosseinzadeh!
