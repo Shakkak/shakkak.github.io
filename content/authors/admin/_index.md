@@ -189,16 +189,16 @@ skills:
         icon: devicon/pytorch
       - name: Hugging Face
         description: "Transformer-based models for NLP and multimodal AI"
-        icon: assets/media/icons/hugging-face-svgrepo-com
+        icon: media/icons/hugging-face-svgrepo-com.sgv
       - name: Docker
         description: "Containerized ML environments for reproducible research"
-        icon: assets/media/icons/docker-svgrepo-com
+        icon: icons/docker-svgrepo-com.sgv
       - name: Git & GitHub
         description: "Version control and collaborative research"
-        icon: assets/media/icons/git-merge-svgrepo-com
+        icon: git-merge-svgrepo-com.sgv
       - name: LaTeX
         description: "Academic writing, research documentation, and publications"
-        icon: assets/media/icons/latex-svgrepo-com
+        icon: media/icons/latex-svgrepo-com
 
   - name: Hobbies
     color: "#eeac02"
