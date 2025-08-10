@@ -231,7 +231,7 @@ skills:
       - name: gamer
         description: ""
         # percent: 100
-        icon: custom/game-control-2-svgrepo-com
+        icon: custom/game-controller-svgrepo-com
       - name: Photography
         description: ""
         # percent: 80
