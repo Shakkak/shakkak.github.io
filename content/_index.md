@@ -1,5 +1,5 @@
 ---
-title: "Home"
+title: "Hi"
 date: 2023-10-24
 type: landing
 
@@ -16,12 +16,12 @@ sections:
       username: admin
       # Show a call-to-action button under your biography? (optional)
       button:
-        text: Download Résumé
+        text: Request access to Résumé
         url: https://drive.google.com/file/d/1amznpxhocY7oQ3FhHES6drGCR6PtBE4c/view?usp=sharing
     design:
       banner:
         # Upload your cover image to the `assets/media/` folder and reference it here
-        filename: ren-ran-Jy6luiLBsrk-unsplash.jpg
+        filename: UltrawideWallpapersDotNet-2629
       biography:
         # Customize the style of your biography text
         style: "text-align: justify; font-size: 0.8em;"
