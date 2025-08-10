@@ -1,0 +1,14 @@
+.row.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.skills-container > .col-12.col-md-6 {
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-group-title {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
