@@ -217,10 +217,8 @@ skills:
       - name: Adaptability
         icon: custom/chameleon-svgrepo-com
       - name: Critical Thinking
-        description: ""
         icon: custom/thinking-person-analyze-think-thinking-process-svgrepo-com
       - name: "Resilience"
-        description: ""
         icon: "custom/phoenix"
 
   - name: Hobbies
@@ -235,10 +233,14 @@ skills:
         description: ""
         # percent: 100
         icon: custom/game-controller-svgrepo-com
-      - name: Photography
-        description: ""
-        # percent: 80
-        icon: camera
+      - name: Petting dogs
+        icon: custom/dog-person-petting-svgrepo-com
+      - name: Music
+        icon: custom/music-notes-svgrepo-com
+      - name: Reading
+        icon: custom/book-open-svgrepo-com
+      - name: Podcast
+        icon: custom/podcast-svgrepo-com
 
 #languages:
 #- name: English
