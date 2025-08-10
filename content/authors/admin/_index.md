@@ -192,13 +192,13 @@ skills:
         icon: media/icons/hugging-face-svgrepo-com.svg
       - name: Docker
         description: "Containerized ML environments for reproducible research"
-        icon: icons/docker-svgrepo-com.svg
+        icon: devicon/docker
       - name: Git & GitHub
         description: "Version control and collaborative research"
-        icon: git-merge-svgrepo-com.svg
+        icon: devicon/git
       - name: LaTeX
         description: "Academic writing, research documentation, and publications"
-        icon: media/icons/latex-svgrepo-com.svg
+        icon: devicon/latex
 
   - name: Hobbies
     color: "#eeac02"
@@ -211,7 +211,7 @@ skills:
       - name: gamer
         description: ""
         # percent: 100
-        icon: assets/media/icons/game-controller-outline-svgrepo-com.svg
+        icon: media/icons/game-controller-outline-svgrepo-com.svg
       - name: Photography
         description: ""
         # percent: 80
