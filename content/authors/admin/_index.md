@@ -198,7 +198,7 @@ skills:
         icon: devicon/git
       - name: LaTeX
         # description: "Academic writing, research documentation, and publications"
-        icon: devicon/latex
+        icon: custom/latex-svgrepo-com
 
   - name: Soft Skills
     color: "#4cafef"
