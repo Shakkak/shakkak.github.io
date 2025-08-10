@@ -207,7 +207,7 @@ skills:
       - name: Problem-Solving
         # description: "Designing innovative solutions to research challenges"
         icon: custom/brainstorming-svgrepo-com
-      - name: Team Collaboration
+      - name: Teamwork
         # description: "Working effectively in interdisciplinary research teams"
         icon: custom/team-svgrepo-com
       - name: Time Management
