@@ -222,13 +222,13 @@ skills:
     items:
       - name: Problem-Solving
         # description: "Designing innovative solutions to research challenges"
-        icon: custom/problem-solving-skill-svgrepo-com.
+        icon: custom/problem-solving-skill-svgrepo-com
       - name: Team Collaboration
         # description: "Working effectively in interdisciplinary research teams"
         icon: custom/team-svgrepo-com
       - name: Time Management
         # description: "Balancing experiments, coding, and academic deadlines"
-        icon: custom/time-success-svgrepo-com.
+        icon: custom/time-success-svgrepo-com
         # description: "Quickly learning and applying emerging ML frameworks"
         icon: custom/chameleon-svgrepo-com
       - name: Critical Thinking
