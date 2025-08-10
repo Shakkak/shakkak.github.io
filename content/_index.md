@@ -21,7 +21,7 @@ sections:
     design:
       banner:
         # Upload your cover image to the `assets/media/` folder and reference it here
-        filename: abstract_design_square_mist_clouds_neon_lights-wallpaper-3554x1999.jpg
+        filename: ren-ran-Jy6luiLBsrk-unsplash.jpg
       biography:
         # Customize the style of your biography text
         style: "text-align: justify; font-size: 0.8em;"
