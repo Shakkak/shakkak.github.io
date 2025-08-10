@@ -200,6 +200,26 @@ skills:
         # description: "Academic writing, research documentation, and publications"
         icon: devicon/latex
 
+  - name: Soft Skills
+    color: "#4cafef"
+    color_border: "#2196f3"
+    items:
+      - name: Problem-Solving
+        # description: "Designing innovative solutions to research challenges"
+        icon: custom/brainstorming-svgrepo-com
+      - name: Team Collaboration
+        # description: "Working effectively in interdisciplinary research teams"
+        icon: custom/team-svgrepo-com
+      - name: Time Management
+        # description: "Balancing experiments, coding, and academic deadlines"
+        icon: custom/time-success-svgrepo-com
+        # description: "Quickly learning and applying emerging ML frameworks"
+      - name: Adaptability
+        icon: custom/chameleon-svgrepo-com
+      - name: Critical Thinking
+        description: ""
+        icon: custom/thinking-person-analyze-think-thinking-process-svgrepo-com
+
   - name: Hobbies
     color: "#eeac02"
     color_border: "#f0bf23"
@@ -211,29 +231,12 @@ skills:
       - name: gamer
         description: ""
         # percent: 100
-        icon: custom/game-controller-outline-svgrepo-com
+        icon: custom/game-control-2-svgrepo-com
       - name: Photography
         description: ""
         # percent: 80
         icon: camera
-  - name: Soft Skills
-    color: "#4cafef"
-    color_border: "#2196f3"
-    items:
-      - name: Problem-Solving
-        # description: "Designing innovative solutions to research challenges"
-        icon: custom/problem-solving-skill-svgrepo-com
-      - name: Team Collaboration
-        # description: "Working effectively in interdisciplinary research teams"
-        icon: custom/team-svgrepo-com
-      - name: Time Management
-        # description: "Balancing experiments, coding, and academic deadlines"
-        icon: custom/time-success-svgrepo-com
-        # description: "Quickly learning and applying emerging ML frameworks"
-        icon: custom/chameleon-svgrepo-com
-      - name: Critical Thinking
-        description: ""
-        icon: custom/thinking-person-analyze-think-thinking-process-svgrepo-com
+
 #languages:
 #- name: English
 # percent: 100
