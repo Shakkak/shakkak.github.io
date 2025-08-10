@@ -10,8 +10,8 @@ first_name: M. Shakib
 last_name: Hosseinzadeh
 
 # Status emoji
-status:
-  icon: ☕️
+# status:
+#   icon:
 
 # Is this the primary user of the site?
 superuser: true
