@@ -183,14 +183,23 @@ skills:
         description: ""
         # percent: 80
         icon: devicon/python
-      - name: RStudio
-        description: ""
-        # percent: 100
-        icon: devicon/rstudio
       - name: PyTorch
         description: ""
         # percent: 40
         icon: devicon/pytorch
+      - name: Hugging Face
+        description: "Transformer-based models for NLP and multimodal AI"
+        icon: assets/media/icons/hugging-face-svgrepo-com.svg
+      - name: Docker
+        description: "Containerized ML environments for reproducible research"
+        icon: assets/media/icons/docker-svgrepo-com.svg
+      - name: Git & GitHub
+        description: "Version control and collaborative research"
+        icon: assets/media/icons/git-merge-svgrepo-com.svg
+      - name: LaTeX
+        description: "Academic writing, research documentation, and publications"
+        icon: assets/media/icons/latex-svgrepo-com.svg
+
   - name: Hobbies
     color: "#eeac02"
     color_border: "#f0bf23"
@@ -202,12 +211,30 @@ skills:
       - name: gamer
         description: ""
         # percent: 100
-        icon: gamer
+        icon: assets/media/icons/game-controller-outline-svgrepo-com.svg
       - name: Photography
         description: ""
         # percent: 80
         icon: camera
-
+  - name: Soft Skills
+    color: "#4cafef"
+    color_border: "#2196f3"
+    items:
+      - name: Problem-Solving
+        description: "Designing innovative solutions to research challenges"
+        icon: assets/media/icons/problem-solving-skill-svgrepo-com.svg
+      - name: Team Collaboration
+        description: "Working effectively in interdisciplinary research teams"
+        icon: assets/media/icons/team-svgrepo-com.svg
+      - name: Time Management
+        description: "Balancing experiments, coding, and academic deadlines"
+        icon: assets/media/icons/time-success-svgrepo-com.svg
+      - name: Adaptability
+        description: "Quickly learning and applying emerging ML frameworks"
+        icon: assets/media/icons/chameleon-svgrepo-com.svg
+      - name: Critical Thinking
+        description: ""
+        icon: assets/media/icons/thinking-person-analyze-think-thinking-process-svgrepo-com.svg
 #languages:
 #- name: English
 # percent: 100
@@ -220,7 +247,7 @@ skills:
 #   Add/remove as many awards below as you like.
 #   Only `title`, `awarder`, and `date` are required.
 #   Begin multi-line `summary` with YAML's `|` or `|2-` multi-line prefix and indent 2 spaces below.
-awards:
+Projects:
   - title: Medical Image Captioning with BLIP2-OPT-6.7B
     url: https://github.com/Shakkak/Medical-Image-Captioning-blip2-opt-6.7b
     date: ""
@@ -244,6 +271,16 @@ awards:
     icon: github
     summary: |
       This study explores the application of YOLO-based object detection models to satellite imagery. We compare the performance of YOLOV5, YOLOv7,..., YOLOv9, and various architectural modifications With ultralytics using a dataset of annotated satellite images.
+
+
+SideProjects:
+  - title: Anki Vocab Generator
+    url: https://github.com/Shakkak/anki-vocab-generator
+    date: ""
+    awarder: ""
+    icon: github
+    summary: |
+      Automatically generate Anki decks for learning English vocabulary with audio with one csv. 
 ---
 
 Hello, I'm Shakib Hosseinzadeh!

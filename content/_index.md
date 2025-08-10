@@ -17,7 +17,7 @@ sections:
       # Show a call-to-action button under your biography? (optional)
       button:
         text: Download Résumé
-        url: uploads/resume.pdf
+        url: https://drive.google.com/file/d/1amznpxhocY7oQ3FhHES6drGCR6PtBE4c/view?usp=sharing
     design:
       banner:
         # Upload your cover image to the `assets/media/` folder and reference it here
@@ -37,9 +37,13 @@ sections:
     content:
       title: Skills & Hobbies
       username: admin
-  - block: awards
+  - block: Projects
     content:
       title: Projects
+      username: admin
+  - block: SideProjects
+    content:
+      title: Hobby Projects
       username: admin
   # - block: languages
   #   content:
