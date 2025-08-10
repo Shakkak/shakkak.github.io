@@ -54,6 +54,8 @@ education:
     date_start: 2023-09-01
     date_end: ""
     summary: |
+      GPA: 19.11/20 — Ranked 1st in the program.
+
       Focus: Self-supervised learning in computational histopathology, emphasizing knowledge distillation and generative diffusion-based SSL for medical imaging.
 
       Aim: Enhance medical diagnosis and treatment pipelines without reliance on human-labeled data.
@@ -68,7 +70,7 @@ education:
     date_start: 2018-09-01
     date_end: 2023-02-28
     summary: |
-      GPA: 19.1/20 — Ranked 1st in the program.
+      GPA: 19.09/20 — Ranked 1st in the program.
 
       Thesis/Project: Designed and implemented an enhanced YOLO-based object detection model for satellite imagery. Optimized for real-time tracking and multi-vehicle detection under complex visual conditions.
 
