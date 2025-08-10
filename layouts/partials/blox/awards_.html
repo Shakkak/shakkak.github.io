@@ -1,4 +1,4 @@
-{{/* Hugo Blox: awards_ */}}
+{{/* Hugo Blox: Awards */}}
 {{/* Documentation: https://hugoblox.com/blocks/ */}}
 {{/* License: https://github.com/HugoBlox/hugo-blox-builder/blob/main/LICENSE.md */}}
 
@@ -14,7 +14,7 @@
 associated author page if one does not already exist. See https://docs.hugoblox.com/page-builder/#about "
 $person_page_path }}
 {{end}}
-{{ $awards_ := $person_page.Params.awards_ }}
+{{ $awards := $person_page.Params.awards }}
 
 <div class="flex flex-col items-center max-w-prose mx-auto gap-3 justify-center">
 
@@ -25,8 +25,8 @@ $person_page_path }}
     {{ with $block.content.text }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
 
     <div class="w-full flex flex-col gap-6">
-        {{ if $awards_ }}
-        {{ range $idx, $key := sort $awards_ ".date_start" "desc" }}
+        {{ if $awards }}
+        {{ range $idx, $key := sort $awards ".date_start" "desc" }}
         <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             {{- $icon := .icon }}
             {{ with $icon }}
