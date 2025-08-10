@@ -219,10 +219,9 @@ skills:
       - name: Critical Thinking
         description: ""
         icon: custom/thinking-person-analyze-think-thinking-process-svgrepo-com
-      - name: ""
+      - name: "Resilience"
         description: ""
-        icon: "
-
+        icon: "custom/phoenix"
 
   - name: Hobbies
     color: "#eeac02"
