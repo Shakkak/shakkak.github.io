@@ -227,10 +227,10 @@ skills:
     color: "#eeac02"
     color_border: "#f0bf23"
     items:
-      - name: Hiking
-        description: ""
-        # percent: 60
-        icon: person-simple-walk
+      # - name: Hiking
+      #   description: ""
+      #   # percent: 60
+      #   icon: person-simple-walk
       - name: gamer
         description: ""
         # percent: 100
@@ -239,10 +239,10 @@ skills:
         icon: custom/dog-person-petting-svgrepo-com
       - name: Music
         icon: custom/music-notes-svgrepo-com
-      - name: Reading
-        icon: custom/book-open-svgrepo-com
-      - name: Podcast
-        icon: custom/podcast-svgrepo-com
+      # - name: Reading
+      #   icon: custom/book-open-svgrepo-com
+      # - name: Podcast
+      #   icon: custom/podcast-svgrepo-com
 
 #languages:
 #- name: English
