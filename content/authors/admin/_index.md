@@ -247,7 +247,7 @@ skills:
 #   Add/remove as many awards below as you like.
 #   Only `title`, `awarder`, and `date` are required.
 #   Begin multi-line `summary` with YAML's `|` or `|2-` multi-line prefix and indent 2 spaces below.
-Projects:
+awards:
   - title: Medical Image Captioning with BLIP2-OPT-6.7B
     url: https://github.com/Shakkak/Medical-Image-Captioning-blip2-opt-6.7b
     date: ""
@@ -273,7 +273,7 @@ Projects:
       This study explores the application of YOLO-based object detection models to satellite imagery. We compare the performance of YOLOV5, YOLOv7,..., YOLOv9, and various architectural modifications With ultralytics using a dataset of annotated satellite images.
 
 
-SideProjects:
+awards_:
   - title: Anki Vocab Generator
     url: https://github.com/Shakkak/anki-vocab-generator
     date: ""

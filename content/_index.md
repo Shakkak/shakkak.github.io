@@ -37,11 +37,11 @@ sections:
     content:
       title: Skills & Hobbies
       username: admin
-  - block: Projects
+  - block: awards
     content:
       title: Projects
       username: admin
-  - block: SideProjects
+  - block: awards_
     content:
       title: Hobby Projects
       username: admin
