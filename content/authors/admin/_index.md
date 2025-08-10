@@ -188,16 +188,16 @@ skills:
         # percent: 40
         icon: devicon/pytorch
       - name: Hugging Face
-        description: "Transformer-based models for NLP and multimodal AI"
-        icon: media/icons/hugging-face-svgrepo-com.svg
+        # description: "Transformer-based models for NLP and multimodal AI"
+        icon: custom/hugging-face-svgrepo-com
       - name: Docker
-        description: "Containerized ML environments for reproducible research"
+        # description: "Containerized ML environments for reproducible research"
         icon: devicon/docker
       - name: Git & GitHub
-        description: "Version control and collaborative research"
+        # description: "Version control and collaborative research"
         icon: devicon/git
       - name: LaTeX
-        description: "Academic writing, research documentation, and publications"
+        # description: "Academic writing, research documentation, and publications"
         icon: devicon/latex
 
   - name: Hobbies
@@ -211,7 +211,7 @@ skills:
       - name: gamer
         description: ""
         # percent: 100
-        icon: media/icons/game-controller-outline-svgrepo-com.svg
+        icon: custom/game-controller-outline-svgrepo-com
       - name: Photography
         description: ""
         # percent: 80
@@ -221,20 +221,19 @@ skills:
     color_border: "#2196f3"
     items:
       - name: Problem-Solving
-        description: "Designing innovative solutions to research challenges"
-        icon: assets/media/icons/problem-solving-skill-svgrepo-com.svg
+        # description: "Designing innovative solutions to research challenges"
+        icon: custom/problem-solving-skill-svgrepo-com.
       - name: Team Collaboration
-        description: "Working effectively in interdisciplinary research teams"
-        icon: assets/media/icons/team-svgrepo-com.svg
+        # description: "Working effectively in interdisciplinary research teams"
+        icon: custom/team-svgrepo-com
       - name: Time Management
-        description: "Balancing experiments, coding, and academic deadlines"
-        icon: assets/media/icons/time-success-svgrepo-com.svg
-      - name: Adaptability
-        description: "Quickly learning and applying emerging ML frameworks"
-        icon: assets/media/icons/chameleon-svgrepo-com.svg
+        # description: "Balancing experiments, coding, and academic deadlines"
+        icon: custom/time-success-svgrepo-com.
+        # description: "Quickly learning and applying emerging ML frameworks"
+        icon: custom/chameleon-svgrepo-com
       - name: Critical Thinking
         description: ""
-        icon: assets/media/icons/thinking-person-analyze-think-thinking-process-svgrepo-com.svg
+        icon: custom/thinking-person-analyze-think-thinking-process-svgrepo-com
 #languages:
 #- name: English
 # percent: 100
