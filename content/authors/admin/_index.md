@@ -6,7 +6,7 @@ title: ""
 # name_pronunciation: Chien Shiung Wu
 
 # Full name (for SEO)
-first_name: Mohammad Shakib
+first_name: Shakib
 last_name: Hosseinzadeh
 
 # Status emoji
@@ -178,7 +178,7 @@ work:
 
 # Skills
 # Add your own SVG icons to `assets/media/icons/`
-skills_orginal:
+skills:
   - name: Technical Skills
     items:
       - name: Python
