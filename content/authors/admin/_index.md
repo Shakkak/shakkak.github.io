@@ -178,71 +178,71 @@ work:
 
 # Skills
 # Add your own SVG icons to `assets/media/icons/`
-skills_:
-  - name: Technical Skills
-    items:
-      - name: Python
-        description: ""
-        # percent: 80
-        icon: devicon/python
-      - name: PyTorch
-        description: ""
-        # percent: 40
-        icon: devicon/pytorch
-      - name: Hugging Face
-        # description: "Transformer-based models for NLP and multimodal AI"
-        icon: custom/hugging-face-svgrepo-com
-      - name: Docker
-        # description: "Containerized ML environments for reproducible research"
-        icon: devicon/docker
-      - name: Git & GitHub
-        # description: "Version control and collaborative research"
-        icon: devicon/git
-      - name: LaTeX
-        # description: "Academic writing, research documentation, and publications"
-        icon: custom/latex-svgrepo-com
+# skills_:
+#   - name: Technical Skills
+#     items:
+#       - name: Python
+#         description: ""
+#         # percent: 80
+#         icon: devicon/python
+#       - name: PyTorch
+#         description: ""
+#         # percent: 40
+#         icon: devicon/pytorch
+#       - name: Hugging Face
+#         # description: "Transformer-based models for NLP and multimodal AI"
+#         icon: custom/hugging-face-svgrepo-com
+#       - name: Docker
+#         # description: "Containerized ML environments for reproducible research"
+#         icon: devicon/docker
+#       - name: Git & GitHub
+#         # description: "Version control and collaborative research"
+#         icon: devicon/git
+#       - name: LaTeX
+#         # description: "Academic writing, research documentation, and publications"
+#         icon: custom/latex-svgrepo-com
 
-  - name: Soft Skills
-    color: "#4cafef"
-    color_border: "#2196f3"
-    items:
-      - name: Problem-Solving
-        # description: "Designing innovative solutions to research challenges"
-        icon: custom/brainstorming-svgrepo-com
-      - name: Teamwork
-        # description: "Working effectively in interdisciplinary research teams"
-        icon: custom/team-svgrepo-com
-      - name: Time Management
-        # description: "Balancing experiments, coding, and academic deadlines"
-        icon: custom/time-success-svgrepo-com
-        # description: "Quickly learning and applying emerging ML frameworks"
-      - name: Adaptability
-        icon: custom/chameleon-svgrepo-com
-      - name: Critical Thinking
-        icon: custom/thinking-person-analyze-think-thinking-process-svgrepo-com
-      - name: "Resilience"
-        icon: "custom/phoenix"
+#   - name: Soft Skills
+#     color: "#4cafef"
+#     color_border: "#2196f3"
+#     items:
+#       - name: Problem-Solving
+#         # description: "Designing innovative solutions to research challenges"
+#         icon: custom/brainstorming-svgrepo-com
+#       - name: Teamwork
+#         # description: "Working effectively in interdisciplinary research teams"
+#         icon: custom/team-svgrepo-com
+#       - name: Time Management
+#         # description: "Balancing experiments, coding, and academic deadlines"
+#         icon: custom/time-success-svgrepo-com
+#         # description: "Quickly learning and applying emerging ML frameworks"
+#       - name: Adaptability
+#         icon: custom/chameleon-svgrepo-com
+#       - name: Critical Thinking
+#         icon: custom/thinking-person-analyze-think-thinking-process-svgrepo-com
+#       - name: "Resilience"
+#         icon: "custom/phoenix"
 
-  - name: Hobbies
-    color: "#eeac02"
-    color_border: "#f0bf23"
-    items:
-      # - name: Hiking
-      #   description: ""
-      #   # percent: 60
-      #   icon: person-simple-walk
-      - name: gamer
-        description: ""
-        # percent: 100
-        icon: custom/game-controller-svgrepo-com
-      - name: Petting dogs
-        icon: custom/dog-person-petting-svgrepo-com
-      - name: Music
-        icon: custom/music-notes-svgrepo-com
-      # - name: Reading
-      #   icon: custom/book-open-svgrepo-com
-      # - name: Podcast
-      #   icon: custom/podcast-svgrepo-com
+#   - name: Hobbies
+#     color: "#eeac02"
+#     color_border: "#f0bf23"
+#     items:
+#       # - name: Hiking
+#       #   description: ""
+#       #   # percent: 60
+#       #   icon: person-simple-walk
+#       - name: gamer
+#         description: ""
+#         # percent: 100
+#         icon: custom/game-controller-svgrepo-com
+#       - name: Petting dogs
+#         icon: custom/dog-person-petting-svgrepo-com
+#       - name: Music
+#         icon: custom/music-notes-svgrepo-com
+#       # - name: Reading
+#       #   icon: custom/book-open-svgrepo-com
+#       # - name: Podcast
+#       #   icon: custom/podcast-svgrepo-com
 
 #languages:
 #- name: English
