@@ -79,7 +79,8 @@
     {{ if $avatar }}
     <div class="avatar-wrapper {{ if $img }}-mt-[105px]{{else}}mt-10{{end}}">
 
-      {{ $hi_res_avatar := $avatar.Resize "512x" }}
+      {{/* High-resolution avatar (2× display size) */}}
+      {{ $hi_res_avatar := $avatar.Resize "300x" }}
       <img class="avatar rounded-full bg-white dark:bg-gray-800 p-1" src="{{ $hi_res_avatar.RelPermalink }}" alt="{{$person_page.Title}}" width="150" height="150">
 
       {{with $person.status.icon}}<span class="avatar-emoji">{{.|emojify}}</span>{{end}}
@@ -138,7 +139,7 @@
 
   <div class="flex-auto max-w-prose md:mt-12">
 
-    {{/* FIXED VERSION — CORRECT GROUPING */}}
+    {{/* Corrected biography rendering with default fallback */}}
     {{ with (($block.content.text | emojify | $page.RenderString) | default $person_page.Content) }}
     <div class="pt-2 justify-content-center prose prose-slate dark:prose-invert">
       <div class="bio-text" {{ with $block.design.biography.style }}{{ (printf "style=\"%s\"" .) | safe.HTMLAttr }}{{end}}>
