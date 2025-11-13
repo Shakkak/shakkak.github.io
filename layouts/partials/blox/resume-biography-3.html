@@ -50,8 +50,7 @@
   .dark .avatar-emoji {
     background-color: #000;
     box-shadow: 0 10px 20px rgb(0 0 0 / 4%), 0 2px 6px rgb(0 0 0 / 4%), 0 0 1px rgb(255 255 255 / 96%);
-  } -->
-</style>
+</style> -->
 <div class="resume-biography px-3 flex flex-col md:flex-row justify-center gap-12">
   <div class="flex-none m-w-[130px] mx-auto md:mx-0">
 
@@ -91,7 +90,7 @@
         to prevent the page from shifting during load. Your CSS will handle the final styling.
       */}}
       <img class="avatar rounded-full bg-white dark:bg-gray-800 p-1" src="{{ $avatar_image.RelPermalink }}" alt="{{$person_page.Title}}"
-           width="150" height="150">
+           width="512" height="512">
       {{with $person.status.icon}}<span class="avatar-emoji">{{.|emojify}}</span>{{end}}
     </div>
     {{ end }}
