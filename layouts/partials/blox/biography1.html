@@ -75,21 +75,19 @@
   {{ end }}
   {{ end }}
 
-  <div id="profile" class="flex justify-center items-center flex-col">
-
+   <div id="profile" class="flex justify-center items-center flex-col">
     {{ if $avatar }}
-    {{/* KEEP RESOURCE TYPE — DO NOT CONVERT TO STRING */}}
-    {{ $avatar_image := $avatar.Fill "300x300 Center" }}
     <div class="avatar-wrapper {{ if $img }}-mt-[105px]{{else}}mt-10{{end}}">
-      <img class="avatar rounded-full bg-white dark:bg-gray-800 p-1"
-           src="{{ $avatar_image.RelPermalink }}"
-           width="{{ $avatar_image.Width }}" height="{{ $avatar_image.Height }}"
-           alt="{{ $person_page.Title }}">
+      
+      {{/* --- THIS IS THE MODIFIED PART --- */}}
+      {{/* Resize the image to 512px width, maintaining aspect ratio, for high-res display */}}
+      {{ $hi_res_avatar := $avatar.Resize "512x" }}
+      
+      <img class="avatar rounded-full bg-white dark:bg-gray-800 p-1" src="{{ $hi_res_avatar.RelPermalink }}" alt="{{$person_page.Title}}" width="150" height="150">
+      
       {{with $person.status.icon}}<span class="avatar-emoji">{{.|emojify}}</span>{{end}}
     </div>
     {{ end }}
-
-    <br>
     <div class="portrait-title dark:text-white mt-6">
       <div class="text-3xl font-bold mb-2">
         {{- if $person.name_pronunciation -}}
