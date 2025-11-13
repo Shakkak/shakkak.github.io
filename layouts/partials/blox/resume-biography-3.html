@@ -16,7 +16,7 @@
 {{ $person := $person_page.Params }}
 {{ $avatar := ($person_page.Resources.ByType "image").GetMatch "*avatar*" }}
 {{ $avatar_shape := site.Params.features.avatar.shape | default "circle" }}
-<!-- 
+
 <style>
   .avatar-wrapper {
     display: flex;
@@ -50,7 +50,8 @@
   .dark .avatar-emoji {
     background-color: #000;
     box-shadow: 0 10px 20px rgb(0 0 0 / 4%), 0 2px 6px rgb(0 0 0 / 4%), 0 0 1px rgb(255 255 255 / 96%);
-</style> -->
+  }
+</style>
 <div class="resume-biography px-3 flex flex-col md:flex-row justify-center gap-12">
   <div class="flex-none m-w-[130px] mx-auto md:mx-0">
 
@@ -73,28 +74,14 @@
   {{ end }}
 
   <div id="profile" class="flex justify-center items-center flex-col">
-    {{ if $avatar }}
-
+{{ if $avatar }}
     <div class="avatar-wrapper {{ if $img }}-mt-[105px]{{else}}mt-10{{end}}">
-      
-      {{/* 
-        Process the avatar to a higher resolution (e.g., 512x512).
-        This larger image will be scaled down by your CSS to 150x150, 
-        resulting in a much sharper appearance on high-DPI screens.
-      */}}
-      {{ $avatar_image := $avatar.Fill "512x512 Center" }}
-
-      {{/* 
-        The <img> tag uses the high-resolution image from the line above.
-        The width and height attributes are set to your target display size (150x150)
-        to prevent the page from shifting during load. Your CSS will handle the final styling.
-      */}}
-      <img class="avatar rounded-full bg-white dark:bg-gray-800 p-1" src="{{ $avatar_image.RelPermalink }}" alt="{{$person_page.Title}}"
-           width="512" height="512">
+      {{ $avatar_image := $avatar.RelPermalink }}
+      <img class="avatar rounded-full bg-white dark:bg-gray-800 p-1" src="{{ $avatar_image }}" alt="{{$person_page.Title}}">
       {{with $person.status.icon}}<span class="avatar-emoji">{{.|emojify}}</span>{{end}}
     </div>
     {{ end }}
-
+   <br>  {{/* Added line break here */}}
     <div class="portrait-title dark:text-white">
 
       <div class="text-3xl font-bold mb-2 mt-6">
@@ -143,6 +130,7 @@
       </li>
       {{ end }}
     </ul>
+  </div>
   </div>
 
   <div class="flex-auto max-w-prose md:mt-12">
