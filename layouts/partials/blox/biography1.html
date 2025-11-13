@@ -19,6 +19,7 @@
 
 <style>
   .avatar-wrapper {
+    position: relative; /* Needed for the emoji positioning */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,17 +39,17 @@
     height: 40px;
     line-height: 40px;
     border-radius: 100%;
-    bottom: -25px;
-    right: -25px;
+    bottom: 5px; /* Adjusted positioning */
+    right: 5px;  /* Adjusted positioning */
     text-align: center;
     font-size: 20px;
     background-color: #fff;
-    color: #000; /* override parent alpha */
+    color: #000;
     box-shadow: 0 10px 20px rgb(0 0 0 / 4%), 0 2px 6px rgb(0 0 0 / 4%), 0 0 1px rgb(0 0 0 / 4%);
   }
 
   .dark .avatar-emoji {
-    background-color: #000;
+    background-color: #374151; /* Dark mode background */
     box-shadow: 0 10px 20px rgb(0 0 0 / 4%), 0 2px 6px rgb(0 0 0 / 4%), 0 0 1px rgb(255 255 255 / 96%);
   }
 </style>
@@ -76,11 +77,12 @@
   <div id="profile" class="flex justify-center items-center flex-col">
     {{ if $avatar }}
     <div class="avatar-wrapper {{ if $img }}-mt-[105px]{{else}}mt-10{{end}}">
-      {{/* This is the key change: Process the avatar to a higher resolution for crisp display */}}
-      {{ $avatar_image := $avatar.Fill "512x512 Center" }}
       
-      {{/* Use the high-res image and set width/height attributes to prevent layout shift */}}
-      <img class="avatar rounded-full bg-white dark:bg-gray-800 p-1" src="{{ $avatar_image.RelPermalink }}" alt="{{$person_page.Title}}" width="150" height="150">
+      {{/* --- THIS IS THE MODIFIED PART --- */}}
+      {{/* Resize the image to 512px width, maintaining aspect ratio, for high-res display */}}
+      {{ $hi_res_avatar := $avatar.Resize "512x" }}
+      
+      <img class="avatar rounded-full bg-white dark:bg-gray-800 p-1" src="{{ $hi_res_avatar.RelPermalink }}" alt="{{$person_page.Title}}" width="150" height="150">
       
       {{with $person.status.icon}}<span class="avatar-emoji">{{.|emojify}}</span>{{end}}
     </div>
