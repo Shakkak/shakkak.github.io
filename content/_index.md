@@ -17,7 +17,7 @@ sections:
       # Show a call-to-action button under your biography? (optional)
       button:
         text: Request access to Résumé
-        url: https://drive.google.com/file/d/1r6xpsIPXm0-L3bTXP1o_EHErLj04ZG4V/view?usp=sharing
+        url: https://drive.google.com/file/d/1BITv8NJQpRVP8WE2j7SOuaE5o_3LWZUe/view?usp=sharing
     design:
       banner:
         # Upload your cover image to the `assets/media/` folder and reference it here
