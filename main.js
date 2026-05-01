@@ -1,3 +1,12 @@
+const root = document.documentElement;
+
+// Set to true and place avatar.jpg in the same folder to show the profile image
+const SHOW_AVATAR = false;
+
+if (SHOW_AVATAR) {
+  document.querySelector('.hero-content').classList.add('has-avatar');
+}
+
 // =========================================
 // Stars Canvas
 // =========================================
@@ -24,11 +33,14 @@ function initStars() {
 
 function drawStars(t) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const isLight = root.getAttribute('data-theme') === 'light';
   for (const s of stars) {
-    const a = s.base + Math.sin(t * s.freq + s.phase) * 0.1;
+    const a = Math.max(0, s.base + Math.sin(t * s.freq + s.phase) * 0.1);
     ctx.beginPath();
     ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255,255,255,${Math.max(0, a)})`;
+    ctx.fillStyle = isLight
+      ? `rgba(100,116,139,${a * 0.35})`
+      : `rgba(255,255,255,${a})`;
     ctx.fill();
   }
   requestAnimationFrame(drawStars);
@@ -73,6 +85,15 @@ const spyObs = new IntersectionObserver(
 );
 
 sections.forEach(s => spyObs.observe(s));
+
+// =========================================
+// Theme Toggle
+// =========================================
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+});
 
 // =========================================
 // Mobile Hamburger Menu

@@ -15,6 +15,27 @@
 }
 
 /* =========================================
+   Light Theme Overrides
+   ========================================= */
+[data-theme="light"] {
+  --bg:           #f8fafc;
+  --surface:      #ffffff;
+  --border:       #e2e8f0;
+  --border-hover: #94a3b8;
+  --text-1:       #0f172a;
+  --text-2:       #475569;
+  --text-3:       #94a3b8;
+}
+
+[data-theme="light"] #nav {
+  background: rgba(248, 250, 252, 0.88);
+}
+
+[data-theme="light"] .nav-links {
+  background: rgba(248, 250, 252, 0.97);
+}
+
+/* =========================================
    Reset & Base
    ========================================= */
 *, *::before, *::after {
@@ -127,6 +148,43 @@ ul { list-style: none; }
   transform: scaleX(1);
 }
 
+/* — Right side nav wrapper — */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* — Theme toggle — */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--text-3);
+  flex-shrink: 0;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.theme-toggle:hover {
+  color: var(--text-1);
+  border-color: var(--border-hover);
+}
+
+.theme-toggle svg {
+  width: 14px;
+  height: 14px;
+}
+
+#icon-moon                         { display: none; }
+[data-theme="light"] #icon-sun     { display: none; }
+[data-theme="light"] #icon-moon    { display: block; }
+
 /* — Hamburger — */
 .hamburger {
   display: none;
@@ -210,6 +268,20 @@ section {
   flex-direction: column;
   align-items: center;
   gap: 0;
+}
+
+.avatar {
+  display: none;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border-hover);
+  margin-bottom: 28px;
+}
+
+.has-avatar .avatar {
+  display: block;
 }
 
 #about h1 {

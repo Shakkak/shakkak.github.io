@@ -6,6 +6,12 @@
   <title>Shakib Hosseinzadeh</title>
   <meta name="description" content="Shakib Hosseinzadeh — Machine Learning engineer. MSc CS at Amirkabir University of Technology.">
   <link rel="stylesheet" href="style.css">
+  <script>
+    // Apply stored theme before first paint to avoid flash
+    document.documentElement.setAttribute(
+      'data-theme', localStorage.getItem('theme') || 'dark'
+    );
+  </script>
 </head>
 <body>
 
@@ -15,15 +21,26 @@
   <nav id="nav">
     <div class="nav-inner">
       <a href="#about" class="nav-logo">SH</a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#about"      data-section="about">About</a></li>
-        <li><a href="#education"  data-section="education">Education</a></li>
-        <li><a href="#experience" data-section="experience">Experience</a></li>
-        <li><a href="#projects"   data-section="projects">Projects</a></li>
-      </ul>
+      <div class="nav-right">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+          </svg>
+          <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#about"      data-section="about">About</a></li>
+          <li><a href="#education"  data-section="education">Education</a></li>
+          <li><a href="#experience" data-section="experience">Experience</a></li>
+          <li><a href="#projects"   data-section="projects">Projects</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
 
@@ -32,6 +49,7 @@
     <!-- ============ ABOUT ============ -->
     <section id="about">
       <div class="hero-content">
+        <img class="avatar reveal" src="avatar.jpg" alt="Shakib Hosseinzadeh">
         <h1 class="reveal">Shakib Hosseinzadeh</h1>
         <p class="hero-sub reveal" style="--delay:80ms">
           MSc CS &nbsp;&middot;&nbsp; Machine Learning &nbsp;&middot;&nbsp; Computer Vision
