@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shakib Hosseinzadeh</title>
+  <meta name="description" content="Shakib Hosseinzadeh — Machine Learning engineer. MSc CS at Amirkabir University of Technology.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <canvas id="stars"></canvas>
+
+  <!-- ============ NAV ============ -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#about" class="nav-logo">SH</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about"      data-section="about">About</a></li>
+        <li><a href="#education"  data-section="education">Education</a></li>
+        <li><a href="#experience" data-section="experience">Experience</a></li>
+        <li><a href="#projects"   data-section="projects">Projects</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about">
+      <div class="hero-content">
+        <h1 class="reveal">Shakib Hosseinzadeh</h1>
+        <p class="hero-sub reveal" style="--delay:80ms">
+          MSc CS &nbsp;&middot;&nbsp; Machine Learning &nbsp;&middot;&nbsp; Computer Vision
+        </p>
+        <p class="hero-bio reveal" style="--delay:160ms">
+          Machine Learning engineer in training, passionate about solving real-world problems
+          through AI. My focus spans Data Science and Computer Vision, with a deep interest in
+          self-supervised learning for medical imaging. I enjoy competitive deep learning and
+          building things that matter.
+        </p>
+        <div class="social-row reveal" style="--delay:240ms">
+          <a href="mailto:mshakibhz@gmail.com" class="social-link" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+          </a>
+          <a href="https://github.com/shakkak" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/m-shakib-hosseinzadeh/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="scroll-hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION ============ -->
+    <section id="education">
+      <div class="section-inner">
+        <p class="section-label reveal">Education</p>
+        <div class="edu-grid">
+
+          <div class="card reveal">
+            <div class="card-header">
+              <span class="card-degree">MSc Computer Science</span>
+              <span class="card-date">2023 — present</span>
+            </div>
+            <p class="card-inst">Amirkabir University of Technology — Tehran Polytechnic</p>
+            <div class="badge-row">
+              <span class="badge">GPA 19.11 / 20</span>
+              <span class="badge">Ranked 1st</span>
+            </div>
+            <p class="card-desc">
+              Self-supervised learning in computational histopathology, emphasizing knowledge
+              distillation and generative diffusion-based SSL for medical imaging — enhancing
+              diagnosis and treatment pipelines without reliance on labeled data.
+            </p>
+            <div class="tags">
+              <span class="tag">Self-Supervised Learning</span>
+              <span class="tag">Medical Imaging</span>
+              <span class="tag">AI for Healthcare</span>
+            </div>
+          </div>
+
+          <div class="card reveal" style="--delay:120ms">
+            <div class="card-header">
+              <span class="card-degree">BSc Computer Science</span>
+              <span class="card-date">2018 — 2023</span>
+            </div>
+            <p class="card-inst">University of Science and Technology of Mazandaran</p>
+            <div class="badge-row">
+              <span class="badge">GPA 19.09 / 20</span>
+              <span class="badge">Ranked 1st</span>
+            </div>
+            <p class="card-desc">
+              Thesis: designed and implemented an enhanced YOLO-based object detection model
+              for satellite imagery, optimized for real-time tracking and multi-vehicle detection
+              under complex visual conditions.
+            </p>
+            <div class="tags">
+              <span class="tag">YOLO</span>
+              <span class="tag">Object Detection</span>
+              <span class="tag">Satellite Imagery</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section id="experience">
+      <div class="section-inner">
+        <p class="section-label reveal">Experience</p>
+
+        <div class="exp-group reveal">
+          <h3 class="exp-role">Teaching Assistant</h3>
+          <div class="exp-items">
+
+            <div class="exp-item">
+              <div class="exp-item-head">
+                <span class="exp-inst">Amirkabir University of Technology &mdash; MSc</span>
+                <span class="exp-date">Sep 2024 – Jan 2025</span>
+              </div>
+              <div class="tags">
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Computational Data Mining</span>
+              </div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-item-head">
+                <span class="exp-inst">University of Science and Technology of Mazandaran &mdash; BSc</span>
+                <span class="exp-date">Sep 2019 – Sep 2022</span>
+              </div>
+              <div class="tags">
+                <span class="tag">Intro to Programming</span>
+                <span class="tag">Data Structures &amp; Algorithms</span>
+                <span class="tag">Linear Algebra</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="exp-divider"></div>
+
+        <div class="exp-group reveal">
+          <h3 class="exp-role">AI Competitions</h3>
+          <div class="exp-items">
+
+            <div class="exp-item">
+              <div class="exp-item-head">
+                <span class="exp-inst">Rayan International AI Contest</span>
+                <span class="exp-date">Oct – Dec 2024</span>
+              </div>
+              <p class="exp-desc">
+                Developed robust AI models across diverse adversarial tasks: noisy/unlabeled
+                image classification, teeth segmentation under poisoned and limited data, and
+                defense strategies against backdoor attacks.
+              </p>
+              <div class="tags">
+                <span class="badge-solid">Top 10 Team</span>
+              </div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-item-head">
+                <span class="exp-inst">Prediction of Obstructive Sleep Apnea Challenge</span>
+                <span class="exp-date">Aug – Oct 2024</span>
+              </div>
+              <p class="exp-desc">
+                Developed predictive models using patient respiratory sound recordings,
+                advanced signal processing, and machine learning techniques for biomedical data.
+              </p>
+              <div class="tags">
+                <span class="badge-solid">Top 6 Team</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects">
+      <div class="section-inner">
+        <p class="section-label reveal">Projects</p>
+        <div class="projects-grid">
+
+          <a class="project-card reveal"
+             href="https://github.com/Shakkak/Medical-Image-Captioning-blip2-opt-6.7b"
+             target="_blank" rel="noopener">
+            <svg class="gh-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <h3>Medical Image Captioning</h3>
+            <p>
+              Fine-tuned BLIP2-OPT-6.7B on the ROCOv2 radiology dataset using
+              Parameter-Efficient Fine-Tuning (PEFT) to generate medical captions
+              under computational constraints.
+            </p>
+            <div class="tags">
+              <span class="tag">BLIP2</span>
+              <span class="tag">PEFT</span>
+              <span class="tag">Radiology NLP</span>
+            </div>
+          </a>
+
+          <a class="project-card reveal" style="--delay:120ms"
+             href="https://github.com/Shakkak/ViT-With-Masked-Autoencoders-for-image-reconstruction-and-image-classification"
+             target="_blank" rel="noopener">
+            <svg class="gh-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <h3>ViT with Masked Autoencoders</h3>
+            <p>
+              Bone fracture detection using MAE (facebook/vit-mae-base) for image
+              reconstruction, then fine-tuned for X-ray classification via transfer learning.
+            </p>
+            <div class="tags">
+              <span class="tag">ViT</span>
+              <span class="tag">MAE</span>
+              <span class="tag">Medical Imaging</span>
+            </div>
+          </a>
+
+          <a class="project-card reveal" style="--delay:240ms"
+             href="https://github.com/Shakkak/Satellite-Image-Analysis-Using-YOLO-And-Ultralytics"
+             target="_blank" rel="noopener">
+            <svg class="gh-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <h3>Satellite Image Analysis</h3>
+            <p>
+              Comparative study of YOLOv5–v9 on annotated satellite imagery using Ultralytics,
+              exploring architectural modifications for improved multi-vehicle detection.
+            </p>
+            <div class="tags">
+              <span class="tag">YOLOv5–v9</span>
+              <span class="tag">Ultralytics</span>
+              <span class="tag">Satellite Imagery</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Shakib Hosseinzadeh &copy; 2026</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
