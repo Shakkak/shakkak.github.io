@@ -35,6 +35,20 @@
   background: rgba(248, 250, 252, 0.97);
 }
 
+/* Light mode: sides show bare background, panel only behind the content column */
+[data-theme="light"] #education,
+[data-theme="light"] #experience,
+[data-theme="light"] #projects {
+  background: transparent;
+}
+
+[data-theme="light"] #education .section-inner,
+[data-theme="light"] #experience .section-inner,
+[data-theme="light"] #projects .section-inner {
+  background: rgba(255, 255, 255, 0.62);
+  border-radius: 14px;
+}
+
 /* =========================================
    Reset & Base
    ========================================= */
@@ -220,6 +234,11 @@ section {
 .section-inner {
   max-width: var(--max-w);
   margin: 0 auto;
+}
+
+/* Dark mode: full-width 20% black layer behind content sections */
+#education, #experience, #projects {
+  background: rgba(0, 0, 0, 0.20);
 }
 
 .section-label {
