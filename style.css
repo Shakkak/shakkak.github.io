@@ -11,7 +11,7 @@
   --text-3:       #475569;
   --nav-h:        60px;
   --max-w:        1080px;
-  --pad-section:  120px;
+  --pad-section:  88px;
 }
 
 /* =========================================
@@ -35,18 +35,14 @@
   background: rgba(248, 250, 252, 0.97);
 }
 
-/* Light mode: sides show bare background, panel only behind the content column */
+/* Light mode: alternate section backgrounds using existing palette colors */
 [data-theme="light"] #education,
-[data-theme="light"] #experience,
 [data-theme="light"] #projects {
-  background: transparent;
+  background: var(--surface);
 }
 
-[data-theme="light"] #education .section-inner,
-[data-theme="light"] #experience .section-inner,
-[data-theme="light"] #projects .section-inner {
-  background: rgba(255, 255, 255, 0.62);
-  border-radius: 14px;
+[data-theme="light"] #experience {
+  background: var(--bg);
 }
 
 /* =========================================
@@ -236,10 +232,6 @@ section {
   margin: 0 auto;
 }
 
-/* Dark mode: full-width 20% black layer behind content sections */
-#education, #experience, #projects {
-  background: rgba(0, 0, 0, 0.20);
-}
 
 .section-label {
   font-size: 0.68rem;
@@ -602,7 +594,7 @@ footer {
    Responsive — Tablet / Mobile
    ========================================= */
 @media (max-width: 768px) {
-  :root { --pad-section: 80px; }
+  :root { --pad-section: 60px; }
 
   .hamburger { display: flex; }
 
@@ -641,7 +633,7 @@ footer {
 }
 
 @media (max-width: 480px) {
-  :root { --pad-section: 64px; }
+  :root { --pad-section: 48px; }
 
   #about h1 { font-size: 2rem; }
 
