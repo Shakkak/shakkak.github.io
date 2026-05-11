@@ -35,6 +35,7 @@
   background: rgba(248, 250, 252, 0.97);
 }
 
+
 /* Light mode: alternate section backgrounds using existing palette colors */
 [data-theme="light"] #education,
 [data-theme="light"] #projects {
