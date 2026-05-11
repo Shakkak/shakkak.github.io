@@ -304,19 +304,63 @@ section {
   color: var(--text-1);
 }
 
+.hero-affiliation {
+  font-size: 0.82rem;
+  color: var(--text-2);
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+
 .hero-sub {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--text-3);
-  letter-spacing: 0.1em;
-  margin-bottom: 30px;
+  letter-spacing: 0.12em;
+  margin-bottom: 28px;
 }
 
 .hero-bio {
   font-size: 0.97rem;
   color: var(--text-2);
   line-height: 1.85;
-  margin-bottom: 44px;
+  margin-bottom: 32px;
   max-width: 540px;
+}
+
+/* — CV download button — */
+.hero-ctas {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--text-1);
+  border: 1px solid var(--border-hover);
+  border-radius: 6px;
+  padding: 9px 22px;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.cv-btn svg {
+  width: 14px;
+  height: 14px;
+  color: var(--text-3);
+}
+
+.cv-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--text-2);
+  transform: translateY(-1px);
+}
+
+[data-theme="light"] .cv-btn:hover {
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .social-row {
@@ -536,7 +580,7 @@ section {
    ========================================= */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 14px;
 }
 
@@ -576,6 +620,78 @@ section {
   color: var(--text-2);
   line-height: 1.75;
   flex: 1;
+}
+
+/* =========================================
+   Research Interests
+   ========================================= */
+.research-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.research-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.research-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+
+.research-icon {
+  width: 36px;
+  height: 36px;
+  color: var(--text-3);
+  flex-shrink: 0;
+}
+
+.research-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.research-card h3 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-1);
+  line-height: 1.3;
+}
+
+.research-card p {
+  font-size: 0.84rem;
+  color: var(--text-2);
+  line-height: 1.75;
+}
+
+/* =========================================
+   Skills
+   ========================================= */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px 48px;
+}
+
+.skill-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.skill-cat {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-2);
+  letter-spacing: 0.06em;
 }
 
 /* =========================================
@@ -625,7 +741,11 @@ footer {
 
   .edu-grid { grid-template-columns: 1fr; }
 
+  .research-grid { grid-template-columns: 1fr; }
+
   .projects-grid { grid-template-columns: 1fr; }
+
+  .skills-grid { grid-template-columns: 1fr; gap: 28px; }
 
   .card-header { flex-direction: column; gap: 6px; }
 
