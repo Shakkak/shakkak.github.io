@@ -4,7 +4,7 @@ const root = document.documentElement;
 const SHOW_AVATAR = true;
 
 if (SHOW_AVATAR) {
-  document.querySelector('.hero-content').classList.add('has-avatar');
+  document.querySelector('.hero-outer').classList.add('has-avatar');
 }
 
 // =========================================
