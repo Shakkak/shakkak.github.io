@@ -121,14 +121,6 @@ ul { list-style: none; }
   position: relative;
 }
 
-.nav-logo {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  color: var(--text-2);
-  transition: color 0.2s;
-}
-.nav-logo:hover { color: var(--text-1); }
 
 .nav-links {
   display: flex;
@@ -299,25 +291,22 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   padding-top: calc(var(--nav-h) + 48px);
   position: relative;
 }
 
-.hero-content {
-  max-width: 820px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+/*
+  3-column grid: [avatar 1fr] [content up-to-660px] [empty 1fr]
+  The equal 1fr flanks keep hero-content visually centred on the page
+  while the avatar sits in the left column.
+*/
+.hero-outer {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 660px) 1fr;
   align-items: center;
-  gap: 36px;
-}
-
-/* Image + text side by side */
-.hero-main {
-  display: flex;
-  align-items: flex-start;
-  gap: 52px;
   width: 100%;
+  max-width: 1100px;
 }
 
 .avatar {
@@ -327,26 +316,27 @@ section {
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid var(--border-hover);
-  flex-shrink: 0;
-  margin-top: 24px;
+  justify-self: end;
+  margin-right: 52px;
 }
 
 .has-avatar .avatar {
   display: block;
 }
 
-.hero-text {
-  flex: 1;
+.hero-content {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 0;
 }
 
 #about h1 {
-  font-size: clamp(2rem, 5.5vw, 3.4rem);
+  font-size: clamp(2rem, 5.5vw, 3.8rem);
   font-weight: 300;
   letter-spacing: -0.025em;
   line-height: 1.1;
-  margin-bottom: 14px;
+  margin-bottom: 18px;
   color: var(--text-1);
 }
 
@@ -354,15 +344,15 @@ section {
   font-size: 0.82rem;
   color: var(--text-2);
   letter-spacing: 0.04em;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .hero-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  justify-content: flex-start;
-  margin-bottom: 20px;
+  justify-content: center;
+  margin-bottom: 24px;
 }
 
 /* Tags in about hero — brighter so they read against dark bg */
@@ -375,15 +365,8 @@ section {
   font-size: 0.97rem;
   color: var(--text-2);
   line-height: 1.85;
-}
-
-/* CV + social centred below the image/text row */
-.hero-bottom {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
+  margin-bottom: 32px;
+  max-width: 540px;
 }
 
 /* — CV download button — */
@@ -391,6 +374,7 @@ section {
   display: flex;
   gap: 12px;
   justify-content: center;
+  margin-bottom: 32px;
 }
 
 .cv-btn {
@@ -671,18 +655,6 @@ section {
   font-weight: 600;
 }
 
-/* Rank 1st — badge highlight only, no border accent */
-.exp-rank .badge-solid {
-  background: rgba(251, 191, 36, 0.1);
-  border-color: rgba(251, 191, 36, 0.45);
-  color: #d4a017;
-}
-
-[data-theme="light"] .exp-rank .badge-solid {
-  background: rgba(251, 191, 36, 0.12);
-  border-color: rgba(180, 130, 0, 0.38);
-  color: #9a7200;
-}
 
 .exp-divider {
   height: 1px;
@@ -810,6 +782,15 @@ section {
   letter-spacing: 0.06em;
 }
 
+/* Skills tags brighter in dark mode */
+#skills .tag {
+  color: var(--text-2);
+}
+
+/* Tighten gaps between specific section pairs */
+#experience { padding-top: 48px; }
+#projects   { padding-top: 48px; }
+
 /* =========================================
    Certificates
    ========================================= */
@@ -902,22 +883,19 @@ footer {
 
   .exp-item-head { flex-direction: column; gap: 4px; }
 
-  /* Hero: collapse to centered stack on mobile */
-  .hero-main {
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
+  /* Hero: collapse avatar above centered content on mobile */
+  .hero-outer {
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
 
   .has-avatar .avatar {
-    margin-top: 0;
-    width: 140px;
-    height: 140px;
+    justify-self: center;
+    margin-right: 0;
+    margin-bottom: 24px;
+    width: 130px;
+    height: 130px;
   }
-
-  .hero-text { align-items: center; text-align: center; }
-
-  .hero-tags { justify-content: center; }
 }
 
 @media (max-width: 480px) {
