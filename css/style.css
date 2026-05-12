@@ -182,18 +182,19 @@ ul { list-style: none; }
   justify-content: center;
   width: 34px;
   height: 34px;
-  background: none;
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   cursor: pointer;
   color: var(--text-3);
   flex-shrink: 0;
-  transition: color 0.2s, border-color 0.2s;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
 }
 
 .theme-toggle:hover {
+  background: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
   color: var(--text-1);
-  border-color: var(--border-hover);
 }
 
 .theme-toggle svg {
@@ -303,26 +304,41 @@ section {
 }
 
 .hero-content {
-  max-width: 800px;
+  max-width: 820px;
   width: 100%;
-  overflow: hidden; /* clearfix for float */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+
+/* Image + text side by side */
+.hero-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 52px;
+  width: 100%;
 }
 
 .avatar {
   display: none;
-  float: left;
   width: 200px;
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid var(--border-hover);
-  shape-outside: circle(50%);
-  margin-right: 52px;
-  margin-bottom: 24px;
+  flex-shrink: 0;
+  margin-top: 24px;
 }
 
 .has-avatar .avatar {
   display: block;
+}
+
+.hero-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 #about h1 {
@@ -346,22 +362,35 @@ section {
   flex-wrap: wrap;
   gap: 8px;
   justify-content: flex-start;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+}
+
+/* Tags in about hero — brighter so they read against dark bg */
+.hero-tags .tag {
+  color: var(--text-2);
+  border-color: var(--border-hover);
 }
 
 .hero-bio {
   font-size: 0.97rem;
   color: var(--text-2);
   line-height: 1.85;
-  margin-bottom: 28px;
+}
+
+/* CV + social centred below the image/text row */
+.hero-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
 }
 
 /* — CV download button — */
 .hero-ctas {
   display: flex;
   gap: 12px;
-  justify-content: flex-start;
-  margin-bottom: 28px;
+  justify-content: center;
 }
 
 .cv-btn {
@@ -396,7 +425,7 @@ section {
 .social-row {
   display: flex;
   gap: 14px;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .social-link {
@@ -642,25 +671,16 @@ section {
   font-weight: 600;
 }
 
-/* Rank 1st — gold accent tile */
-.exp-rank {
-  border-color: rgba(251, 191, 36, 0.35);
-}
-
+/* Rank 1st — badge highlight only, no border accent */
 .exp-rank .badge-solid {
-  background: rgba(251, 191, 36, 0.12);
-  border-color: rgba(251, 191, 36, 0.5);
+  background: rgba(251, 191, 36, 0.1);
+  border-color: rgba(251, 191, 36, 0.45);
   color: #d4a017;
 }
 
-[data-theme="light"] .exp-rank {
-  border-color: transparent;
-  box-shadow: 0 1px 4px rgba(180,130,0,0.12), 0 0 0 1px rgba(180,130,0,0.2);
-}
-
 [data-theme="light"] .exp-rank .badge-solid {
-  background: rgba(251, 191, 36, 0.15);
-  border-color: rgba(180, 130, 0, 0.4);
+  background: rgba(251, 191, 36, 0.12);
+  border-color: rgba(180, 130, 0, 0.38);
   color: #9a7200;
 }
 
@@ -883,22 +903,21 @@ footer {
   .exp-item-head { flex-direction: column; gap: 4px; }
 
   /* Hero: collapse to centered stack on mobile */
-  .avatar,
+  .hero-main {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
   .has-avatar .avatar {
-    float: none;
-    shape-outside: none;
-    margin: 0 auto 28px;
+    margin-top: 0;
     width: 140px;
     height: 140px;
   }
 
-  #about h1,
-  .hero-affiliation,
-  .hero-bio { text-align: center; }
+  .hero-text { align-items: center; text-align: center; }
 
-  .hero-tags,
-  .hero-ctas,
-  .social-row { justify-content: center; }
+  .hero-tags { justify-content: center; }
 }
 
 @media (max-width: 480px) {
