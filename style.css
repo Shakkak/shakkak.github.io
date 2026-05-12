@@ -588,8 +588,8 @@ section {
 }
 
 .exp-items {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 14px;
 }
 
@@ -848,8 +848,6 @@ footer {
   .projects-grid { grid-template-columns: 1fr; }
 
   .skills-grid { grid-template-columns: 1fr; gap: 28px; }
-
-  .exp-items { grid-template-columns: 1fr; }
 
   .card-header { flex-direction: column; gap: 6px; }
 
