@@ -298,27 +298,27 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
   padding-top: calc(var(--nav-h) + 48px);
   position: relative;
 }
 
 .hero-content {
-  max-width: 660px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
+  max-width: 800px;
+  width: 100%;
+  overflow: hidden; /* clearfix for float */
 }
 
 .avatar {
   display: none;
-  width: 112px;
-  height: 112px;
+  float: left;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid var(--border-hover);
-  margin-bottom: 28px;
+  shape-outside: circle(50%);
+  margin-right: 52px;
+  margin-bottom: 24px;
 }
 
 .has-avatar .avatar {
@@ -326,11 +326,11 @@ section {
 }
 
 #about h1 {
-  font-size: clamp(2rem, 5.5vw, 3.8rem);
+  font-size: clamp(2rem, 5.5vw, 3.4rem);
   font-weight: 300;
   letter-spacing: -0.025em;
   line-height: 1.1;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
   color: var(--text-1);
 }
 
@@ -338,31 +338,30 @@ section {
   font-size: 0.82rem;
   color: var(--text-2);
   letter-spacing: 0.04em;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .hero-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  justify-content: center;
-  margin-bottom: 28px;
+  justify-content: flex-start;
+  margin-bottom: 24px;
 }
 
 .hero-bio {
   font-size: 0.97rem;
   color: var(--text-2);
   line-height: 1.85;
-  margin-bottom: 32px;
-  max-width: 540px;
+  margin-bottom: 28px;
 }
 
 /* — CV download button — */
 .hero-ctas {
   display: flex;
   gap: 12px;
-  justify-content: center;
-  margin-bottom: 32px;
+  justify-content: flex-start;
+  margin-bottom: 28px;
 }
 
 .cv-btn {
@@ -397,7 +396,7 @@ section {
 .social-row {
   display: flex;
   gap: 14px;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .social-link {
@@ -643,6 +642,28 @@ section {
   font-weight: 600;
 }
 
+/* Rank 1st — gold accent tile */
+.exp-rank {
+  border-color: rgba(251, 191, 36, 0.35);
+}
+
+.exp-rank .badge-solid {
+  background: rgba(251, 191, 36, 0.12);
+  border-color: rgba(251, 191, 36, 0.5);
+  color: #d4a017;
+}
+
+[data-theme="light"] .exp-rank {
+  border-color: transparent;
+  box-shadow: 0 1px 4px rgba(180,130,0,0.12), 0 0 0 1px rgba(180,130,0,0.2);
+}
+
+[data-theme="light"] .exp-rank .badge-solid {
+  background: rgba(251, 191, 36, 0.15);
+  border-color: rgba(180, 130, 0, 0.4);
+  color: #9a7200;
+}
+
 .exp-divider {
   height: 1px;
   background: var(--border);
@@ -860,6 +881,24 @@ footer {
   .card-header { flex-direction: column; gap: 6px; }
 
   .exp-item-head { flex-direction: column; gap: 4px; }
+
+  /* Hero: collapse to centered stack on mobile */
+  .avatar,
+  .has-avatar .avatar {
+    float: none;
+    shape-outside: none;
+    margin: 0 auto 28px;
+    width: 140px;
+    height: 140px;
+  }
+
+  #about h1,
+  .hero-affiliation,
+  .hero-bio { text-align: center; }
+
+  .hero-tags,
+  .hero-ctas,
+  .social-row { justify-content: center; }
 }
 
 @media (max-width: 480px) {

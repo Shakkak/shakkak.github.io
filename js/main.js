@@ -1,7 +1,7 @@
 const root = document.documentElement;
 
-// Set to true and place avatar.jpg in assets/avatar/ to show the profile photo
-const SHOW_AVATAR = false;
+// Place avatar.jpg in assets/avatar/ — set false to hide the photo
+const SHOW_AVATAR = true;
 
 if (SHOW_AVATAR) {
   document.querySelector('.hero-content').classList.add('has-avatar');
