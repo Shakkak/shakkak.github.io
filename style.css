@@ -18,32 +18,34 @@
    Light Theme Overrides
    ========================================= */
 [data-theme="light"] {
-  --bg:           #dde4ef;
+  --bg:           #f1f5f9;
   --surface:      #ffffff;
-  --border:       #b8c9dd;
-  --border-hover: #7a9ab8;
+  --border:       #e2e8f0;
+  --border-hover: #94a3b8;
   --text-1:       #0f172a;
   --text-2:       #475569;
   --text-3:       #7a92aa;
 }
 
 [data-theme="light"] #nav {
-  background: rgba(221, 228, 239, 0.92);
+  background: rgba(241, 245, 249, 0.92);
 }
 
 [data-theme="light"] .nav-links {
-  background: rgba(221, 228, 239, 0.97);
+  background: rgba(241, 245, 249, 0.97);
 }
 
-
-/* Light mode: alternate section backgrounds using existing palette colors */
-[data-theme="light"] #education,
-[data-theme="light"] #projects {
-  background: var(--surface);
+/* Cards float with shadow — no color-patch sections */
+[data-theme="light"] .card,
+[data-theme="light"] .project-card {
+  border-color: transparent;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.04);
 }
 
-[data-theme="light"] #experience {
-  background: var(--bg);
+[data-theme="light"] .card:hover,
+[data-theme="light"] .project-card:hover {
+  border-color: transparent;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.05);
 }
 
 /* =========================================
