@@ -18,21 +18,21 @@
    Light Theme Overrides
    ========================================= */
 [data-theme="light"] {
-  --bg:           #f8fafc;
+  --bg:           #dde4ef;
   --surface:      #ffffff;
-  --border:       #e2e8f0;
-  --border-hover: #94a3b8;
+  --border:       #b8c9dd;
+  --border-hover: #7a9ab8;
   --text-1:       #0f172a;
   --text-2:       #475569;
-  --text-3:       #94a3b8;
+  --text-3:       #7a92aa;
 }
 
 [data-theme="light"] #nav {
-  background: rgba(248, 250, 252, 0.88);
+  background: rgba(221, 228, 239, 0.92);
 }
 
 [data-theme="light"] .nav-links {
-  background: rgba(248, 250, 252, 0.97);
+  background: rgba(221, 228, 239, 0.97);
 }
 
 
@@ -196,6 +196,26 @@ ul { list-style: none; }
 [data-theme="light"] #icon-sun     { display: none; }
 [data-theme="light"] #icon-moon    { display: block; }
 
+/* Sun — yellow tint */
+.theme-toggle #icon-sun {
+  color: #fbbf24;
+  stroke: #fbbf24;
+}
+
+/* Moon button — dark background in light theme so it pops against white */
+[data-theme="light"] .theme-toggle {
+  background: #111827;
+  border-color: #111827;
+  color: #c9d6e8;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+[data-theme="light"] .theme-toggle:hover {
+  background: #1f2937;
+  border-color: #1f2937;
+  color: #f1f5f9;
+}
+
 /* — Hamburger — */
 .hamburger {
   display: none;
@@ -309,13 +329,14 @@ section {
   font-size: 0.82rem;
   color: var(--text-2);
   letter-spacing: 0.04em;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
-.hero-sub {
-  font-size: 0.75rem;
-  color: var(--text-3);
-  letter-spacing: 0.12em;
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
   margin-bottom: 28px;
 }
 
