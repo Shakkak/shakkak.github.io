@@ -528,6 +528,7 @@ section {
   font-size: 0.86rem;
   color: var(--text-2);
   line-height: 1.75;
+  text-align: justify;
 }
 
 .badge-row {
@@ -634,6 +635,12 @@ section {
   font-size: 0.84rem;
   color: var(--text-2);
   line-height: 1.75;
+  text-align: justify;
+}
+
+.exp-event {
+  color: var(--text-1);
+  font-weight: 600;
 }
 
 .exp-divider {
@@ -687,6 +694,7 @@ section {
   color: var(--text-2);
   line-height: 1.75;
   flex: 1;
+  text-align: justify;
 }
 
 /* =========================================

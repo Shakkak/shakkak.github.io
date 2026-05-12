@@ -1,6 +1,6 @@
 const root = document.documentElement;
 
-// Set to true and place avatar.jpg in the same folder to show the profile image
+// Set to true and place avatar.jpg in assets/avatar/ to show the profile photo
 const SHOW_AVATAR = false;
 
 if (SHOW_AVATAR) {
