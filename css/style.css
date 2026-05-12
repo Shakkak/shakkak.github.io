@@ -117,7 +117,7 @@ ul { list-style: none; }
   padding: 0 28px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   position: relative;
 }
 
@@ -174,8 +174,8 @@ ul { list-style: none; }
   justify-content: center;
   width: 34px;
   height: 34px;
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(203, 213, 225, 0.92);
+  border: 1px solid rgba(203, 213, 225, 0.4);
   border-radius: 50%;
   cursor: pointer;
   color: var(--text-3);
@@ -184,8 +184,8 @@ ul { list-style: none; }
 }
 
 .theme-toggle:hover {
-  background: #ffffff;
-  border-color: rgba(255, 255, 255, 0.4);
+  background: #cbd5e1;
+  border-color: rgba(203, 213, 225, 0.6);
   color: var(--text-1);
 }
 
@@ -296,28 +296,23 @@ section {
   position: relative;
 }
 
-/*
-  3-column grid: [avatar 1fr] [content up-to-660px] [empty 1fr]
-  The equal 1fr flanks keep hero-content visually centred on the page
-  while the avatar sits in the left column.
-*/
+/* Avatar left, centred content right — the whole row is centred by #about */
 .hero-outer {
-  display: grid;
-  grid-template-columns: 1fr minmax(0, 660px) 1fr;
+  display: flex;
   align-items: center;
+  gap: 52px;
   width: 100%;
-  max-width: 1100px;
+  max-width: 920px;
 }
 
 .avatar {
   display: none;
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid var(--border-hover);
-  justify-self: end;
-  margin-right: 52px;
+  flex-shrink: 0;
 }
 
 .has-avatar .avatar {
@@ -325,10 +320,11 @@ section {
 }
 
 .hero-content {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
+  text-align: center;
 }
 
 #about h1 {
@@ -883,18 +879,15 @@ footer {
 
   .exp-item-head { flex-direction: column; gap: 4px; }
 
-  /* Hero: collapse avatar above centered content on mobile */
+  /* Hero: stack avatar above centered content on mobile */
   .hero-outer {
-    grid-template-columns: 1fr;
-    justify-items: center;
+    flex-direction: column;
+    gap: 24px;
   }
 
   .has-avatar .avatar {
-    justify-self: center;
-    margin-right: 0;
-    margin-bottom: 24px;
-    width: 130px;
-    height: 130px;
+    width: 120px;
+    height: 120px;
   }
 }
 
