@@ -1,5 +1,7 @@
 const root = document.documentElement;
 
+document.querySelector('.hero-outer').classList.add('has-avatar');
+
 // =========================================
 // Canvas Setup
 // =========================================
