@@ -1,12 +1,5 @@
 const root = document.documentElement;
 
-// Place avatar.jpg in assets/avatar/ — set false to hide the photo
-const SHOW_AVATAR = true;
-
-if (SHOW_AVATAR) {
-  document.querySelector('.hero-outer').classList.add('has-avatar');
-}
-
 // =========================================
 // Canvas Setup
 // =========================================
