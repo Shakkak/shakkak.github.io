@@ -1,0 +1,4 @@
+{"id": "mshakibhosseinzadeh/blog-things-eeg2-examples", "title": "blog things-eeg2 examples",
+ "code_file": "eeg_examples.py", "language": "python", "kernel_type": "script", "is_private": true,
+ "enable_gpu": false, "enable_internet": false,
+ "dataset_sources": ["mshakibhosseinzadeh/cross-subject-brain-encoding-eeg"], "competition_sources": [], "kernel_sources": []}

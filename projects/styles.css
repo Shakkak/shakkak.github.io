@@ -89,3 +89,25 @@ ol.timeline li::before { content: counter(step); position: absolute; left: 0; to
 ol.timeline li.turn::before { background: #e76f51; }
 ol.timeline .tl-title { display: block; font-weight: 600; line-height: 32px; }
 ol.timeline .tl-text { display: block; opacity: 0.85; margin-top: -2px; }
+
+/* "How a recording is made": three boxes with arrows; stacks on phones. */
+.rec-flow { display: flex; align-items: stretch; gap: 10px; margin: 1.5rem 0; }
+.rec-flow .rec-step { flex: 1; border: 1px solid var(--border); border-radius: 10px; padding: 14px; background: var(--surface); }
+.rec-flow .rec-arrow { align-self: center; font-size: 1.6rem; color: var(--text-3); }
+.rec-flow .rec-icon { font-size: 2rem; line-height: 1; margin-bottom: 6px; }
+.rec-flow .rec-title { display: block; font-weight: 600; color: var(--text-1); margin-bottom: 4px; }
+.rec-flow .rec-text { font-size: 0.9rem; color: var(--text-2); }
+@media (max-width: 640px) {
+  .rec-flow { flex-direction: column; }
+  .rec-flow .rec-arrow { transform: rotate(90deg); }
+}
+
+/* One small card per dataset. */
+.data-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 1.5rem 0; }
+.data-card { border: 1px solid var(--border); border-radius: 10px; padding: 14px; background: var(--surface); }
+.data-card .dc-name { font-weight: 600; color: var(--text-1); }
+.data-card .dc-kind { display: inline-block; font-size: 0.75rem; padding: 1px 8px; border-radius: 999px; margin: 4px 0 8px;
+  border: 1px solid #2a9d8f; color: #2a9d8f; }
+.data-card .dc-kind.fmri { border-color: #e76f51; color: #e76f51; }
+.data-card ul { padding-left: 1.1rem; margin: 0; font-size: 0.88rem; color: var(--text-2); }
+.data-card li { margin: 2px 0; }

@@ -67,6 +67,205 @@ few hundred labelled images. But we already have models of many other people. So
 I did this work on free Kaggle notebooks. I had no GPU of my own, so every idea had to be cheap enough to run
 there.
 
+## First, what the data looks like
+
+Everything later in this post is easier if you know what one piece of data is. So let me show it first.
+
+In all five datasets the setup is similar. A person sits and looks at many photos of objects and scenes, one
+after another, while a machine records their brain. Each photo gives one brain response. One photo together with
+this person's response to it is what I call a **labelled image**. A model learns from these pairs.
+
+```{=html}
+<div class="rec-flow">
+  <div class="rec-step"><div class="rec-icon">🖼️</div><span class="rec-title">1. A photo</span>
+    <span class="rec-text">A cat, a banana, a street… Thousands of different photos, some of them shown many times.</span></div>
+  <div class="rec-arrow">→</div>
+  <div class="rec-step"><div class="rec-icon">🧠</div><span class="rec-title">2. A recording</span>
+    <span class="rec-text"><b>EEG:</b> a cap of sensors on the head measures fast electrical signals.
+    <b>fMRI:</b> a scanner measures slow changes of blood flow in small spots of the brain.</span></div>
+  <div class="rec-arrow">→</div>
+  <div class="rec-step"><div class="rec-icon">📈</div><span class="rec-title">3. A response</span>
+    <span class="rec-text"><b>EEG:</b> 17 sensors at the back of the head, 100 time points in one second.
+    <b>fMRI:</b> one number for each of tens of thousands of brain spots.</span></div>
+</div>
+```
+
+These are the five datasets I used. Three are EEG and two are fMRI. The first number on each card is how many
+people I tested as "new people".
+
+```{=html}
+<div class="data-cards">
+  <div class="data-card"><div class="dc-name">THINGS-EEG1</div><span class="dc-kind">EEG · lab</span>
+    <ul><li>24 new people</li><li>64-sensor lab cap</li><li>Photos flash quickly; training photos recorded once</li>
+    <li>Up to about 22,000 labelled images per person</li></ul></div>
+  <div class="data-card"><div class="dc-name">THINGS-EEG2</div><span class="dc-kind">EEG · lab</span>
+    <ul><li>10 people</li><li>64-sensor lab cap</li><li>Training photos shown 4 times, test photos 80 times</li>
+    <li>Up to 16,540 labelled images per person</li></ul></div>
+  <div class="data-card"><div class="dc-name">Alljoined-1.6M</div><span class="dc-kind">EEG · consumer</span>
+    <ul><li>16 people</li><li>32-sensor consumer headset, cheaper and noisier</li><li>Same photo set as THINGS-EEG2</li></ul></div>
+  <div class="data-card"><div class="dc-name">NSD</div><span class="dc-kind fmri">fMRI · 7 tesla</span>
+    <ul><li>8 people</li><li>Very strong scanner, very clean data</li><li>Up to 3 repeats per photo, averaged</li>
+    <li>About 8,000 to 9,000 labelled images per person</li></ul></div>
+  <div class="data-card"><div class="dc-name">NOD</div><span class="dc-kind fmri">fMRI · 3 tesla</span>
+    <ul><li>21 new people</li><li>Common hospital-strength scanner</li><li>Each photo recorded only once</li>
+    <li>800 labelled images per person</li></ul></div>
+</div>
+```
+
+I can't show the real photos here, because their licences don't allow it. But one dataset, THINGS-EEG2, shares
+its recordings openly, so the next three charts use **real EEG**. I took the test part of the data (200 photos,
+each shown 80 times to each of the 10 people) and made small averages from it on Kaggle.
+
+```{python}
+#| include: false
+import json
+eeg = json.load(open("data/eeg_examples_small.json"))
+ms = [round(t * 1000) for t in eeg["times"]]
+people = eeg["people"]
+IMG_COLOURS = ["#2a9d8f", "#e76f51", "#6c63ff", "#e9c46a", "#4ea8de"]
+
+
+def person_menu(n_people, per_person, y=1.14):
+    # one dropdown entry per person; shows that person's traces and hides the rest
+    buttons = []
+    for i, p in enumerate(people[:n_people]):
+        vis = [False] * (n_people * per_person)
+        vis[i * per_person:(i + 1) * per_person] = [True] * per_person
+        buttons.append(dict(label=p, method="update", args=[{"visible": vis}]))
+    return [dict(type="dropdown", x=0, y=y, xanchor="left", buttons=buttons)]
+```
+
+**A real response.** Below is the signal of one sensor at the back of the head (Oz, above the visual cortex) for
+five photos. Time 0 is the moment the photo appears. In this dataset the photos come very fast, a new one every
+200 ms, so the line is never flat: you also see the waves of the photos before and after, and that makes the
+regular ripple. The response to *this* photo is where the five lines split apart, most clearly in the grey band,
+100 to 200 ms. That early response is what I scored in the EEG tests. Pick another person from the menu: the
+general shape stays, but the details move.
+
+```{python}
+#| label: fig-eeg-real
+#| fig-cap: "Real EEG from THINGS-EEG2 (Gifford et al., 2022, CC-BY 4.0), sensor Oz. Each coloured line is the average over the 80 times one photo was shown. Dashed grey: the average over all 200 test photos. The data are noise-normalised per person, so the scale has no unit."
+fig = go.Figure()
+for i in range(len(people)):
+    for j, name in enumerate(eeg["examples"]):
+        fig.add_trace(go.Scatter(x=ms, y=eeg["images_oz"][i][j], mode="lines", name=name.replace("_", " "),
+                                 visible=(i == 0), line=dict(color=IMG_COLOURS[j], width=2),
+                                 hovertemplate=f"{name.replace('_', ' ')}<br>%{{x}} ms: %{{y:.2f}}<extra></extra>"))
+    fig.add_trace(go.Scatter(x=ms, y=eeg["mean_oz"][i], mode="lines", name="all 200 photos", visible=(i == 0),
+                             line=dict(color=GREY, width=2, dash="dash"), hoverinfo="skip"))
+fig.add_vrect(x0=100, x1=200, fillcolor="rgba(128,128,128,0.15)", line_width=0)
+fig.add_vline(x=0, line=dict(color=GREY, width=1))
+fig.update_layout(updatemenus=person_menu(len(people), len(eeg["examples"]) + 1))
+style(fig, height=440, xaxis_title="time after the photo appears (ms)", yaxis_title="signal (scaled)",
+      legend=dict(orientation="h", y=-0.22, x=0), margin=dict(l=60, r=20, t=70, b=110))
+show(fig)
+```
+
+**One photo, 80 times.** The clean lines above are averages. A single recording is very noisy. In the next chart
+each thin line is one of the 80 times the same person saw the same cat photo, and the thick line is their
+average. You can almost not see the response in a single line, but the average shows it clearly. Keep this in
+mind: later it explains why the method works on some datasets and not on others.
+
+```{python}
+#| label: fig-eeg-reps
+#| fig-cap: "Real EEG from THINGS-EEG2, sensor Oz, the cat photo. Thin lines: the 80 single recordings of one person. Thick line: their average."
+fig = go.Figure()
+for i in range(len(people)):
+    xs, ys = [], []
+    for rep in eeg["oz_cat_reps"][i]:
+        xs += ms + [None]
+        ys += rep + [None]
+    fig.add_trace(go.Scatter(x=xs, y=ys, mode="lines", visible=(i == 0), name="single recordings",
+                             line=dict(color=GREY, width=0.7), opacity=0.35, hoverinfo="skip"))
+    avg = np.mean(eeg["oz_cat_reps"][i], axis=0)
+    fig.add_trace(go.Scatter(x=ms, y=avg, mode="lines", visible=(i == 0), name="average of 80",
+                             line=dict(color=MAP, width=3.5),
+                             hovertemplate="average<br>%{x} ms: %{y:.2f}<extra></extra>"))
+fig.add_vline(x=0, line=dict(color=GREY, width=1))
+fig.update_layout(updatemenus=person_menu(len(people), 2))
+style(fig, height=420, xaxis_title="time after the photo appears (ms)", yaxis_title="signal (scaled)",
+      legend=dict(orientation="h", y=-0.22, x=0), margin=dict(l=60, r=20, t=70, b=100))
+show(fig)
+```
+
+**Are two people similar?** This is the key question for the whole project. For each person I split the 80
+repeats into two halves of 40, and asked how similar the patterns over all 200 photos are: between the two halves
+of the same person, and between two different people. 1 means the same pattern, 0 means no relation.
+
+```{python}
+#| label: fig-eeg-agree
+#| fig-cap: "Real EEG from THINGS-EEG2. Similarity (correlation) of the responses to the 200 test photos, all 17 sensors and time points, after removing each half's average response. Row: first half of the repeats; column: second half. The diagonal compares a person with themself. Hover a cell to see its value."
+a = np.array(eeg["half_agreement"])
+labels = [p.replace("Person ", "P") for p in people]
+fig = go.Figure(go.Heatmap(z=a, x=labels, y=labels, colorscale="Teal", zmin=0, zmax=0.55,
+                           hovertemplate="first half %{y}, second half %{x}<br>similarity %{z:.2f}<extra></extra>",
+                           colorbar=dict(thickness=12)))
+fig.update_yaxes(autorange="reversed")
+style(fig, height=470, xaxis_title="second half of the repeats", yaxis_title="first half of the repeats",
+      margin=dict(l=60, r=20, t=20, b=60))
+show(fig)
+```
+
+```{python}
+#| output: asis
+same = a.diagonal().mean()
+other = a[~np.eye(len(a), dtype=bool)].mean()
+print(f"On average, two halves of the same person are similar at {same:.2f}, and two different people at "
+      f"{other:.2f}. This is not zero: people respond to the same photos in a similar way. That is why "
+      "**borrowing** from other people works at all. But it is clearly lower than the same person: each person "
+      "also has their own part. That is the part a **personal map** should learn.")
+```
+
+**The idea in one (made-up) picture.** The last chart is not real data. It is a small made-up example of a
+brain map, to show the idea of the project before the real results. Each person's response is a shared part, plus
+a personal part, plus noise. If you average many other people, their personal parts cancel out and the shared
+part stays: this is borrowing. What is left between borrowing and the person is what the personal map must learn
+from that person's few labelled images. Pick a person from the menu.
+
+```{python}
+#| label: fig-toy
+#| fig-cap: "Made-up example, not real data: a grid of 'brain spots' responding to one photo. Left: one person's response. Middle: the average of the four other people (borrowing). Right: the difference between them, which the personal map has to learn."
+from plotly.subplots import make_subplots
+
+g = np.linspace(-1, 1, 24)
+X, Y = np.meshgrid(g, g)
+
+
+def blob(x0, y0, s, amp):
+    return amp * np.exp(-((X - x0) ** 2 + (Y - y0) ** 2) / (2 * s ** 2))
+
+
+rng = np.random.default_rng(7)
+shared = blob(-0.4, -0.3, 0.25, 1.0) + blob(0.45, 0.2, 0.3, 0.8) - blob(0.0, 0.6, 0.2, 0.6)
+toy = []
+for _ in range(5):
+    personal = sum(blob(*rng.uniform(-0.8, 0.8, 2), 0.2, rng.choice([-1, 1]) * 0.55) for _ in range(2))
+    toy.append(shared + personal + rng.normal(0, 0.08, X.shape))
+names = [f"Person {c}" for c in "ABCDE"]
+fig = make_subplots(rows=1, cols=3, horizontal_spacing=0.03,
+                    subplot_titles=("person", "others' average", "difference"))
+for i in range(5):
+    borrow = np.mean([toy[j] for j in range(5) if j != i], axis=0)
+    for col, z in enumerate((toy[i], borrow, toy[i] - borrow), start=1):
+        fig.add_trace(go.Heatmap(z=z, zmin=-1.2, zmax=1.2, colorscale="RdBu_r", showscale=False, visible=(i == 0),
+                                 hovertemplate="%{z:.2f}<extra></extra>"), row=1, col=col)
+buttons = []
+for i, nm in enumerate(names):
+    vis = [False] * 15
+    vis[i * 3:(i + 1) * 3] = [True] * 3
+    buttons.append(dict(label=nm, method="update", args=[{"visible": vis}]))
+fig.update_layout(updatemenus=[dict(type="dropdown", x=0, y=1.3, xanchor="left", buttons=buttons)])
+fig.update_xaxes(visible=False, constrain="domain")
+fig.update_yaxes(visible=False, scaleanchor="x", constrain="domain")
+for k in (2, 3):
+    fig.update_yaxes(scaleanchor=f"x{k}", row=1, col=k)
+style(fig, height=330, margin=dict(l=10, r=10, t=90, b=10))
+show(fig)
+```
+
+With this picture in mind, the rest of the post is the story of how I found that borrowing is a strong start,
+and that a small personal map on top of it helps when the person's labelled images are clean enough.
+
 ## The path, in one picture
 
 ```{=html}
@@ -326,4 +525,6 @@ place. The parts about room, label noise and identification are development anal
 Everything is on [GitHub](https://github.com/Shakkak/Borrow-then-Personalize-EEG-fMRI-Brain-Encoding-with-Limited-Labels):
 the code, the protocols of every test, the commit that holds each protocol before its run, and the result tables
 behind every figure. The charts on this page are built from those tables with a short script
-(`data/prepare_data.py` in this post's source folder).
+(`data/prepare_data.py` in this post's source folder). The real EEG examples come from the openly shared
+[THINGS-EEG2](https://osf.io/3jk45/) recordings (Gifford et al., 2022, CC-BY 4.0), averaged by a small Kaggle
+script (`data/kaggle_eeg_examples/` in the same folder).
