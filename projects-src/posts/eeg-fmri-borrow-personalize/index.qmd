@@ -99,7 +99,7 @@ people I tested as "new people".
     <ul><li>24 new people</li><li>64-sensor lab cap</li><li>Photos flash quickly; training photos recorded once</li>
     <li>Up to about 22,000 labelled images per person</li></ul></div>
   <div class="data-card"><div class="dc-name">THINGS-EEG2</div><span class="dc-kind">EEG · lab</span>
-    <ul><li>10 people</li><li>64-sensor lab cap</li><li>Training photos shown 4 times, test photos 80 times</li>
+    <ul><li>10 people</li><li>64-sensor lab cap</li><li>16,540 training photos, each shown 4 times</li><li>200 test photos, each shown <b>80 times</b>. Why? One recording is mostly noise; the average of 80 shows the brain's real answer.</li>
     <li>Up to 16,540 labelled images per person</li></ul></div>
   <div class="data-card"><div class="dc-name">Alljoined-1.6M</div><span class="dc-kind">EEG · consumer</span>
     <ul><li>16 people</li><li>32-sensor consumer headset, cheaper and noisier</li><li>Same photo set as THINGS-EEG2</li></ul></div>
@@ -113,8 +113,8 @@ people I tested as "new people".
 ```
 
 I can't show the real photos here, because their licences don't allow it. But one dataset, THINGS-EEG2, shares
-its recordings openly, so @fig-eeg-real, @fig-eeg-reps and @fig-eeg-agree use **real EEG**. I took the test part of the data (200 photos,
-each shown 80 times to each of the 10 people) and made small averages from it on Kaggle.
+its recordings openly, so @fig-eeg-real, @fig-eeg-reps and @fig-eeg-agree use **real EEG**. I took the test part of the data (the 200 test photos with their 80
+repeats, see the THINGS-EEG2 card above) for all 10 people, and made small averages from it on Kaggle.
 
 ```{python}
 #| include: false
@@ -162,7 +162,7 @@ show(fig)
 ```
 
 **One photo, 80 times.** The five coloured lines in @fig-eeg-real are averages over 80 recordings each. A single
-recording is very noisy. In @fig-eeg-reps each thin grey line is one of the 80 times the same person saw the same cat photo, and the thick green line is
+recording is very noisy. In @fig-eeg-reps each thin grey line is one of the 80 repeats: one time that this person saw the cat photo, and the thick green line is
 their average. You can almost not see the response in a single line, but the average shows it clearly. Keep this in
 mind: later it explains why the method works on some datasets and not on others.
 
@@ -188,9 +188,24 @@ style(fig, height=420, xaxis_title="time after the photo appears (ms)", yaxis_ti
 show(fig)
 ```
 
-**Are two people similar?** This is the key question for the whole project. For each person I split the 80
-repeats into two halves of 40, and asked (in @fig-eeg-agree) how similar the patterns over all 200 photos are: between the two halves
-of the same person, and between two different people. 1 means the same pattern, 0 means no relation.
+**Are two people similar?** This is the key question for the whole project. If two people answer the same
+photos in the same way, we can borrow from one to predict the other. Here is how I measured it, step by step:
+
+1. **One person's pattern.** For one person, take the response to each of the 200 test photos: 17 sensors × 100
+   time points per photo. So the pattern is a big table of numbers that says how this person answered every photo.
+2. **Keep only what is special about each photo.** All photos share a common wave (the dashed grey line in
+   @fig-eeg-real). I subtract it, so what is left is how each photo is *different* from the others. That is the
+   part an encoding model must predict.
+3. **Two halves.** I split the 80 repeats into two halves: repeats 1 to 40 and repeats 41 to 80. Each half gives
+   its own pattern, made from different recordings, so each half has its own noise.
+4. **Compare with a correlation.** 1 means the two patterns are the same, 0 means they have nothing in common.
+   - *Same person:* first half against second half of the same person. This is the best we can hope for, because
+     even one person does not match themself perfectly: the noise is different in each half.
+   - *Two people:* the first half of one person against the second half of another person. I use halves here too,
+     so both comparisons have the same amount of noise and are fair to each other.
+
+@fig-eeg-agree shows all these comparisons. The row is the person of the first half, the column the person of the
+second half. The squares on the diagonal compare a person with themself; all other squares compare two people.
 
 ```{python}
 #| label: fig-eeg-agree
