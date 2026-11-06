@@ -1,0 +1,8 @@
+<script>
+  // One theme for the whole site: the main page stores 'theme' (light/dark); Quarto reads its own key.
+  (function () {
+    var t = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', t);
+    localStorage.setItem('quarto-color-scheme', t === 'dark' ? 'alternate' : 'default');
+  })();
+</script>

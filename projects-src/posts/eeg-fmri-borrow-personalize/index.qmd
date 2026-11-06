@@ -20,6 +20,8 @@ include-in-header:
       <script>window.define = window.__amd;</script>
 ---
 
+[← All posts](../../index.html){.back-link}
+
 [Code and protocols on GitHub](https://github.com/Shakkak/Borrow-then-Personalize-EEG-fMRI-Brain-Encoding-with-Limited-Labels){.btn .btn-primary}
 
 ```{python}

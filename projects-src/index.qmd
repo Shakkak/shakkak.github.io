@@ -1,5 +1,7 @@
 ---
 title: "Blog"
+aliases:
+  - posts/index.html
 listing:
   contents: posts
   type: grid
