@@ -56,19 +56,14 @@ def show(fig):
 ## The question
 
 When you look at a picture, your brain answers with a pattern. We can record it with EEG (sensors on the head)
-or with fMRI (a scanner). An *encoding model* takes the image and predicts this pattern. It does not look at the
-pixels directly: a ready-made image network first turns each photo into a list of numbers (its *features*), and
-the encoding model learns how these numbers relate to the brain response. In the main tests the features come
-from AlexNet, the image network used by the THINGS-EEG2 authors.
+or with fMRI (a scanner). An *encoding model* takes the image and predicts this pattern. It works on features
+from a pretrained image network (AlexNet in the main tests, as in the THINGS-EEG2 paper), not on raw pixels.
 
 A good model for one person needs many hours of their recordings. A new person usually gives much less, maybe a
 few hundred labelled images. But we already have models of many other people. So my question was simple:
 
 > If I have only a few hundred images from a new person, what is the best way to use them, when models of other
 > people already exist?
-
-I did this work on free Kaggle notebooks. I had no GPU of my own, so every idea had to be cheap enough to run
-there.
 
 ## First, what the data looks like
 
@@ -118,7 +113,7 @@ people I tested as "new people".
 
 I can't show the real photos here, because their licences don't allow it. But one dataset, THINGS-EEG2, shares
 its recordings openly, so @fig-eeg-real, @fig-eeg-reps and @fig-eeg-agree use **real EEG**. I took the test part of the data (the 200 test photos with their 80
-repeats, see the THINGS-EEG2 card above) for all 10 people, and made small averages from it on Kaggle.
+repeats, see the THINGS-EEG2 card above) for all 10 people, and made small averages from it.
 
 ```{python}
 #| include: false
@@ -165,8 +160,7 @@ style(fig, height=440, xaxis_title="time after the photo appears (ms)", yaxis_ti
 show(fig)
 ```
 
-**One photo, 80 times.** The five coloured lines in @fig-eeg-real are averages over 80 recordings each. A single
-recording is very noisy. In @fig-eeg-reps each thin grey line is one of the 80 repeats: one time that this person saw the cat photo, and the thick green line is
+**One photo, 80 times.** The five coloured lines in @fig-eeg-real are averages over 80 recordings each. In @fig-eeg-reps each thin grey line is one of the 80 repeats: one time that this person saw the cat photo, and the thick green line is
 their average. You can almost not see the response in a single line, but the average shows it clearly. Keep this in
 mind: later it explains why the method works on some datasets and not on others.
 
@@ -235,54 +229,7 @@ print(f"In @fig-eeg-agree, the squares on the diagonal are darker than the rest.
       "also has their own part. That is the part a **personal map** should learn.")
 ```
 
-**The idea in one (made-up) picture.** @fig-toy is not real data. It is a small made-up example of a
-brain map, to show the idea of the project before the real results. Each person's response is a shared part, plus
-a personal part, plus noise. If you average many other people, their personal parts cancel out and the shared
-part stays: this is borrowing. What is left between borrowing and the person is what the personal map must learn
-from that person's few labelled images. Pick a person from the menu.
-
-```{python}
-#| label: fig-toy
-#| fig-cap: "Made-up example, not real data: a grid of 'brain spots' responding to one photo. Left: one person's response. Middle: the average of the four other people (borrowing). Right: the difference between them, which the personal map has to learn."
-from plotly.subplots import make_subplots
-
-g = np.linspace(-1, 1, 24)
-X, Y = np.meshgrid(g, g)
-
-
-def blob(x0, y0, s, amp):
-    return amp * np.exp(-((X - x0) ** 2 + (Y - y0) ** 2) / (2 * s ** 2))
-
-
-rng = np.random.default_rng(7)
-shared = blob(-0.4, -0.3, 0.25, 1.0) + blob(0.45, 0.2, 0.3, 0.8) - blob(0.0, 0.6, 0.2, 0.6)
-toy = []
-for _ in range(5):
-    personal = sum(blob(*rng.uniform(-0.8, 0.8, 2), 0.2, rng.choice([-1, 1]) * 0.55) for _ in range(2))
-    toy.append(shared + personal + rng.normal(0, 0.08, X.shape))
-names = [f"Person {c}" for c in "ABCDE"]
-fig = make_subplots(rows=1, cols=3, horizontal_spacing=0.03,
-                    subplot_titles=("person", "others' average", "difference"))
-for i in range(5):
-    borrow = np.mean([toy[j] for j in range(5) if j != i], axis=0)
-    for col, z in enumerate((toy[i], borrow, toy[i] - borrow), start=1):
-        fig.add_trace(go.Heatmap(z=z, zmin=-1.2, zmax=1.2, colorscale="RdBu_r", showscale=False, visible=(i == 0),
-                                 hovertemplate="%{z:.2f}<extra></extra>"), row=1, col=col)
-buttons = []
-for i, nm in enumerate(names):
-    vis = [False] * 15
-    vis[i * 3:(i + 1) * 3] = [True] * 3
-    buttons.append(dict(label=nm, method="update", args=[{"visible": vis}]))
-fig.update_layout(updatemenus=[dict(type="dropdown", x=0, y=1.3, xanchor="left", buttons=buttons)])
-fig.update_xaxes(visible=False, constrain="domain")
-fig.update_yaxes(visible=False, scaleanchor="x", constrain="domain")
-for k in (2, 3):
-    fig.update_yaxes(scaleanchor=f"x{k}", row=1, col=k)
-style(fig, height=330, margin=dict(l=10, r=10, t=90, b=10))
-show(fig)
-```
-
-With this picture in mind, the rest of the post is the story of how I found that borrowing is a strong start,
+With this in mind, the rest of the post is the story of how I found that borrowing is a strong start,
 and that a small personal map on top of it helps when the person's labelled images are clean enough.
 
 ## The path, in one picture
@@ -306,8 +253,7 @@ At the start I followed the trend in the field. Many recent papers train one net
 small part for each person. My plan was the same: one shared network for everyone, and a small extra part
 trained for each new person.
 
-Before building anything, I reproduced a published EEG encoding model and its *baselines* (the simple standard
-models that every new method must beat, such as a linear model from the image features to the response), and
+Before building anything, I reproduced a published EEG encoding model and its baselines, and
 checked that my numbers matched the paper. This step was slow and boring, but later it saved me. Every new idea was compared with
 baselines that I knew were correct.
 
@@ -325,8 +271,8 @@ ran the test once, on 24 people of a second EEG dataset (THINGS-EEG1) that no mo
 like this before the run is called *prespecified*.
 
 The score is *encoding accuracy*, written *r*: the correlation between the predicted response and the real one,
-in the early response (100 to 200 ms, the grey band in @fig-eeg-real). 1 would be perfect, 0 means no relation.
-EEG is noisy, so real values are small, around 0.1 to 0.2.
+in the early response (100 to 200 ms, the grey band in @fig-eeg-real). EEG is noisy, so real values are small,
+around 0.1 to 0.2.
 
 The shared network beat the person's *own model*: a model trained only on the person's own few hundred
 labelled images (250 or 500; the charts show the average of the two). But it lost to something
@@ -378,13 +324,40 @@ So I changed the direction. If borrowing is such a strong start, the new person'
 build a model from zero. They should **correct** the borrowed prediction.
 
 The correction is small on purpose. It is a linear map that mixes the borrowed prediction across EEG sensors (or
-fMRI brain spots) in the way this one person needs. It is kept small (*regularised*), so it cannot learn too much
-from a few hundred images. I call it the *personal map*. Two steps:
+fMRI brain spots) in the way this one person needs. It is regularised, so a few hundred images are
+enough to fit it. I call it the *personal map*. Two steps:
 
 1. **Borrow.** Average the predictions of models trained on other people. No labels of the new person needed.
    This works because everyone's data is in the same layout: the same 17 sensor positions for EEG, and the same
    template brain surface for fMRI, so "brain spot number 1,000" is the same place in every person.
 2. **Personalize.** Fit the small map from the new person's labelled images, on top of that average.
+
+::: {.callout-note collapse="true"}
+## For ML readers: the details
+
+- **Features.** AlexNet: eight layers concatenated, a degree-4 polynomial kernel and kernel PCA to 1,000
+  components (the THINGS-EEG2 paper's features). DINOv2 (ViT-B/14): patch tokens of layers 4, 8 and 12 pooled to
+  a 7 × 7 grid, then the same kernel PCA.
+- **Donor models.** One linear encoder per donor, from features to every output (sensor × time, or vertex):
+  least squares as in the THINGS-EEG2 paper, ridge on NOD.
+- **Borrowing.** The plain mean of the donors' predictions, with no weights:
+  $\bar y(x) = \frac{1}{D}\sum_d f_d(x)$. Donors are every other person in the dataset (9 in THINGS-EEG2, 15 in
+  Alljoined, 7 in NSD), or a fixed development group (22 people in THINGS-EEG1, 9 in NOD).
+- **EEG map.** In each 100 ms window, a ridge regression from the borrowed prediction across the 17 sensors to the
+  person's residual (response minus borrowed prediction), with no intercept and shrunk towards no change. About
+  2,900 parameters, against 1.7 million for the person's own encoder.
+- **Low-rank map (fMRI).** Ridge from the top 200 principal directions of the borrowed prediction (computed from
+  predictions, never from the person's responses) to the residual at every vertex.
+- **Penalties.** Every ridge penalty is chosen by five-fold cross-validation on the person's k labelled images
+  (k = 250 or 500 in the tests); no test image is used.
+- **Combination with the own model.** Per output, least-squares weights for the map's and the own model's
+  predictions, fitted on out-of-fold predictions of the k images.
+- **Scores.** Encoding: the correlation across test images at each output, averaged over outputs.
+  Identification: the test image whose prediction correlates best with the measured response, among 200.
+- **Decisions.** The mean gain over new people, with a one-sided t bound (people as the unit), Bonferroni-corrected
+  within each test, against a margin fixed in the protocol: 0.0035 (THINGS-EEG1), 0.011 (THINGS-EEG2, NOD), 0.0021
+  (Alljoined), 0.030 (NSD).
+:::
 
 Then I did the same as before: protocol first, one run, a fixed margin. On the 24 THINGS-EEG1 people the map
 improved on borrowing for 23 of them, in the early response. To be honest about it: this follow-up used the same
@@ -400,8 +373,8 @@ on the ten people I had used before. Each test was run once.
 
 In @fig-strips every dot is one person. Above zero means the map was better than borrowing for that person.
 The red dashed line is the margin that the protocol said a gain must clear. Next to the dots, the grey mark
-shows the average gain, and its bar shows the range where the true average very likely is (made a bit wider
-because each test compares several things at once). A test passes when the whole bar is above the margin. Hover a
+is the average gain and its bar is the test's confidence bound (one-sided, corrected for the several comparisons
+in each test). A test passes when the whole bar is above the margin. Hover a
 dot for the person, or the grey mark for the numbers.
 
 ```{python}
@@ -469,7 +442,7 @@ the map on labels that averaged 1, 2 or 4 repetitions, and kept everything else 
 of map. The *full map* can mix every sensor with every other sensor. The *low-rank map* is a smaller version that
 only works along the 200 main directions of the borrowed prediction; it is the one I used for fMRI, where there are
 too many brain spots for a full map. In @fig-reps, use the menu above the chart to switch between the two maps and
-two *label budgets* (how many labelled images the person gives: 250 or 500).
+two label budgets (250 or 500 labelled images).
 
 ```{python}
 #| label: fig-reps
@@ -559,8 +532,7 @@ a lot.
 - **Try the simple thing first.** A plain average of other people was stronger than the network I spent so long
   on.
 - **Reproduce before you improve.** Correct baselines made every later comparison clear.
-- **Small and cheap can be enough.** All of this ran on free Kaggle notebooks. The final method is a few lines of
-  linear algebra.
+- **Small and cheap can be enough.** The final method is a few lines of linear algebra.
 - **Say "not sure" when the data says "not sure".** The consumer EEG result is inconclusive, and it stays like that.
 
 ## Limits

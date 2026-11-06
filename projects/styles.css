@@ -111,3 +111,6 @@ ol.timeline .tl-text { display: block; opacity: 0.85; margin-top: -2px; }
 .data-card .dc-kind.fmri { border-color: #e76f51; color: #e76f51; }
 .data-card ul { padding-left: 1.1rem; margin: 0; font-size: 0.88rem; color: var(--text-2); }
 .data-card li { margin: 2px 0; }
+
+/* Make bold text clearly bold with the system font. */
+strong, b { font-weight: 700; }
