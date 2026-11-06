@@ -56,7 +56,10 @@ def show(fig):
 ## The question
 
 When you look at a picture, your brain answers with a pattern. We can record it with EEG (sensors on the head)
-or with fMRI (a scanner). An *encoding model* takes the image and predicts this pattern.
+or with fMRI (a scanner). An *encoding model* takes the image and predicts this pattern. It does not look at the
+pixels directly: a ready-made image network first turns each photo into a list of numbers (its *features*), and
+the encoding model learns how these numbers relate to the brain response. In the main tests the features come
+from AlexNet, the image network used by the THINGS-EEG2 authors.
 
 A good model for one person needs many hours of their recordings. A new person usually gives much less, maybe a
 few hundred labelled images. But we already have models of many other people. So my question was simple:
@@ -85,7 +88,8 @@ this person's response to it is what I call a **labelled image**. A model learns
     <b>fMRI:</b> a scanner measures slow changes of blood flow in small spots of the brain.</span></div>
   <div class="rec-arrow">→</div>
   <div class="rec-step"><div class="rec-icon">📈</div><span class="rec-title">3. A response</span>
-    <span class="rec-text"><b>EEG:</b> 17 sensors at the back of the head, 100 time points in one second.
+    <span class="rec-text"><b>EEG:</b> 17 sensors at the back of the head, above the visual part of the brain (out
+    of the 64 in a lab cap), and 100 time points in one second: one every 10 milliseconds (ms).
     <b>fMRI:</b> one number for each of tens of thousands of brain spots.</span></div>
 </div>
 ```
@@ -144,7 +148,7 @@ general shape stays, but the details move.
 
 ```{python}
 #| label: fig-eeg-real
-#| fig-cap: "Real EEG from THINGS-EEG2 (Gifford et al., 2022, CC-BY 4.0), sensor Oz. Each coloured line is the average over the 80 times one photo was shown. Dashed grey: the average over all 200 test photos. The data are noise-normalised per person, so the scale has no unit."
+#| fig-cap: "Real EEG from THINGS-EEG2 (Gifford et al., 2022, CC-BY 4.0), sensor Oz. Each coloured line is the average over the 80 times one photo was shown. Dashed grey: the average over all 200 test photos. The data are rescaled per person to even out the noise between sensors, so the scale has no unit."
 fig = go.Figure()
 for i in range(len(people)):
     for j, name in enumerate(eeg["examples"]):
@@ -235,7 +239,7 @@ print(f"In @fig-eeg-agree, the squares on the diagonal are darker than the rest.
 brain map, to show the idea of the project before the real results. Each person's response is a shared part, plus
 a personal part, plus noise. If you average many other people, their personal parts cancel out and the shared
 part stays: this is borrowing. What is left between borrowing and the person is what the personal map must learn
-from that person's few labelled images. Pick a person from the menu above @fig-toy.
+from that person's few labelled images. Pick a person from the menu.
 
 ```{python}
 #| label: fig-toy
@@ -291,7 +295,7 @@ and that a small personal map on top of it helps when the person's labelled imag
 <li class="turn"><span class="tl-title">The real test</span><span class="tl-text">Written down first, run once on 24 new people. It loses to a simple average.</span></li>
 <li><span class="tl-title">Borrow</span><span class="tl-text">Average the models of other people. No labels needed.</span></li>
 <li><span class="tl-title">Personalize</span><span class="tl-text">A small linear map on top, learned from a few hundred images.</span></li>
-<li><span class="tl-title">Test again</span><span class="tl-text">Second lab EEG, consumer EEG, 7-tesla fMRI, single-trial 3-tesla fMRI.</span></li>
+<li><span class="tl-title">Test again</span><span class="tl-text">New people on consumer EEG and two kinds of fMRI, and a repeat on THINGS-EEG2.</span></li>
 <li><span class="tl-title">Why</span><span class="tl-text">The map needs room to improve and clean labels.</span></li>
 </ol>
 ```
@@ -299,29 +303,39 @@ and that a small personal map on top of it helps when the person's labelled imag
 ## Where I started: a big shared network
 
 At the start I followed the trend in the field. Many recent papers train one network on many people and add a
-small part for each person. My plan was the same: a shared core for everyone, a small adapter for each new person,
-and later some extra ideas on top, like contrastive training across people.
+small part for each person. My plan was the same: one shared network for everyone, and a small extra part
+trained for each new person.
 
-Before building anything, I reproduced a published EEG encoding model and its baselines, and checked that my
-numbers matched the paper. This step was slow and boring, but later it saved me. Every new idea was compared with
+Before building anything, I reproduced a published EEG encoding model and its *baselines* (the simple standard
+models that every new method must beat, such as a linear model from the image features to the response), and
+checked that my numbers matched the paper. This step was slow and boring, but later it saved me. Every new idea was compared with
 baselines that I knew were correct.
 
 On THINGS-EEG2 (ten people) the shared network looked good. With 250 or 500 images from a new person it beat
 the baselines. I was happy. But there was a problem: I had used these same ten people while building the model.
-A model can look good on the people it was tuned on.
+A model can look good on the people it was tuned on. Work like this, where I can look at the data and try things,
+is what I call *development*. It is useful for finding ideas, but it does not prove them.
 
 ## The test that changed the project
 
-So I wrote the test down before running it. In a protocol, committed to git, I fixed the model, the people, the
-score, the margin a gain must clear, and the decision rule. Then I ran it once, on 24 people of a second EEG
-dataset (THINGS-EEG1) that no model had seen.
+So I wrote the test down before running it. A *protocol* is a short file where I wrote, before the run, what I
+would measure and which result would count as a success. I saved it in git, so the order (protocol first, results later) is on record. It fixed
+the model, the people, the score, and the *margin*: the smallest gain I agreed to call real, and not luck. Then I
+ran the test once, on 24 people of a second EEG dataset (THINGS-EEG1) that no model had seen. A test written down
+like this before the run is called *prespecified*.
 
-The shared network beat a model trained only on the person's own few hundred images. But it lost to something
+The score is *encoding accuracy*, written *r*: the correlation between the predicted response and the real one,
+in the early response (100 to 200 ms, the grey band in @fig-eeg-real). 1 would be perfect, 0 means no relation.
+EEG is noisy, so real values are small, around 0.1 to 0.2.
+
+The shared network beat the person's *own model*: a model trained only on the person's own few hundred
+labelled images (250 or 500; the charts show the average of the two). But it lost to something
 much simpler: just **average the predictions of the models of other people**. I call this *borrowing*. The test
 said "rejected", and I kept that result.
 
-In @fig-eeg1, use the menu above the chart to switch between the two comparisons. Each line is one person; coloured lines go up, grey lines
-go down. Hover a point to see the person.
+In @fig-eeg1, use the menu above the chart to switch between the two comparisons. Each line is one person. A
+coloured line means the method on the right was better for this person; a grey line means the method on the left
+was better. Hover a point to see the person.
 
 ```{python}
 #| label: fig-eeg1
@@ -363,29 +377,39 @@ searched for some setting where the network wins, and I would have believed it.
 So I changed the direction. If borrowing is such a strong start, the new person's few hundred images should not
 build a model from zero. They should **correct** the borrowed prediction.
 
-The correction is small on purpose. It is a regularised linear map that mixes the borrowed prediction across EEG
-sensors (or fMRI vertices) in the way this one person needs. I call it the *personal map*. Two steps:
+The correction is small on purpose. It is a linear map that mixes the borrowed prediction across EEG sensors (or
+fMRI brain spots) in the way this one person needs. It is kept small (*regularised*), so it cannot learn too much
+from a few hundred images. I call it the *personal map*. Two steps:
 
-1. **Borrow.** Average the predictions of encoders trained on other people. No labels of the new person needed.
+1. **Borrow.** Average the predictions of models trained on other people. No labels of the new person needed.
+   This works because everyone's data is in the same layout: the same 17 sensor positions for EEG, and the same
+   template brain surface for fMRI, so "brain spot number 1,000" is the same place in every person.
 2. **Personalize.** Fit the small map from the new person's labelled images, on top of that average.
 
 Then I did the same as before: protocol first, one run, a fixed margin. On the 24 THINGS-EEG1 people the map
-improved on borrowing for 23 of them, in the early visual response. To be honest about it: this follow-up used the
-same 24 people as the first test, and I wrote it after I saw the first result.
+improved on borrowing for 23 of them, in the early response. To be honest about it: this follow-up used the same
+24 people as the first test, and I wrote it after I saw the first result, so it is weaker evidence than a test on
+fresh people.
 
 ## Does it hold on other data?
 
-One dataset is not enough. So I wrote new protocols and tested the same idea on four more datasets: a second lab
-EEG dataset, a consumer EEG headset, 7-tesla fMRI and single-trial 3-tesla fMRI. Each test was run once.
+One dataset is not enough. So I wrote new protocols and tested the same idea on new people in three more
+datasets: a consumer EEG headset, 7-tesla fMRI and *single-trial* 3-tesla fMRI (each photo recorded only once,
+with no repeats to average, like one thin grey line in @fig-eeg-reps). I also repeated the test on THINGS-EEG2,
+on the ten people I had used before. Each test was run once.
 
 In @fig-strips every dot is one person. Above zero means the map was better than borrowing for that person.
-The red dashed line is the margin that the protocol said a gain must clear. Hover a dot for the person, or a
-diamond for the mean and its interval.
+The red dashed line is the margin that the protocol said a gain must clear. Next to the dots, the grey mark
+shows the average gain, and its bar shows the range where the true average very likely is (made a bit wider
+because each test compares several things at once). A test passes when the whole bar is above the margin. Hover a
+dot for the person, or the grey mark for the numbers.
 
 ```{python}
 #| label: fig-strips
-#| fig-cap: "The personal map minus borrowing, in every test that was written down before scoring. Dots: people. Diamonds and bars: the mean and the interval the decision used. Red dashed: the margin. Filled diamond: the interval is fully on one side of the margin; empty: it is not."
+#| fig-cap: "The personal map minus borrowing, in every test that was written down before scoring. Dots: people. Grey marks and bars: the mean and the range the decision used. Red dashed: the margin. Filled diamond: the test passed; empty diamond: not sure; cross: failed. THINGS-EEG2 cleared the margin against borrowing (shown here) but not against one of the other methods its protocol named, so the whole test is 'not sure'."
 people = pd.read_csv("data/map_gain_people.csv")
+WORD = {"THINGS-EEG1": "passed", "THINGS-EEG2": "not sure overall", "Alljoined": "not sure", "NSD": "passed",
+        "NOD": "failed, as predicted"}
 tests = pd.read_csv("data/map_gain_tests.csv")
 fig = go.Figure()
 rng = np.random.default_rng(3)
@@ -395,40 +419,45 @@ for i, t in tests.iterrows():
     fig.add_trace(go.Scatter(x=x, y=v.gain, mode="markers", showlegend=False,
                              marker=dict(color=MAP, size=8, opacity=0.6),
                              customdata=v.person, hovertemplate="%{customdata}<br>gain %{y:+.3f}<extra></extra>"))
-    filled = t.verdict != "inconclusive"
+    overall = "inconclusive" if t.dataset == "THINGS-EEG2" else t.verdict  # the whole test, not only this contrast
+    symbol = {"supported": "diamond", "inconclusive": "diamond-open", "rejected": "x"}[overall]
     fig.add_trace(go.Scatter(
         x=[i + 0.36], y=[t["mean"]], mode="markers", showlegend=False,
         error_y=dict(type="data", symmetric=False, array=[t.upper - t["mean"]], arrayminus=[t["mean"] - t.lower],
                      color=GREY, thickness=2, width=0),
-        marker=dict(symbol="diamond", size=12, color=GREY if filled else "rgba(0,0,0,0)", line=dict(color=GREY, width=2)),
+        marker=dict(symbol=symbol, size=12, color=GREY, line=dict(color=GREY, width=2)),
         hovertemplate=(f"<b>{t.dataset}</b> ({t.kind})<br>mean %{{y:+.3f}}<br>interval {t.lower:+.3f} to {t.upper:+.3f}"
                        f"<br>margin {t.margin:.3f}<br>{t.positive} of {t.n} people above zero<extra></extra>")))
     fig.add_shape(type="line", x0=i - 0.3, x1=i + 0.48, y0=t.margin, y1=t.margin,
                   line=dict(color="#c8102e", dash="dash", width=1.5))
 fig.add_hline(y=0, line=dict(color=GREY, width=1))
 fig.update_xaxes(tickvals=list(range(len(tests))),
-                 ticktext=[f"<b>{t.dataset}</b><br>{t.kind}<br>{t.positive}/{t.n} above 0" for _, t in tests.iterrows()])
-style(fig, height=470, yaxis_title="map minus borrowing (r)", margin=dict(l=60, r=20, t=20, b=95))
+                 ticktext=[f"<b>{t.dataset}</b><br>{t.kind}<br>{t.positive}/{t.n} above 0<br><i>{WORD[t.dataset]}</i>"
+                           for _, t in tests.iterrows()])
+style(fig, height=470, yaxis_title="map minus borrowing (r)", margin=dict(l=60, r=20, t=20, b=120))
 show(fig)
 ```
 
 What @fig-strips says, in short:
 
-- **Lab EEG** (THINGS-EEG1 and THINGS-EEG2): the map helped, for almost every person. On THINGS-EEG2 it cleared
-  the margin over borrowing, but not over every other method in that test, so that test as a whole did not pass.
-  THINGS-EEG2's people were also the ones I used to build the baselines, so it is the weaker of the two.
+- **Lab EEG** (THINGS-EEG1 and THINGS-EEG2): the map helped, for almost every person. On THINGS-EEG2 the map
+  beat borrowing by more than the margin, which is what @fig-strips shows. But the protocol also asked it to beat
+  two other methods by the margin, and against one of them it fell a little short. So the THINGS-EEG2 test as a
+  whole is "not sure". Its people were also the ones I used to build the baselines, so it is the weaker of the two.
 - **Consumer EEG** (Alljoined, 16 people): the gain went the same way, for 12 of 16 people, but did not clear the
   margin. The answer here is "not sure", and I report it like that.
-- **7-tesla fMRI** (NSD, 8 people): the map helped every person. Encoding accuracy went up by about a fifth.
+- **7-tesla fMRI** (NSD, 8 people): the map helped every person. Encoding accuracy went from 0.25 with borrowing
+  to about 0.30 with the map, about a fifth higher.
 - **Single-trial 3-tesla fMRI** (NOD, 21 people): no gain. And this was the result I had predicted in the
   protocol, before the test. The next section says why.
 
 ## Why it works sometimes and not always
 
-The pattern became clear from the development work. The map can only fix what borrowing leaves on the table. It
-needs two things:
+The pattern became clear from the development work (exploring the data, not prespecified tests). The map can
+only fix what borrowing leaves on the table. It needs two things:
 
-1. **Room.** If borrowing is already close to the best that the noisy data allows, there is nothing left to gain.
+1. **Room.** Noise puts a ceiling on any score. Even a person's own two halves agree only so much (the diagonal
+   of @fig-eeg-agree). If borrowing is already close to that ceiling, there is nothing left to gain.
 2. **Clean labels.** The map learns from the new person's responses. If each response is very noisy, the map
    learns noise.
 
@@ -436,8 +465,11 @@ NOD records each image only once, on a 3-tesla scanner, so its labels are very n
 no gain there, and the test agreed.
 
 The clean-label part I could check directly on THINGS-EEG2, where each image was shown several times. I trained
-the map on labels that averaged 1, 2 or 4 repetitions, and kept everything else the same. In @fig-reps, use the
-menu above the chart to switch between two kinds of map and two label budgets.
+the map on labels that averaged 1, 2 or 4 repetitions, and kept everything else the same. There are two kinds
+of map. The *full map* can mix every sensor with every other sensor. The *low-rank map* is a smaller version that
+only works along the 200 main directions of the borrowed prediction; it is the one I used for fMRI, where there are
+too many brain spots for a full map. In @fig-reps, use the menu above the chart to switch between the two maps and
+two *label budgets* (how many labelled images the person gives: 250 or 500).
 
 ```{python}
 #| label: fig-reps
@@ -476,13 +508,15 @@ of a new person are worth more when each one is recorded well.
 
 ## Encoding is not the same as identifying
 
-In fMRI I also looked at a second task: given a brain response, which of 200 images was the person looking at?
-Here I found something I did not expect. The best model for predicting the response is not always the best model
-for picking the image. In the main fMRI test, the map combined with the person's own model picked the right image
-7.4 points more often than borrowing.
+In fMRI I also looked at a second task, *identification*: given a brain response, which of 200 images was the
+person looking at? The model predicts a response for each of the 200 images, and we check if the closest
+prediction belongs to the right image. A model can be good at predicting responses and still be less good at
+picking the image, so I scored both. In the main fMRI test (NSD), the map combined with the person's own model
+picked the right image 7.4 percentage points more often than borrowing, for all 8 people.
 
 @fig-nsd follows the same people while they give more and more labelled images, up to their whole
-recording. It uses stronger image features (DINOv2) than the main test, so all numbers are higher. Click a name in
+recording. It uses features from DINOv2, a newer and stronger image network than the AlexNet of the main test, so
+all numbers are higher. Click a name in
 the legend to hide or show it. Each thin line is one person.
 
 ```{python}
@@ -531,9 +565,9 @@ a lot.
 
 ## Limits
 
-The EEG gains are small, a few hundredths in correlation. Each confirmation used one dataset. Some tests reused
-people that I had seen before (the THINGS-EEG1 follow-ups and the THINGS-EEG2 replication), and I say this in each
-place. The parts about room, label noise and identification are development analyses, not prespecified tests.
+The EEG gains are small, a few hundredths in correlation. Each test that passed rests on one dataset, and no
+result has been repeated yet on a second group of fresh people. Some tests reused people that I had seen before
+(the follow-up on THINGS-EEG1 and the repeat on THINGS-EEG2), and I say this in each place. The parts about room, label noise and identification are development analyses, not prespecified tests.
 
 ## Where to look
 
