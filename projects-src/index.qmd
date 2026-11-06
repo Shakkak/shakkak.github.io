@@ -1,0 +1,11 @@
+---
+title: "Project write-ups"
+listing:
+  contents: posts
+  type: grid
+  sort: "date desc"
+  fields: [image, title, description, date, categories]
+  categories: true
+page-layout: full
+title-block-banner: false
+---

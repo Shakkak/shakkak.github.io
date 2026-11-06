@@ -1,0 +1,45 @@
+---
+title: "Borrow, then personalize"
+subtitle: "Calibrating visual EEG and fMRI encoding models with limited labels"
+description: "Predicting a new person's EEG and fMRI responses to images from a few hundred labels: borrow other people's encoders, then fit a small personal map."
+date: 2026-11-06
+categories: [EEG, fMRI, brain encoding, transfer learning]
+---
+
+[Code and protocols on GitHub](https://github.com/Shakkak/Borrow-then-Personalize-EEG-fMRI-Brain-Encoding-with-Limited-Labels){.btn .btn-primary}
+
+## The problem
+
+A model that predicts how a brain responds to an image is usually trained on
+many images from one person. A new person has only a few hundred labelled
+images to offer. This project asks how far those few hundred can go when the
+model is allowed to borrow from other people.
+
+## The approach
+
+1. **Borrow.** Average encoders trained on other people to get a first
+   prediction of the new person's response.
+2. **Personalize.** Learn a small linear map from the new person's labelled
+   images. It corrects the borrowed average across EEG sensors or fMRI
+   vertices.
+
+The main comparisons were written into version-controlled protocols before
+scoring, and each was scored once. The data are lab EEG (THINGS-EEG1 and
+THINGS-EEG2), consumer EEG (Alljoined-1.6M), 7-tesla fMRI (NSD) and
+single-trial 3-tesla fMRI (NOD).
+
+## Scope of the tests
+
+Not every test used people who were new to the analysis. THINGS-EEG1's first
+test and its three follow-ups were scored on the same 24 people. THINGS-EEG2's
+ten people had been used to build the baselines and set the margin, and the
+Alljoined people were selected on test-split reliability. No model had been
+scored on the NSD and NOD people before their tests.
+
+## Where to look
+
+- The protocols are in `docs/proposals/`, and `PROVENANCE.md` lists the commit
+  that holds each protocol and the commit that scored it.
+- Result tables are in `results/`, and `docs/REPRODUCE.md` maps every figure
+  and table to the script or notebook that makes it.
+- Every analysis is a notebook in `notebooks/`.

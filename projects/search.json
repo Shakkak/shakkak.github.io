@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "posts/eeg-fmri-borrow-personalize/index.html",
+    "href": "posts/eeg-fmri-borrow-personalize/index.html",
+    "title": "Borrow, then personalize",
+    "section": "",
+    "text": "Code and protocols on GitHub"
+  },
+  {
+    "objectID": "posts/eeg-fmri-borrow-personalize/index.html#the-problem",
+    "href": "posts/eeg-fmri-borrow-personalize/index.html#the-problem",
+    "title": "Borrow, then personalize",
+    "section": "The problem",
+    "text": "The problem\nA model that predicts how a brain responds to an image is usually trained on many images from one person. A new person has only a few hundred labelled images to offer. This project asks how far those few hundred can go when the model is allowed to borrow from other people."
+  },
+  {
+    "objectID": "posts/eeg-fmri-borrow-personalize/index.html#the-approach",
+    "href": "posts/eeg-fmri-borrow-personalize/index.html#the-approach",
+    "title": "Borrow, then personalize",
+    "section": "The approach",
+    "text": "The approach\n\nBorrow. Average encoders trained on other people to get a first prediction of the new person’s response.\nPersonalize. Learn a small linear map from the new person’s labelled images. It corrects the borrowed average across EEG sensors or fMRI vertices.\n\nThe main comparisons were written into version-controlled protocols before scoring, and each was scored once. The data are lab EEG (THINGS-EEG1 and THINGS-EEG2), consumer EEG (Alljoined-1.6M), 7-tesla fMRI (NSD) and single-trial 3-tesla fMRI (NOD)."
+  },
+  {
+    "objectID": "posts/eeg-fmri-borrow-personalize/index.html#scope-of-the-tests",
+    "href": "posts/eeg-fmri-borrow-personalize/index.html#scope-of-the-tests",
+    "title": "Borrow, then personalize",
+    "section": "Scope of the tests",
+    "text": "Scope of the tests\nNot every test used people who were new to the analysis. THINGS-EEG1’s first test and its three follow-ups were scored on the same 24 people. THINGS-EEG2’s ten people had been used to build the baselines and set the margin, and the Alljoined people were selected on test-split reliability. No model had been scored on the NSD and NOD people before their tests."
+  },
+  {
+    "objectID": "posts/eeg-fmri-borrow-personalize/index.html#where-to-look",
+    "href": "posts/eeg-fmri-borrow-personalize/index.html#where-to-look",
+    "title": "Borrow, then personalize",
+    "section": "Where to look",
+    "text": "Where to look\n\nThe protocols are in docs/proposals/, and PROVENANCE.md lists the commit that holds each protocol and the commit that scored it.\nResult tables are in results/, and docs/REPRODUCE.md maps every figure and table to the script or notebook that makes it.\nEvery analysis is a notebook in notebooks/."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Project write-ups",
+    "section": "",
+    "text": "Borrow, then personalize\n\n\n\nEEG\n\nfMRI\n\nbrain encoding\n\ntransfer learning\n\n\n\nPredicting a new person’s EEG and fMRI responses to images from a few hundred labels: borrow other people’s encoders, then fit a small personal map.\n\n\n\nNov 6, 2026\n\n\n\n\n\n\nNo matching items"
+  }
+]

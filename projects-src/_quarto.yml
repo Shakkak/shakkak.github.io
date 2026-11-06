@@ -1,0 +1,30 @@
+project:
+  type: website
+  output-dir: ../projects        # rendered HTML, committed and served by GitHub Pages
+
+website:
+  title: "Project write-ups"
+  navbar:
+    left:
+      - text: "Home"
+        href: ../index.html
+      - text: "Write-ups"
+        href: index.qmd
+    right:
+      - icon: github
+        href: https://github.com/Shakkak
+  page-footer: "Shakib Hosseinzadeh"
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+    toc: true
+    code-fold: true
+    code-tools: true
+    smooth-scroll: true
+
+execute:
+  freeze: auto                   # re-run a notebook only when its source changes

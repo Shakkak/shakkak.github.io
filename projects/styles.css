@@ -1,0 +1,4 @@
+/* Match the colours of the main site. */
+body.quarto-light { background-color: #f1f5f9; }
+body.quarto-dark  { background-color: #0a0a0a; }
+.quarto-title-meta-heading { text-transform: none; }
