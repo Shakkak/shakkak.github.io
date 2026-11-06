@@ -379,7 +379,7 @@ dot for the person, or the grey mark for the numbers.
 
 ```{python}
 #| label: fig-strips
-#| fig-cap: "The personal map minus borrowing, in every test that was written down before scoring. Dots: people. Grey marks and bars: the mean and the range the decision used. Red dashed: the margin. Filled diamond: the test passed; empty diamond: not sure; cross: failed. THINGS-EEG2 cleared the margin against borrowing (shown here) but not against one of the other methods its protocol named, so the whole test is 'not sure'."
+#| fig-cap: "The personal map minus borrowing, in every test that was written down before scoring. Dots: people. Grey marks and bars: the mean and the range the decision used. Red dashed: the margin. Filled diamond: the test passed; empty diamond: not sure; cross: failed. THINGS-EEG2 cleared the margin against borrowing (shown here) but not against two of the other five methods its protocol named, so the whole test is 'not sure'."
 people = pd.read_csv("data/map_gain_people.csv")
 WORD = {"THINGS-EEG1": "passed", "THINGS-EEG2": "not sure overall", "Alljoined": "not sure", "NSD": "passed",
         "NOD": "failed, as predicted"}
@@ -414,8 +414,9 @@ show(fig)
 What @fig-strips says, in short:
 
 - **Lab EEG** (THINGS-EEG1 and THINGS-EEG2): the map helped, for almost every person. On THINGS-EEG2 the map
-  beat borrowing by more than the margin, which is what @fig-strips shows. But the protocol also asked it to beat
-  two other methods by the margin, and against one of them it fell a little short. So the THINGS-EEG2 test as a
+  beat borrowing by more than the margin, which is what @fig-strips shows. But the protocol asked it to beat
+  six methods by the margin, borrowing and five others, and against two of the others (a weighted average of other
+  people, and a converter that maps another person's responses onto this person) it fell short. So the THINGS-EEG2 test as a
   whole is "not sure". Its people were also the ones I used to build the baselines, so it is the weaker of the two.
 - **Consumer EEG** (Alljoined, 16 people): the gain went the same way, for 12 of 16 people, but did not clear the
   margin. The answer here is "not sure", and I report it like that.
