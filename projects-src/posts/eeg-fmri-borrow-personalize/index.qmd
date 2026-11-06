@@ -1,45 +1,305 @@
 ---
 title: "Borrow, then personalize"
-subtitle: "Calibrating visual EEG and fMRI encoding models with limited labels"
-description: "Predicting a new person's EEG and fMRI responses to images from a few hundred labels: borrow other people's encoders, then fit a small personal map."
+subtitle: "How I tried to predict a new person's brain responses from a few hundred images, and what I learned on the way"
+description: "A walkthrough of my EEG and fMRI project: a big shared network lost to a simple average of other people, and a small personal map on top of that average became the main result."
 date: 2026-11-06
 categories: [EEG, fMRI, brain encoding, transfer learning]
+jupyter: python3
 ---
 
 [Code and protocols on GitHub](https://github.com/Shakkak/Borrow-then-Personalize-EEG-fMRI-Brain-Encoding-with-Limited-Labels){.btn .btn-primary}
 
-## The problem
+```{python}
+#| include: false
+import numpy as np
+import pandas as pd
+import plotly.graph_objects as go
+import plotly.io as pio
 
-A model that predicts how a brain responds to an image is usually trained on
-many images from one person. A new person has only a few hundred labelled
-images to offer. This project asks how far those few hundred can go when the
-model is allowed to borrow from other people.
+pio.templates.default = "plotly_white"
+GREY, MAP, OWN, NET = "#8a8f98", "#2a9d8f", "#e76f51", "#6c63ff"
 
-## The approach
 
-1. **Borrow.** Average encoders trained on other people to get a first
-   prediction of the new person's response.
-2. **Personalize.** Learn a small linear map from the new person's labelled
-   images. It corrects the borrowed average across EEG sensors or fMRI
-   vertices.
+def style(fig, height=430, **kw):
+    # transparent background and mid-grey text, so the figure reads in light and dark mode
+    layout = dict(height=height, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+                  font=dict(color=GREY, size=13), margin=dict(l=60, r=20, t=40, b=50), hoverlabel=dict(font_size=13))
+    layout.update(kw)
+    fig.update_layout(**layout)
+    fig.update_xaxes(gridcolor="rgba(128,128,128,0.2)", zerolinecolor="rgba(128,128,128,0.5)")
+    fig.update_yaxes(gridcolor="rgba(128,128,128,0.2)", zerolinecolor="rgba(128,128,128,0.5)")
+    return fig
+```
 
-The main comparisons were written into version-controlled protocols before
-scoring, and each was scored once. The data are lab EEG (THINGS-EEG1 and
-THINGS-EEG2), consumer EEG (Alljoined-1.6M), 7-tesla fMRI (NSD) and
-single-trial 3-tesla fMRI (NOD).
+## The question
 
-## Scope of the tests
+When you look at a picture, your brain answers with a pattern. We can record it with EEG (sensors on the head)
+or with fMRI (a scanner). An *encoding model* takes the image and predicts this pattern.
 
-Not every test used people who were new to the analysis. THINGS-EEG1's first
-test and its three follow-ups were scored on the same 24 people. THINGS-EEG2's
-ten people had been used to build the baselines and set the margin, and the
-Alljoined people were selected on test-split reliability. No model had been
-scored on the NSD and NOD people before their tests.
+A good model for one person needs many hours of their recordings. A new person usually gives much less, maybe a
+few hundred labelled images. But we already have models of many other people. So my question was simple:
+
+> If I have only a few hundred images from a new person, what is the best way to use them, when models of other
+> people already exist?
+
+I did this work on free Kaggle notebooks. I had no GPU of my own, so every idea had to be cheap enough to run
+there.
+
+## The path, in one picture
+
+```{mermaid}
+flowchart TD
+  A["Idea: one big shared<br/>network for all people"] --> B["Reproduce a published<br/>model first"]
+  B --> C["Shared network looks<br/>good on 10 people"]
+  C --> D["Test written down first,<br/>then 24 new people"]
+  D -->|"it loses to a<br/>simple average"| E["Borrow: average<br/>other people's models"]
+  E --> F["Personalize: a small<br/>linear map on top"]
+  F --> G["Test again on EEG,<br/>consumer EEG and fMRI"]
+  G --> H["Why it works:<br/>room left and clean labels"]
+```
+
+## Where I started: a big shared network
+
+At the start I followed the trend in the field. Many recent papers train one network on many people and add a
+small part for each person. My plan was the same: a shared core for everyone, a small adapter for each new person,
+and later some extra ideas on top, like contrastive training across people.
+
+Before building anything, I reproduced a published EEG encoding model and its baselines, and checked that my
+numbers matched the paper. This step was slow and boring, but later it saved me. Every new idea was compared with
+baselines that I knew were correct.
+
+On THINGS-EEG2 (ten people) the shared network looked good. With 250 or 500 images from a new person it beat
+the baselines. I was happy. But there was a problem: I had used these same ten people while building the model.
+A model can look good on the people it was tuned on.
+
+## The test that changed the project
+
+So I wrote the test down before running it. In a protocol, committed to git, I fixed the model, the people, the
+score, the margin a gain must clear, and the decision rule. Then I ran it once, on 24 people of a second EEG
+dataset (THINGS-EEG1) that no model had seen.
+
+The shared network beat a model trained only on the person's own few hundred images. But it lost to something
+much simpler: just **average the predictions of the models of other people**. I call this *borrowing*. The test
+said "rejected", and I kept that result.
+
+Use the menu above the chart to switch between the two comparisons. Each line is one person; coloured lines go up, grey lines
+go down. Hover a point to see the person.
+
+```{python}
+#| label: fig-eeg1
+#| fig-cap: "THINGS-EEG1, 24 new people. Encoding accuracy (correlation, 100 to 200 ms after the image). First choice: each person's own model from 250 to 500 images against borrowing. Second choice: borrowing against the shared network, in the first test."
+d = pd.read_csv("data/eeg1_people.csv")
+fig = go.Figure()
+pairs = [("own_model", "borrowing", "own model", "borrowing", MAP),
+         ("borrowing_first_test", "shared_network", "borrowing", "shared network", NET)]
+for i, (a, b, la, lb, colour) in enumerate(pairs):
+    for _, r in d.iterrows():
+        up = r[b] > r[a]
+        fig.add_trace(go.Scatter(
+            x=[la, lb], y=[r[a], r[b]], mode="lines+markers", visible=(i == 0), showlegend=False,
+            line=dict(color=colour if up else GREY, width=1.6), marker=dict(size=7),
+            hovertemplate=f"{r['person']}<br>%{{x}}: %{{y:.3f}}<extra></extra>"))
+n = len(d)
+fig.update_layout(updatemenus=[dict(type="dropdown", x=0, y=1.13, xanchor="left", buttons=[
+    dict(label="Own model vs borrowing", method="update", args=[{"visible": [True] * n + [False] * n}]),
+    dict(label="Borrowing vs shared network", method="update", args=[{"visible": [False] * n + [True] * n}])])])
+style(fig, yaxis_title="encoding accuracy (r)", margin=dict(l=60, r=20, t=70, b=40))
+fig
+```
+
+```{python}
+#| echo: false
+#| output: asis
+up = int((d.borrowing > d.own_model).sum())
+down = int((d.shared_network < d.borrowing_first_test).sum())
+print(f"Borrowing was better than the person's own model for {up} of {n} people. "
+      f"The shared network was below borrowing for {down} of {n}.")
+```
+
+This was the most important moment of the project. I had spent a lot of time on the big network, and a plain
+average of other people beat it, on people it had never seen. If I had not written the test first, I could have
+searched for some setting where the network wins, and I would have believed it.
+
+## Borrow, then personalize
+
+So I changed the direction. If borrowing is such a strong start, the new person's few hundred images should not
+build a model from zero. They should **correct** the borrowed prediction.
+
+The correction is small on purpose. It is a regularised linear map that mixes the borrowed prediction across EEG
+sensors (or fMRI vertices) in the way this one person needs. I call it the *personal map*. Two steps:
+
+1. **Borrow.** Average the predictions of encoders trained on other people. No labels of the new person needed.
+2. **Personalize.** Fit the small map from the new person's labelled images, on top of that average.
+
+Then I did the same as before: protocol first, one run, a fixed margin. On the 24 THINGS-EEG1 people the map
+improved on borrowing for 23 of them, in the early visual response. To be honest about it: this follow-up used the
+same 24 people as the first test, and I wrote it after I saw the first result.
+
+## Does it hold on other data?
+
+One dataset is not enough. So I wrote new protocols and tested the same idea on four more datasets: a second lab
+EEG dataset, a consumer EEG headset, 7-tesla fMRI and single-trial 3-tesla fMRI. Each test was run once.
+
+In the chart below every dot is one person. Above zero means the map was better than borrowing for that person.
+The red dashed line is the margin that the protocol said a gain must clear. Hover a dot for the person, or a
+diamond for the mean and its interval.
+
+```{python}
+#| label: fig-strips
+#| fig-cap: "The personal map minus borrowing, in every test that was written down before scoring. Dots: people. Diamonds and bars: the mean and the interval the decision used. Red dashed: the margin. Filled diamond: the interval is fully on one side of the margin; empty: it is not."
+people = pd.read_csv("data/map_gain_people.csv")
+tests = pd.read_csv("data/map_gain_tests.csv")
+fig = go.Figure()
+rng = np.random.default_rng(3)
+for i, t in tests.iterrows():
+    v = people[people.dataset == t.dataset]
+    x = i + rng.uniform(-0.18, 0.18, len(v))
+    fig.add_trace(go.Scatter(x=x, y=v.gain, mode="markers", showlegend=False,
+                             marker=dict(color=MAP, size=8, opacity=0.6),
+                             customdata=v.person, hovertemplate="%{customdata}<br>gain %{y:+.3f}<extra></extra>"))
+    filled = t.verdict != "inconclusive"
+    fig.add_trace(go.Scatter(
+        x=[i + 0.36], y=[t["mean"]], mode="markers", showlegend=False,
+        error_y=dict(type="data", symmetric=False, array=[t.upper - t["mean"]], arrayminus=[t["mean"] - t.lower],
+                     color=GREY, thickness=2, width=0),
+        marker=dict(symbol="diamond", size=12, color=GREY if filled else "rgba(0,0,0,0)", line=dict(color=GREY, width=2)),
+        hovertemplate=(f"<b>{t.dataset}</b> ({t.kind})<br>mean %{{y:+.3f}}<br>interval {t.lower:+.3f} to {t.upper:+.3f}"
+                       f"<br>margin {t.margin:.3f}<br>{t.positive} of {t.n} people above zero<extra></extra>")))
+    fig.add_shape(type="line", x0=i - 0.3, x1=i + 0.48, y0=t.margin, y1=t.margin,
+                  line=dict(color="#c8102e", dash="dash", width=1.5))
+fig.add_hline(y=0, line=dict(color=GREY, width=1))
+fig.update_xaxes(tickvals=list(range(len(tests))),
+                 ticktext=[f"<b>{t.dataset}</b><br>{t.kind}<br>{t.positive}/{t.n} above 0" for _, t in tests.iterrows()])
+style(fig, height=470, yaxis_title="map minus borrowing (r)", margin=dict(l=60, r=20, t=20, b=95))
+fig
+```
+
+In short:
+
+- **Lab EEG** (THINGS-EEG1 and THINGS-EEG2): the map helped, for almost every person. On THINGS-EEG2 it cleared
+  the margin over borrowing, but not over every other method in that test, so that test as a whole did not pass.
+  THINGS-EEG2's people were also the ones I used to build the baselines, so it is the weaker of the two.
+- **Consumer EEG** (Alljoined, 16 people): the gain went the same way, for 12 of 16 people, but did not clear the
+  margin. The answer here is "not sure", and I report it like that.
+- **7-tesla fMRI** (NSD, 8 people): the map helped every person. Encoding accuracy went up by about a fifth.
+- **Single-trial 3-tesla fMRI** (NOD, 21 people): no gain. And this was the result I had predicted in the
+  protocol, before the test. The next section says why.
+
+## Why it works sometimes and not always
+
+The pattern became clear from the development work. The map can only fix what borrowing leaves on the table. It
+needs two things:
+
+1. **Room.** If borrowing is already close to the best that the noisy data allows, there is nothing left to gain.
+2. **Clean labels.** The map learns from the new person's responses. If each response is very noisy, the map
+   learns noise.
+
+NOD records each image only once, on a 3-tesla scanner, so its labels are very noisy. That is why I predicted
+no gain there, and the test agreed.
+
+The clean-label part I could check directly on THINGS-EEG2, where each image was shown several times. I trained
+the map on labels that averaged 1, 2 or 4 repetitions, and kept everything else the same. Use the menu above
+the chart to switch between two kinds of map and two label budgets.
+
+```{python}
+#| label: fig-reps
+#| fig-cap: "THINGS-EEG2 (development analysis). Gain of the map over borrowing when each labelled response is the average of 1, 2 or 4 repetitions. Thin lines: people. Thick grey line: the mean."
+reps = pd.read_csv("data/label_reps.csv")
+combos = [("lowrank", 500, "Low-rank map, 500 images"), ("lowrank", 250, "Low-rank map, 250 images"),
+          ("h4b", 500, "Full map, 500 images"), ("h4b", 250, "Full map, 250 images")]
+fig = go.Figure()
+counts = []
+for j, (m, k, _) in enumerate(combos):
+    sub = reps[(reps["map"] == m) & (reps.k == k)]
+    for p, g in sub.groupby("person"):
+        fig.add_trace(go.Scatter(x=g.repetitions, y=g.gain, mode="lines+markers", visible=(j == 0), showlegend=False,
+                                 line=dict(color=MAP, width=1), marker=dict(size=5), opacity=0.45,
+                                 hovertemplate=f"{p}<br>%{{x}} repetitions: %{{y:+.3f}}<extra></extra>"))
+    mean = sub.groupby("repetitions").gain.mean()
+    fig.add_trace(go.Scatter(x=mean.index, y=mean.values, mode="lines+markers", visible=(j == 0), showlegend=False,
+                             line=dict(color=GREY, width=4), marker=dict(size=9),
+                             hovertemplate="mean<br>%{x} repetitions: %{y:+.3f}<extra></extra>"))
+    counts.append(sub.person.nunique() + 1)
+buttons = []
+for j, (_, _, label) in enumerate(combos):
+    vis = [False] * sum(counts)
+    start = sum(counts[:j])
+    vis[start:start + counts[j]] = [True] * counts[j]
+    buttons.append(dict(label=label, method="update", args=[{"visible": vis}]))
+fig.update_layout(updatemenus=[dict(type="dropdown", x=0, y=1.14, xanchor="left", buttons=buttons)])
+fig.add_hline(y=0, line=dict(color=GREY, width=1))
+fig.update_xaxes(tickvals=[1, 2, 4], title="repetitions averaged per labelled image")
+style(fig, yaxis_title="gain over borrowing (r)", margin=dict(l=60, r=20, t=80, b=50))
+fig
+```
+
+With cleaner labels the gain grows, for the same people and the same number of images. So the few hundred images
+of a new person are worth more when each one is recorded well.
+
+## Encoding is not the same as identifying
+
+In fMRI I also looked at a second task: given a brain response, which of 200 images was the person looking at?
+Here I found something I did not expect. The best model for predicting the response is not always the best model
+for picking the image. In the main fMRI test, the map combined with the person's own model picked the right image
+7.4 points more often than borrowing.
+
+The chart below follows the same people while they give more and more labelled images, up to their whole
+recording. It uses stronger image features (DINOv2) than the main test, so all numbers are higher. Click a name in
+the legend to hide or show it. Each thin line is one person.
+
+```{python}
+#| label: fig-nsd
+#| fig-cap: "NSD, 8 people (development analysis, DINOv2 features). Identification among 200 images by the number of labelled images of the new person. Thin lines: people. Thick lines: the mean. Dashed: borrowing, which uses no labels."
+b = pd.read_csv("data/nsd_budget.csv")
+b["k"] = b.k.astype(str)
+order = ["500", "1000", "2000", "4000", "all"]
+names = {"500": "500", "1000": "1,000", "2000": "2,000", "4000": "4,000", "all": "whole recording"}
+fig = go.Figure()
+for m, label, colour in (("own_ridge", "own model", OWN), ("map", "map on borrowing", MAP),
+                         ("combination", "map + own model", NET)):
+    sub = b[b.method == m]
+    for p, g in sub.groupby("person"):
+        g = g.set_index("k").loc[order]
+        fig.add_trace(go.Scatter(x=[names[k] for k in order], y=g.top1, mode="lines", legendgroup=m,
+                                 showlegend=False, line=dict(color=colour, width=1), opacity=0.35,
+                                 hovertemplate=f"{p}, {label}<br>%{{x}}: %{{y:.1f}}%<extra></extra>"))
+    mean = sub.groupby("k").top1.mean().loc[order]
+    fig.add_trace(go.Scatter(x=[names[k] for k in order], y=mean.values, mode="lines+markers", name=label,
+                             legendgroup=m, line=dict(color=colour, width=4), marker=dict(size=8),
+                             hovertemplate=f"mean, {label}<br>%{{x}}: %{{y:.1f}}%<extra></extra>"))
+borrow = b[b.method == "borrowing"].top1.mean()
+fig.add_hline(y=borrow, line=dict(color=GREY, dash="dash", width=1.5),
+              annotation_text=f"borrowing, no labels ({borrow:.1f}%)", annotation_position="bottom right")
+style(fig, height=470, yaxis_title="identification among 200 (%)", xaxis_title="labelled images of the new person",
+      legend=dict(orientation="h", y=1.1, x=0))
+fig
+```
+
+With 500 images the map on borrowing is far ahead of the person's own model. With more images the own model
+catches up, but even with the whole recording the map stays a little ahead, and adding the own model to it helps
+a bit more. Borrowing matters most when you have little data from the person, and it does not hurt when you have
+a lot.
+
+## What I take from it
+
+- **Write the test before you run it.** My first idea failed its test. Without the protocol I would have kept
+  the wrong story.
+- **Try the simple thing first.** A plain average of other people was stronger than the network I spent so long
+  on.
+- **Reproduce before you improve.** Correct baselines made every later comparison clear.
+- **Small and cheap can be enough.** All of this ran on free Kaggle notebooks. The final method is a few lines of
+  linear algebra.
+- **Say "not sure" when the data says "not sure".** The consumer EEG result is inconclusive, and it stays like that.
+
+## Limits
+
+The EEG gains are small, a few hundredths in correlation. Each confirmation used one dataset. Some tests reused
+people that I had seen before (the THINGS-EEG1 follow-ups and the THINGS-EEG2 replication), and I say this in each
+place. The parts about room, label noise and identification are development analyses, not prespecified tests.
 
 ## Where to look
 
-- The protocols are in `docs/proposals/`, and `PROVENANCE.md` lists the commit
-  that holds each protocol and the commit that scored it.
-- Result tables are in `results/`, and `docs/REPRODUCE.md` maps every figure
-  and table to the script or notebook that makes it.
-- Every analysis is a notebook in `notebooks/`.
+Everything is on [GitHub](https://github.com/Shakkak/Borrow-then-Personalize-EEG-fMRI-Brain-Encoding-with-Limited-Labels):
+the code, the protocols of every test, the commit that holds each protocol before its run, and the result tables
+behind every figure. The charts on this page are built from those tables with a short script
+(`data/prepare_data.py` in this post's source folder).

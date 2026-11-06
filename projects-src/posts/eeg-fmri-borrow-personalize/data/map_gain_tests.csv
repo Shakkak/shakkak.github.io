@@ -1,0 +1,6 @@
+dataset,kind,n,positive,mean,lower,upper,margin,verdict
+THINGS-EEG1,lab EEG,24,23,0.0202,0.0075,0.0328,0.0035,supported
+THINGS-EEG2,lab EEG,10,10,0.0492,0.0304,0.0681,0.011,supported
+Alljoined,consumer EEG,16,12,0.0135,-0.0015,0.0285,0.0021,inconclusive
+NSD,7 T fMRI,8,8,0.0511,0.0386,0.0636,0.0298,supported
+NOD,"3 T fMRI, single trials",21,11,0.0008,-0.004,0.0056,0.011,rejected
