@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: ../projects        # rendered HTML, committed and served by GitHub Pages
+  resources:
+    - assets/plotly.min.js
 
 website:
   title: "Project write-ups"

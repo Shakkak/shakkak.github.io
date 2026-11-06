@@ -5,6 +5,17 @@ description: "A walkthrough of my EEG and fMRI project: a big shared network los
 date: 2026-11-06
 categories: [EEG, fMRI, brain encoding, transfer learning]
 jupyter: python3
+execute:
+  echo: false
+format:
+  html:
+    code-fold: false
+    code-tools: false
+include-in-header:
+  - text: |
+      <script>window.__amd = window.define; window.define = undefined;</script>
+      <script src="../../assets/plotly.min.js"></script>
+      <script>window.define = window.__amd;</script>
 ---
 
 [Code and protocols on GitHub](https://github.com/Shakkak/Borrow-then-Personalize-EEG-fMRI-Brain-Encoding-with-Limited-Labels){.btn .btn-primary}
@@ -15,6 +26,7 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.io as pio
+from IPython.display import HTML
 
 pio.templates.default = "plotly_white"
 GREY, MAP, OWN, NET = "#8a8f98", "#2a9d8f", "#e76f51", "#6c63ff"
@@ -29,6 +41,12 @@ def style(fig, height=430, **kw):
     fig.update_xaxes(gridcolor="rgba(128,128,128,0.2)", zerolinecolor="rgba(128,128,128,0.5)")
     fig.update_yaxes(gridcolor="rgba(128,128,128,0.2)", zerolinecolor="rgba(128,128,128,0.5)")
     return fig
+
+
+def show(fig):
+    # plain div + script; plotly.js is loaded once by the page header from the site's own assets
+    return HTML(pio.to_html(fig, include_plotlyjs=False, full_html=False,
+                            config={"displaylogo": False, "responsive": True}))
 ```
 
 ## The question
@@ -47,15 +65,17 @@ there.
 
 ## The path, in one picture
 
-```{mermaid}
-flowchart TD
-  A["Idea: one big shared<br/>network for all people"] --> B["Reproduce a published<br/>model first"]
-  B --> C["Shared network looks<br/>good on 10 people"]
-  C --> D["Test written down first,<br/>then 24 new people"]
-  D -->|"it loses to a<br/>simple average"| E["Borrow: average<br/>other people's models"]
-  E --> F["Personalize: a small<br/>linear map on top"]
-  F --> G["Test again on EEG,<br/>consumer EEG and fMRI"]
-  G --> H["Why it works:<br/>room left and clean labels"]
+```{=html}
+<ol class="timeline">
+<li><span class="tl-title">Idea</span><span class="tl-text">One big shared network for all people, with a small part for each person.</span></li>
+<li><span class="tl-title">Reproduce first</span><span class="tl-text">A published EEG model and its baselines, number by number.</span></li>
+<li><span class="tl-title">Looks good</span><span class="tl-text">The shared network wins on the ten people I built it with.</span></li>
+<li class="turn"><span class="tl-title">The real test</span><span class="tl-text">Written down first, run once on 24 new people. It loses to a simple average.</span></li>
+<li><span class="tl-title">Borrow</span><span class="tl-text">Average the models of other people. No labels needed.</span></li>
+<li><span class="tl-title">Personalize</span><span class="tl-text">A small linear map on top, learned from a few hundred images.</span></li>
+<li><span class="tl-title">Test again</span><span class="tl-text">Second lab EEG, consumer EEG, 7-tesla fMRI, single-trial 3-tesla fMRI.</span></li>
+<li><span class="tl-title">Why</span><span class="tl-text">The map needs room to improve and clean labels.</span></li>
+</ol>
 ```
 
 ## Where I started: a big shared network
@@ -104,7 +124,7 @@ fig.update_layout(updatemenus=[dict(type="dropdown", x=0, y=1.13, xanchor="left"
     dict(label="Own model vs borrowing", method="update", args=[{"visible": [True] * n + [False] * n}]),
     dict(label="Borrowing vs shared network", method="update", args=[{"visible": [False] * n + [True] * n}])])])
 style(fig, yaxis_title="encoding accuracy (r)", margin=dict(l=60, r=20, t=70, b=40))
-fig
+show(fig)
 ```
 
 ```{python}
@@ -171,7 +191,7 @@ fig.add_hline(y=0, line=dict(color=GREY, width=1))
 fig.update_xaxes(tickvals=list(range(len(tests))),
                  ticktext=[f"<b>{t.dataset}</b><br>{t.kind}<br>{t.positive}/{t.n} above 0" for _, t in tests.iterrows()])
 style(fig, height=470, yaxis_title="map minus borrowing (r)", margin=dict(l=60, r=20, t=20, b=95))
-fig
+show(fig)
 ```
 
 In short:
@@ -230,7 +250,7 @@ fig.update_layout(updatemenus=[dict(type="dropdown", x=0, y=1.14, xanchor="left"
 fig.add_hline(y=0, line=dict(color=GREY, width=1))
 fig.update_xaxes(tickvals=[1, 2, 4], title="repetitions averaged per labelled image")
 style(fig, yaxis_title="gain over borrowing (r)", margin=dict(l=60, r=20, t=80, b=50))
-fig
+show(fig)
 ```
 
 With cleaner labels the gain grows, for the same people and the same number of images. So the few hundred images
@@ -272,7 +292,7 @@ fig.add_hline(y=borrow, line=dict(color=GREY, dash="dash", width=1.5),
               annotation_text=f"borrowing, no labels ({borrow:.1f}%)", annotation_position="bottom right")
 style(fig, height=470, yaxis_title="identification among 200 (%)", xaxis_title="labelled images of the new person",
       legend=dict(orientation="h", y=1.1, x=0))
-fig
+show(fig)
 ```
 
 With 500 images the map on borrowing is far ahead of the person's own model. With more images the own model

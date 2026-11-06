@@ -2,3 +2,13 @@
 body.quarto-light { background-color: #f1f5f9; }
 body.quarto-dark  { background-color: #0a0a0a; }
 .quarto-title-meta-heading { text-transform: none; }
+
+/* Step timeline used in posts (no JavaScript needed). */
+ol.timeline { list-style: none; counter-reset: step; padding-left: 0; margin: 1.5rem 0; position: relative; }
+ol.timeline::before { content: ""; position: absolute; left: 15px; top: 6px; bottom: 6px; width: 2px; background: rgba(128,128,128,0.35); }
+ol.timeline li { counter-increment: step; position: relative; padding: 0 0 1.1rem 48px; }
+ol.timeline li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 32px; height: 32px; border-radius: 50%;
+  background: #2a9d8f; color: #fff; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
+ol.timeline li.turn::before { background: #e76f51; }
+ol.timeline .tl-title { display: block; font-weight: 600; line-height: 32px; }
+ol.timeline .tl-text { display: block; opacity: 0.85; margin-top: -2px; }
