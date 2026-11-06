@@ -4,6 +4,8 @@ subtitle: "How I tried to predict a new person's brain responses from a few hund
 description: "A walkthrough of my EEG and fMRI project: a big shared network lost to a simple average of other people, and a small personal map on top of that average became the main result."
 date: 2026-11-06
 categories: [EEG, fMRI, brain encoding, transfer learning]
+image: cover.png
+image-alt: "Each person's gain of the personal map over borrowing in five datasets"
 jupyter: python3
 execute:
   echo: false

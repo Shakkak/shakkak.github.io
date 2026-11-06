@@ -5,12 +5,15 @@ project:
     - assets/plotly.min.js
 
 website:
-  title: "Project write-ups"
+  title: "Blog"
+  site-url: https://shakkak.github.io/projects
+  open-graph: true
+  twitter-card: true
   navbar:
     left:
       - text: "Home"
         href: ../index.html
-      - text: "Write-ups"
+      - text: "All posts"
         href: index.qmd
     right:
       - icon: github

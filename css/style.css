@@ -709,6 +709,80 @@ section {
 }
 
 /* =========================================
+   Blog
+   ========================================= */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.blog-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.blog-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+}
+
+.blog-thumb {
+  width: 100%;
+  aspect-ratio: 1200 / 630;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid var(--border);
+}
+
+.blog-body {
+  padding: 22px 26px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.blog-date {
+  font-size: 0.75rem;
+  color: var(--text-3);
+  letter-spacing: 0.04em;
+}
+
+.blog-card h3 {
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: var(--text-1);
+  line-height: 1.4;
+}
+
+.blog-body p:not(.blog-date) {
+  font-size: 0.83rem;
+  color: var(--text-2);
+  line-height: 1.75;
+  flex: 1;
+}
+
+[data-theme="light"] .blog-card {
+  border-color: transparent;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.04);
+}
+
+[data-theme="light"] .blog-card:hover {
+  border-color: transparent;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.05);
+}
+
+@media (max-width: 768px) {
+  .blog-grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================
    Research Interests
    ========================================= */
 .research-grid {
