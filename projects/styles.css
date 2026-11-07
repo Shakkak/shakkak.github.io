@@ -120,3 +120,22 @@ strong, b { font-weight: 700; }
 .callout-body-container { min-width: 0; }
 .table-scroll table { min-width: 560px; }
 mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+
+/* "On this page" menu: small label, thin rail, teal marker on the section being read. */
+#TOC { padding-left: 4px; }
+#TOC #toc-title, #TOC h2 {
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-3); border: 0; margin: 0 0 12px 0; padding: 0;
+}
+#TOC ul { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--border); }
+#TOC ul ul { border-left: 0; padding-left: 12px; }
+#TOC .nav-link {
+  display: block; position: relative; margin-left: -1px; padding: 5px 0 5px 14px;
+  font-size: 0.8rem; line-height: 1.35; color: var(--text-3) !important;
+  border-left: 2px solid transparent; transition: color 0.18s ease, border-color 0.18s ease, padding-left 0.18s ease;
+}
+#TOC .nav-link:hover { color: var(--text-1) !important; border-left-color: var(--border-hover); }
+#TOC .nav-link.active {
+  color: var(--text-1) !important; font-weight: 600; border-left-color: #2a9d8f; padding-left: 16px; background: none;
+}
+@media (max-width: 991px) { #TOC { padding-left: 0; } }
