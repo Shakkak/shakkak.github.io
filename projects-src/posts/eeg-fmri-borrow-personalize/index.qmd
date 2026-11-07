@@ -273,18 +273,20 @@ and that a small personal map on top of it helps when the person's labelled imag
 
 ```{=html}
 <ol class="timeline">
-<li><span class="tl-title">Idea</span><span class="tl-text">One big shared network for all people, with a small part for each person.</span></li>
-<li><span class="tl-title">Reproduce first</span><span class="tl-text">A published EEG model and its baselines, number by number.</span></li>
-<li><span class="tl-title">Looks good</span><span class="tl-text">The shared network wins on the ten people I built it with.</span></li>
-<li class="turn"><span class="tl-title">The real test</span><span class="tl-text">Written down first, run once on 24 new people. It loses to a simple average.</span></li>
-<li><span class="tl-title">Borrow</span><span class="tl-text">Average the models of other people. No labels needed.</span></li>
-<li><span class="tl-title">Personalize</span><span class="tl-text">A small linear map on top, learned from a few hundred images.</span></li>
-<li><span class="tl-title">Test again</span><span class="tl-text">New people on consumer EEG and two kinds of fMRI, and a repeat on THINGS-EEG2.</span></li>
-<li><span class="tl-title">Why</span><span class="tl-text">The map needs room to improve and clean labels.</span></li>
+<li><a class="tl-link" href="#where-i-started-a-big-shared-network"><span class="tl-title">Idea</span><span class="tl-text">One big shared network for all people, with a small part for each person.</span></a></li>
+<li><a class="tl-link" href="#where-i-started-a-big-shared-network"><span class="tl-title">Reproduce first</span><span class="tl-text">A published EEG model and its baselines, number by number.</span></a></li>
+<li><a class="tl-link" href="#where-i-started-a-big-shared-network"><span class="tl-title">Looks good</span><span class="tl-text">The shared network wins on the ten people I built it with.</span></a></li>
+<li class="turn"><a class="tl-link" href="#the-test-that-changed-the-project"><span class="tl-title">The real test</span><span class="tl-text">Written down first, run once on 24 new people. It loses to a simple average.</span></a></li>
+<li><a class="tl-link" href="#borrow-then-personalize"><span class="tl-title">Borrow</span><span class="tl-text">Average the models of other people. No labels needed.</span></a></li>
+<li><a class="tl-link" href="#borrow-then-personalize"><span class="tl-title">Personalize</span><span class="tl-text">A small linear map on top, learned from a few hundred images.</span></a></li>
+<li><a class="tl-link" href="#does-it-hold-on-other-data"><span class="tl-title">Test again</span><span class="tl-text">New people on consumer EEG and two kinds of fMRI, and a repeat on THINGS-EEG2.</span></a></li>
+<li><a class="tl-link" href="#why-it-works-sometimes-and-not-always"><span class="tl-title">Why</span><span class="tl-text">The map needs room to improve and clean labels.</span></a></li>
 </ol>
 ```
 
 ## Where I started: a big shared network
+
+<p class="step-marker"><a href="#the-path-in-one-picture"><span class="sm-label">Steps 1 to 3 of 8</span><span class="sm-dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span><span class="sm-name">Idea, reproduce first, looks good</span></a></p>
 
 At the start I followed the trend in the field. Many recent papers train one network on many people and add a
 small part for each person. My plan was the same: one shared network for everyone, and a small extra part
@@ -300,6 +302,8 @@ A model can look good on the people it was tuned on. Work like this, where I can
 is what I call *development*. It is useful for finding ideas, but it does not prove them.
 
 ## The test that changed the project
+
+<p class="step-marker turn"><a href="#the-path-in-one-picture"><span class="sm-label">Step 4 of 8</span><span class="sm-dots"><i class=""></i><i class=""></i><i class=""></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></span><span class="sm-name">The real test</span></a></p>
 
 So I wrote the test down before running it. A *protocol* is a short file where I wrote, before the run, what I
 would measure and which result would count as a success. I saved it in git, so the order (protocol first, results later) is on record. It fixed
@@ -409,6 +413,8 @@ prespecified, but they set the scope: "borrowing is the better start" is a claim
 
 ## Borrow, then personalize
 
+<p class="step-marker"><a href="#the-path-in-one-picture"><span class="sm-label">Steps 5 to 6 of 8</span><span class="sm-dots"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i></span><span class="sm-name">Borrow, then personalize</span></a></p>
+
 So I changed the direction. If borrowing is such a strong start, the new person's few hundred images should not
 build a model from zero. They should **correct** the borrowed prediction.
 
@@ -517,6 +523,8 @@ the same labels, also improved on borrowing, but recovered only 22–39% of the 
 
 ## Does it hold on other data?
 
+<p class="step-marker"><a href="#the-path-in-one-picture"><span class="sm-label">Step 7 of 8</span><span class="sm-dots"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class="on"></i><i class=""></i></span><span class="sm-name">Test again</span></a></p>
+
 One dataset is not enough. So I wrote new protocols and tested the same idea on new people in three more
 datasets: a consumer EEG headset, 7-tesla fMRI and *single-trial* 3-tesla fMRI (each photo recorded only once,
 with no repeats to average, like one thin grey line in @fig-eeg-reps). I also repeated the test on THINGS-EEG2,
@@ -612,6 +620,8 @@ raw borrowing the gain is 7.8 points.
 :::
 
 ## Why it works sometimes and not always
+
+<p class="step-marker"><a href="#the-path-in-one-picture"><span class="sm-label">Step 8 of 8</span><span class="sm-dots"><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class="on"></i></span><span class="sm-name">Why</span></a></p>
 
 The pattern became clear from the development work (exploring the data, not prespecified tests). The map can
 only fix what borrowing leaves on the table. It needs two things:

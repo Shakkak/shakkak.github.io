@@ -139,3 +139,27 @@ mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width:
   color: var(--text-1) !important; font-weight: 600; border-left-color: #2a9d8f; padding-left: 16px; background: none;
 }
 @media (max-width: 991px) { #TOC { padding-left: 0; } }
+
+/* Room after the last section so short final sections can reach the top and be marked in the menu. */
+#quarto-document-content { padding-bottom: 55vh; }
+
+/* Timeline steps link to their sections. */
+ol.timeline li a.tl-link { display: block; color: inherit; text-decoration: none; }
+ol.timeline li a.tl-link:hover .tl-title { color: #2a9d8f; }
+ol.timeline li.turn a.tl-link:hover .tl-title { color: #e76f51; }
+ol.timeline li a.tl-link:hover .tl-title::after { content: " \2192"; }
+
+/* Marker under a section heading: which steps of the path this section covers. */
+p.step-marker { margin: -0.4rem 0 1rem; font-size: 0.72rem; }
+p.step-marker a { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-3) !important; }
+p.step-marker a:hover { color: var(--text-1) !important; }
+p.step-marker .sm-label { font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #2a9d8f; }
+p.step-marker .sm-dots { display: inline-flex; gap: 4px; }
+p.step-marker .sm-dots i { width: 7px; height: 7px; border-radius: 50%; background: rgba(128,128,128,0.3); }
+p.step-marker .sm-dots i.on { background: #2a9d8f; }
+p.step-marker .sm-name { letter-spacing: 0.02em; }
+p.step-marker.turn .sm-label { color: #e76f51; }
+p.step-marker.turn .sm-dots i.on { background: #e76f51; }
+
+/* Jumping to a section should not hide its heading under the fixed nav. */
+section[id], h2[id], h3[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
