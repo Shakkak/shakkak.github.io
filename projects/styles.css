@@ -114,3 +114,9 @@ ol.timeline .tl-text { display: block; opacity: 0.85; margin-top: -2px; }
 
 /* Make bold text clearly bold with the system font. */
 strong, b { font-weight: 700; }
+
+/* wide tables scroll inside their own box on phones, not the whole page */
+.table-scroll { overflow-x: auto; max-width: 100%; min-width: 0; }
+.callout-body-container { min-width: 0; }
+.table-scroll table { min-width: 560px; }
+mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
