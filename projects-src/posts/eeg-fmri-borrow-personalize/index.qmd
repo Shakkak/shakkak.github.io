@@ -812,6 +812,28 @@ behind every figure. The charts on this page are built from those tables with a 
 script (`data/kaggle_eeg_examples/` in the same folder).
 
 <script>
+// Decorate the contrast table: group rows by test, show verdicts as pills and "above 0" as a small bar.
+document.querySelectorAll('.table-scroll table').forEach(function (t) {
+  t.classList.add('contrast-table');
+  var prev = null;
+  t.querySelectorAll('tbody tr').forEach(function (tr) {
+    var c = tr.children, test = c[0].textContent.trim();
+    if (test === prev) { c[0].classList.add('rep'); } else { tr.classList.add('group-start'); }
+    prev = test;
+    var m = c[5].textContent.trim().match(/^(\d+)\s*\/\s*(\d+)$/);
+    if (m) {
+      c[5].innerHTML = '<span class="frac"><i style="width:' + (100 * m[1] / m[2]).toFixed(0) + '%"></i></span><span class="frac-n">' + m[1] + '/' + m[2] + '</span>';
+    }
+    var v = c[6].textContent.trim();
+    if (v) {
+      var word = v.split(' ')[0].toLowerCase(), rest = v.slice(word.length).trim();
+      c[6].innerHTML = '<span class="pill ' + word + '">' + word + '</span>' + (rest ? ' <span class="pill-note">' + rest + '</span>' : '');
+    }
+  });
+});
+</script>
+
+<script>
 // Put the numbered circles of the path beside the heading of each section it covers.
 document.querySelectorAll('section[data-steps] > h2').forEach(function (h) {
   var sec = h.parentElement, wrap = document.createElement('span');

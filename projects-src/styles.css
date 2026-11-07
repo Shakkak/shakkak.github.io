@@ -153,3 +153,33 @@ h2 .step-dots.turn b { background: #e76f51; }
 
 /* Jumping to a section should not hide its heading under the fixed nav. */
 section[id], h2[id], h3[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
+
+/* Contrast table: open rows, grouped by test, verdict pills, small bars for "above 0". */
+.table-scroll { border: 1px solid var(--border); border-radius: 10px; }
+[data-theme="light"] .table-scroll { box-shadow: 0 1px 4px rgba(0,0,0,0.06); border-color: transparent; }
+table.contrast-table { margin: 0; border-collapse: separate; border-spacing: 0; font-size: 0.82rem; font-variant-numeric: tabular-nums; min-width: 640px; }
+table.contrast-table thead th {
+  position: sticky; top: 0; background: var(--surface); color: var(--text-3);
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  border-bottom: 1px solid var(--border-hover); padding: 12px 10px; white-space: nowrap;
+}
+table.contrast-table tbody td { padding: 9px 10px; border: 0; border-bottom: 1px solid var(--border); vertical-align: middle; background: transparent; }
+table.contrast-table tbody tr:last-child td { border-bottom: 0; }
+table.contrast-table tbody tr.group-start td { border-top: 1px solid var(--border-hover); }
+table.contrast-table tbody tr.group-start:first-child td { border-top: 0; }
+table.contrast-table tbody tr:hover td { background: rgba(42,157,143,0.07); }
+table.contrast-table td:first-child { font-weight: 600; color: var(--text-1); white-space: nowrap; }
+table.contrast-table td.rep { color: transparent; }
+table.contrast-table td:nth-child(2) { min-width: 170px; color: var(--text-1); }
+table.contrast-table td:nth-child(n+3):nth-child(-n+6) { color: var(--text-2); }
+table.contrast-table td:nth-child(6) { white-space: nowrap; }
+.frac { display: inline-block; width: 30px; height: 5px; border-radius: 3px; background: rgba(128,128,128,0.25); vertical-align: middle; margin-right: 6px; overflow: hidden; }
+.frac i { display: block; height: 100%; background: #2a9d8f; border-radius: 3px; }
+.frac-n { display: inline-block; min-width: 38px; text-align: right; font-size: 0.78rem; }
+.pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em; }
+.pill.supported { background: rgba(42,157,143,0.16); color: #1f7a70; }
+.pill.rejected { background: rgba(231,111,81,0.16); color: #c4502f; }
+.pill.inconclusive { background: rgba(128,128,128,0.18); color: var(--text-2); }
+[data-theme="dark"] .pill.supported { color: #5fd0c2; }
+[data-theme="dark"] .pill.rejected { color: #f19a82; }
+.pill-note { font-size: 0.74rem; color: var(--text-3); }
