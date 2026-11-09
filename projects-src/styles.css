@@ -1,7 +1,7 @@
 /* The blog uses the main site's look (css/style.css): same nav, toggle and colours; white page in light mode. */
 :root {
   --bg: #0a0a0a; --surface: #111111; --border: #1e1e1e; --border-hover: #3a3a3a;
-  --text-1: #f1f5f9; --text-2: #a0b4c8; --text-3: #64748b; --nav-h: 60px;
+  --text-1: #f1f5f9; --text-2: #b9c8d9; --text-3: #94a3b8; --nav-h: 60px;
 }
 [data-theme="light"] {
   --bg: #ffffff; --surface: #ffffff; --border: #e2e8f0; --border-hover: #94a3b8;
@@ -85,8 +85,8 @@ ol.timeline { list-style: none; counter-reset: step; padding-left: 0; margin: 1.
 ol.timeline::before { content: ""; position: absolute; left: 15px; top: 6px; bottom: 6px; width: 2px; background: rgba(128,128,128,0.35); }
 ol.timeline li { counter-increment: step; position: relative; padding: 0 0 1.1rem 48px; }
 ol.timeline li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 32px; height: 32px; border-radius: 50%;
-  background: #2a9d8f; color: #fff; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
-ol.timeline li.turn::before { background: #e76f51; }
+  background: #1f7f74; color: #fff; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
+ol.timeline li.turn::before { background: #c4502f; }
 ol.timeline .tl-title { display: block; font-weight: 600; line-height: 32px; }
 ol.timeline .tl-text { display: block; opacity: 0.85; margin-top: -2px; }
 
@@ -146,10 +146,10 @@ mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width:
 /* The numbered circles of the path, repeated beside the heading of the section they cover. */
 h2 .step-dots { display: inline-flex; gap: 6px; margin-right: 14px; vertical-align: middle; position: relative; top: -2px; }
 h2 .step-dots b {
-  width: 28px; height: 28px; border-radius: 50%; background: #2a9d8f; color: #fff;
+  width: 28px; height: 28px; border-radius: 50%; background: #1f7f74; color: #fff;
   font-size: 0.82rem; font-weight: 600; display: inline-flex; align-items: center; justify-content: center;
 }
-h2 .step-dots.turn b { background: #e76f51; }
+h2 .step-dots.turn b { background: #c4502f; }
 
 /* Jumping to a section should not hide its heading under the fixed nav. */
 section[id], h2[id], h3[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
@@ -177,9 +177,17 @@ table.contrast-table td:nth-child(6) { white-space: nowrap; }
 .frac i { display: block; height: 100%; background: #2a9d8f; border-radius: 3px; }
 .frac-n { display: inline-block; min-width: 34px; text-align: right; font-size: 0.72rem; }
 .pill { display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.02em; }
-.pill.supported { background: rgba(42,157,143,0.16); color: #1f7a70; }
-.pill.rejected { background: rgba(231,111,81,0.16); color: #c4502f; }
+.pill.supported { background: rgba(42,157,143,0.16); color: #19695f; }
+.pill.rejected { background: rgba(231,111,81,0.16); color: #a8401f; }
 .pill.inconclusive { background: rgba(128,128,128,0.18); color: var(--text-2); }
 [data-theme="dark"] .pill.supported { color: #5fd0c2; }
 [data-theme="dark"] .pill.rejected { color: #f19a82; }
 .pill-note { font-size: 0.68rem; color: var(--text-3); }
+
+/* Contrast fixes. Light mode: darker teal and orange text. Dark mode: lighter chips and code. */
+.data-card .dc-kind { color: #1f7a70; border-color: #1f7a70; }
+.data-card .dc-kind.fmri { color: #c4502f; border-color: #c4502f; }
+[data-theme="dark"] .data-card .dc-kind { color: #5fd0c2; border-color: #2a9d8f; }
+[data-theme="dark"] .data-card .dc-kind.fmri { color: #f19a82; border-color: #e76f51; }
+[data-theme="dark"] .quarto-title-meta-heading, [data-theme="dark"] .listing-date, [data-theme="dark"] .listing-categories .listing-category { color: var(--text-3); }
+[data-theme="dark"] .listing-categories .listing-category { border-color: #334155; }
