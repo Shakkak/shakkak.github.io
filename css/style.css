@@ -995,3 +995,11 @@ footer {
 
   .project-card { padding: 22px; }
 }
+
+.contact-text {
+  font-size: 0.97rem;
+  color: var(--text-2);
+  line-height: 1.85;
+  max-width: 540px;
+  margin-bottom: 24px;
+}
