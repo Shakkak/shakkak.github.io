@@ -598,7 +598,6 @@ section {
   color: var(--text-1);
   background: var(--surface);
   border: 1px solid var(--border);
-  border-left: 3px solid var(--text-1);
   border-radius: 6px;
   padding: 10px 16px;
   margin-bottom: 28px;
