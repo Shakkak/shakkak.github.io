@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shakib Hosseinzadeh</title>
   <meta name="description" content="Shakib Hosseinzadeh: Machine Learning Researcher. Self-Supervised Learning, Generative AI, Computational Pathology.">
-  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css?v=20261121j">
   <script>
     document.documentElement.setAttribute(
       'data-theme', localStorage.getItem('theme') || 'light'
@@ -37,12 +37,12 @@
           <span></span><span></span><span></span>
         </button>
         <ul class="nav-links" id="nav-links">
-          <li><a href="#about"      data-section="about">About</a></li>
-          <li><a href="#education"  data-section="education">Education</a></li>
+          <li><a href="#about" data-section="about">About</a></li>
+          <li><a href="#education" data-section="education">Education</a></li>
+          <li><a href="#projects" data-section="projects">Research</a></li>
           <li><a href="#experience" data-section="experience">Experience</a></li>
-          <li><a href="#projects"   data-section="projects">Projects</a></li>
-          <li><a href="#blog"       data-section="blog">Blog</a></li>
-          <li><a href="#skills"     data-section="skills">Skills</a></li>
+          <li><a href="#blog" data-section="blog">Writing</a></li>
+          <li><a href="#skills" data-section="skills">Skills</a></li>
         </ul>
       </div>
     </div>
@@ -69,11 +69,7 @@
             <span class="tag">EEG / fMRI</span>
           </div>
           <p class="hero-bio reveal" style="--delay:180ms">
-            ML researcher in training, passionate about solving real-world problems through AI.
-            My work centers on self-supervised learning for medical imaging, particularly
-            representation learning and generative diffusion-based methods in computational
-            histopathology. I enjoy competitive deep learning and building things that matter.
-            I am also drawn to computational neuroscience, especially how well a model learned from a few people's brain recordings carries over to someone new. I am also open to other research directions, collaborations and new roles, so feel free to get in touch.
+            I'm a machine learning researcher, still early in my career. Most of my work is self-supervised learning for medical images, mainly histopathology, and I have been using diffusion models for it. I also enjoy competitions. Lately I have been curious about brain data, especially how well a model trained on a few people's brain recordings works for a new person. I'm open to new research directions, collaborations and roles, so feel free to get in touch.
           </p>
           <div class="hero-ctas reveal" style="--delay:240ms">
             <a href="https://drive.google.com/file/d/1HjqZ75XX8GGJJk9LTeDRFQj_BaLfZWsD/view?usp=sharing" class="cv-btn" target="_blank" rel="noopener">
@@ -110,155 +106,102 @@
       </div>
     </section>
 
-    <!-- ============ EDUCATION ============ -->
-    <section id="education">
-      <div class="section-inner">
-        <p class="section-label reveal">Education</p>
-        <div class="edu-grid">
-
-          <div class="card reveal">
+  <section id="education">
+    <div class="section-inner">
+      <p class="section-label reveal">Education</p>
+      <div class="edu-grid">
+          <div class="card reveal" style="--delay:0ms">
             <div class="card-header">
-              <span class="card-degree">MSc Computer Science</span>
-              <span class="card-date">Sep 2023 – May 2026</span>
+              <span class="card-degree">MSc Computer Science, Rank 1</span>
+              <span class="card-date">2023 – 2026</span>
             </div>
-            <p class="card-inst">Amirkabir University of Technology, Tehran Polytechnic</p>
+            <p class="card-inst">Amirkabir University of Technology, Tehran Polytechnic · GPA 4.0</p>
             <p class="card-thesis">
               <span class="thesis-label">Thesis</span>
               Self-Supervised Contrastive Conditioning for Latent Diffusion-Based Histopathology Segmentation
             </p>
-            <p class="card-desc">
-              A three-stage framework that learns global semantic embeddings via contrastive objectives,
-              conditions a latent diffusion process on those representations, then adapts toward
-              segmentation through task-specific fine-tuning. Validated on MoNuSeg:
-              <span class="metric">AJI 0.6569</span> &middot; <span class="metric">F1 0.8005</span>,
-              surpassing several supervised baselines.
-            </p>
-            <div class="tags">
-              <span class="tag">Self-Supervised Learning</span>
-              <span class="tag">Histopathology</span>
-              <span class="tag">Latent Diffusion</span>
-              <span class="tag">Domain Shift</span>
-            </div>
+            <p class="card-desc">Contrastive pretraining, then latent diffusion conditioning, then segmentation fine-tuning. On MoNuSeg: <span class="metric">AJI 0.6569</span> and <span class="metric">F1 0.8005</span>, above several supervised baselines.</p>
+            <div class="tags"><span class="tag">Self-Supervised Learning</span><span class="tag">Histopathology</span><span class="tag">Latent Diffusion</span><span class="tag">Domain Shift</span></div>
           </div>
-
           <div class="card reveal" style="--delay:120ms">
             <div class="card-header">
-              <span class="card-degree">BSc Computer Science</span>
-              <span class="card-date">Sep 2018 – Feb 2023</span>
+              <span class="card-degree">BSc Computer Science, Rank 1</span>
+              <span class="card-date">2018 – 2023</span>
             </div>
-            <p class="card-inst">University of Science and Technology of Mazandaran</p>
+            <p class="card-inst">University of Science and Technology of Mazandaran · Department record: highest CGPA in ten years</p>
             <p class="card-thesis">
               <span class="thesis-label">Thesis</span>
-              Improving Detection of Very Small Objects in Images
+              Improving the Detection of Very Small Objects in Images
             </p>
-            <p class="card-desc">
-              Analyzed the information bottleneck induced by high-to-low-dimensional projections
-              in deep architectures and designed a network to preserve fine-grained spatial
-              information critical for small-object representation.
-              Achieved a <span class="metric">+12% recall</span> improvement in extremely small object regimes.
-            </p>
-            <div class="tags">
-              <span class="tag">Object Detection</span>
-              <span class="tag">Small Objects</span>
-              <span class="tag">Spatial Representation</span>
-            </div>
+            <p class="card-desc">Designed a network that keeps fine spatial detail through high-to-low-dimensional projections. <span class="metric">+12% recall</span> on extremely small objects.</p>
+            <div class="tags"><span class="tag">Object Detection</span><span class="tag">Small Objects</span><span class="tag">Spatial Representation</span></div>
           </div>
-
-        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ============ EXPERIENCE ============ -->
-    <section id="experience">
-      <div class="section-inner">
-        <p class="section-label reveal">Experience</p>
+  <section id="projects">
+    <div class="section-inner">
+      <p class="section-label reveal">Research</p>
+      <div class="projects-grid">
+          <div class="project-card reveal" style="--delay:0ms">
+            <svg class="gh-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <h3>Borrow, then personalize</h3>
+            <p>Predicting a new person's EEG and fMRI responses to images from a few hundred labels. Encoders learned from other people are averaged, then a small linear map fitted on the new person's own labels corrects that average. The paper tests this on lab EEG, consumer EEG, 7-tesla fMRI and single-trial 3-tesla fMRI. Preprint forthcoming.</p>
+            <p class="card-links"><a href="https://github.com/Shakkak/Borrow-then-Personalize-EEG-fMRI-Brain-Encoding-with-Limited-Labels" target="_blank" rel="noopener">Code</a> <a href="projects/posts/eeg-fmri-borrow-personalize/">Walkthrough</a></p>
+            <div class="tags"><span class="tag">Brain Encoding</span><span class="tag">EEG / fMRI</span><span class="tag">Transfer Learning</span></div>
+          </div>
+          <div class="project-card reveal" style="--delay:100ms">
+            <svg class="gh-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <h3>Medical image captioning</h3>
+            <p>BLIP-2 with an OPT-6.7B language model, fine-tuned on the ROCOv2 radiology dataset. Parameter-efficient fine-tuning (PEFT) made the adaptation fit on a single GPU. For research and learning only, not for clinical use.</p>
+            <p class="card-links"><a href="https://github.com/Shakkak/Medical-Image-Captioning-blip2-opt-6.7b" target="_blank" rel="noopener">Code</a></p>
+            <div class="tags"><span class="tag">BLIP-2</span><span class="tag">PEFT</span><span class="tag">Radiology</span></div>
+          </div>
+          <div class="project-card reveal" style="--delay:200ms">
+            <svg class="gh-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <h3>Object detection on satellite imagery</h3>
+            <p>A comparison of YOLOv5, YOLOv7, YOLOv8 and YOLOv9, plus several architecture variants, on 272 annotated satellite images of airliners, vehicles and boats, built with Ultralytics.</p>
+            <p class="card-links"><a href="https://github.com/Shakkak/Results-of-Satellite-Image-Analysis-Using-YOLO-And-Ultralytics" target="_blank" rel="noopener">Code and results</a></p>
+            <div class="tags"><span class="tag">YOLO</span><span class="tag">Ultralytics</span><span class="tag">Satellite Imagery</span></div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-inner">
+      <p class="section-label reveal">Experience</p>
 
         <div class="exp-group reveal">
           <h3 class="exp-role">Teaching Assistant</h3>
           <div class="exp-items">
-
-            <div class="exp-item">
+            <div class="exp-item reveal" style="--delay:0ms">
               <div class="exp-item-head">
                 <span class="exp-inst">Amirkabir University of Technology, MSc</span>
                 <span class="exp-date">Sep 2024 – Jan 2025</span>
               </div>
-              <div class="tags">
-                <span class="tag">Machine Learning</span>
-                <span class="tag">Computational Data Mining</span>
-              </div>
+              <h4 class="exp-title">Teaching Assistant</h4>
+              <p class="exp-detail">Machine Learning, Computational Data Mining</p>
+              
+              
             </div>
-
-            <div class="exp-item">
+            <div class="exp-item reveal" style="--delay:80ms">
               <div class="exp-item-head">
                 <span class="exp-inst">University of Science and Technology of Mazandaran, BSc</span>
                 <span class="exp-date">Sep 2019 – Jan 2022</span>
               </div>
-              <div class="tags">
-                <span class="tag">Intro to Programming</span>
-                <span class="tag">Data Structures &amp; Algorithms</span>
-                <span class="tag">Numerical Linear Algebra</span>
-                <span class="tag">Linear Optimization</span>
-              </div>
+              <h4 class="exp-title">Teaching Assistant</h4>
+              <p class="exp-detail">Numerical Linear Algebra, Linear Optimization, Data Structures</p>
+              
+              
             </div>
-
-          </div>
-        </div>
-
-        <div class="exp-divider"></div>
-
-        <div class="exp-group reveal">
-          <h3 class="exp-role">Selected Awards &amp; Competitions</h3>
-          <div class="exp-items">
-
-            <div class="exp-item exp-rank">
-              <div class="exp-item-head">
-                <span class="exp-inst">Ranked 1st, MSc Computer Science, Amirkabir University of Technology</span>
-                <span class="exp-date">2023 – present</span>
-              </div>
-              <div class="tags">
-                <span class="badge-solid">Rank 1st</span>
-              </div>
-            </div>
-
-            <div class="exp-item exp-rank">
-              <div class="exp-item-head">
-                <span class="exp-inst">Ranked 1st, BSc Computer Science, Univ. of Science &amp; Technology of Mazandaran</span>
-                <span class="exp-date">2018 – 2023</span>
-              </div>
-              <div class="tags">
-                <span class="badge-solid">Rank 1st</span>
-                <span class="badge">Dept. Record (10 yrs)</span>
-              </div>
-            </div>
-
-            <div class="exp-item">
-              <div class="exp-item-head">
-                <span class="exp-inst exp-event">Rayan International AI Contest</span>
-                <span class="exp-date">Oct 2024 – Nov 2025</span>
-              </div>
-              <p class="exp-desc">
-                Multi-stage challenge across 7 heterogeneous tasks including dental segmentation
-                on high-noise imagery, zero-shot anomaly detection, and composed image retrieval, under strict VRAM and inference latency constraints.
-              </p>
-              <div class="tags">
-                <a class="badge-solid" href="https://rayan.global/ai-ranking/" target="_blank" rel="noopener">Rank 7th of 400+ Teams</a>
-              </div>
-            </div>
-
-            <div class="exp-item">
-              <div class="exp-item-head">
-                <span class="exp-inst exp-event">Prediction of Obstructive Sleep Apnea Challenge</span>
-                <span class="exp-date">Aug – Oct 2024</span>
-              </div>
-              <p class="exp-desc">
-                Noise-robust dual-stream model using Mel-spectrograms and raw-waveform
-                transformer latents for sleep-apnea segmentation from high-noise audio data.
-              </p>
-              <div class="tags">
-                <span class="badge-solid">Top 6 of 30+ Teams</span>
-              </div>
-            </div>
-
           </div>
         </div>
 
@@ -267,218 +210,112 @@
         <div class="exp-group reveal">
           <h3 class="exp-role">Volunteering</h3>
           <div class="exp-items">
-
-            <div class="exp-item">
+            <div class="exp-item reveal" style="--delay:0ms">
               <div class="exp-item-head">
-                <span class="exp-inst exp-event">Generative AI &amp; Optimization Workshop, Instructor</span>
+                <span class="exp-inst">Generative AI and Optimization Workshop, Instructor</span>
                 <span class="exp-date">Jun 2024</span>
               </div>
-              <p class="exp-desc">
-                Led workshops on edge-friendly vision models: CLIP-based encoders, lightweight
-                diffusion variants, pruning, quantization, and distillation, with end-to-end demos
-                on limited hardware.
-              </p>
+              <h4 class="exp-title">Instructor</h4>
+              
+              <p class="exp-desc">Edge-friendly vision models: CLIP encoders, lightweight diffusion, pruning, quantization and distillation.</p>
+              
             </div>
-
-            <div class="exp-item">
+            <div class="exp-item reveal" style="--delay:80ms">
               <div class="exp-item-head">
-                <span class="exp-inst exp-event">53rd Annual Iranian Mathematics Conference</span>
+                <span class="exp-inst">53rd Annual Iranian Mathematics Conference</span>
                 <span class="exp-date">Sep 2022</span>
               </div>
-              <p class="exp-desc">
-                Technical operations: managed infrastructure, equipment, and session scheduling.
-              </p>
+              <h4 class="exp-title">Technical operations</h4>
+              
+              <p class="exp-desc">Managed infrastructure, equipment and session scheduling.</p>
+              
             </div>
-
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ============ PROJECTS ============ -->
-    <section id="projects">
-      <div class="section-inner">
-        <p class="section-label reveal">Projects</p>
-        <div class="projects-grid">
-
-          <a class="project-card reveal"
-             href="https://github.com/Shakkak/Medical-Image-Captioning-blip2-opt-6.7b"
-             target="_blank" rel="noopener">
-            <svg class="gh-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-            </svg>
-            <h3>Medical Image Captioning</h3>
-            <p>
-              Fine-tuned BLIP2-OPT-6.7B on the ROCOv2 radiology dataset using
-              Parameter-Efficient Fine-Tuning (PEFT) to generate medical captions
-              under computational constraints.
-            </p>
-            <div class="tags">
-              <span class="tag">BLIP2</span>
-              <span class="tag">PEFT</span>
-              <span class="tag">Radiology NLP</span>
-            </div>
-          </a>
-
-          <a class="project-card reveal" style="--delay:100ms"
-             href="https://github.com/Shakkak/ViT-With-Masked-Autoencoders-for-image-reconstruction-and-image-classification"
-             target="_blank" rel="noopener">
-            <svg class="gh-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-            </svg>
-            <h3>ViT with Masked Autoencoders</h3>
-            <p>
-              Bone fracture detection using MAE (facebook/vit-mae-base) for image
-              reconstruction, then fine-tuned for X-ray classification via transfer learning.
-            </p>
-            <div class="tags">
-              <span class="tag">ViT</span>
-              <span class="tag">MAE</span>
-              <span class="tag">Medical Imaging</span>
-            </div>
-          </a>
-
-          <a class="project-card reveal" style="--delay:200ms"
-             href="https://github.com/Shakkak/Satellite-Image-Analysis-Using-YOLO-And-Ultralytics"
-             target="_blank" rel="noopener">
-            <svg class="gh-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-            </svg>
-            <h3>Satellite Image Analysis</h3>
-            <p>
-              Comparative study of YOLOv5–v9 on annotated satellite imagery using Ultralytics,
-              exploring architectural modifications for improved multi-vehicle detection.
-            </p>
-            <div class="tags">
-              <span class="tag">YOLOv5–v9</span>
-              <span class="tag">Ultralytics</span>
-              <span class="tag">Satellite Imagery</span>
-            </div>
-          </a>
-
-
-          <a class="project-card reveal" style="--delay:300ms"
-             href="https://github.com/Shakkak/Borrow-then-Personalize-EEG-fMRI-Brain-Encoding-with-Limited-Labels"
-             target="_blank" rel="noopener">
-            <svg class="gh-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-            </svg>
-            <h3>Borrow, then Personalize</h3>
-            <p>
-              Predicting a new person's EEG and fMRI responses to images from a few
-              hundred labels. Encoders learned from other people are averaged, then a
-              small personal map is fitted on the new person's own labels. The open question
-              is how far borrowing goes before a personal model is needed. Eight tests on
-              held-out subjects were fixed before running, across THINGS-EEG, Alljoined,
-              NSD and NOD. Preprint forthcoming.
-            </p>
-            <div class="tags">
-              <span class="tag">Brain Encoding</span>
-              <span class="tag">EEG / fMRI</span>
-              <span class="tag">Transfer Learning</span>
-            </div>
-          </a>
-
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ BLOG ============ -->
-    <section id="blog">
-      <div class="section-inner">
-        <p class="section-label reveal">Blog</p>
-        <div class="blog-grid">
-
-          <a class="blog-card reveal" href="projects/posts/eeg-fmri-borrow-personalize/">
-            <img class="blog-thumb" src="projects/posts/eeg-fmri-borrow-personalize/cover.png"
-                 alt="Each person's gain of the personal map over borrowing in five datasets" loading="lazy">
-            <div class="blog-body">
-              <p class="blog-date">November 6, 2026</p>
-              <h3>Borrow, then personalize</h3>
-              <p>
-                How I tried to predict a new person's brain responses from a few hundred images:
-                a big shared network lost to a simple average of other people, and a small personal
-                map on top of that average became the main result. With interactive charts.
-              </p>
-              <div class="tags">
-                <span class="tag">EEG / fMRI</span>
-                <span class="tag">Walkthrough</span>
+            <div class="exp-item reveal" style="--delay:160ms">
+              <div class="exp-item-head">
+                <span class="exp-inst">Mazandaran University of Science and Technology</span>
+                <span class="exp-date">Apr 2026</span>
               </div>
+              <h4 class="exp-title">Turning Math into Games at Ribazi</h4>
+              <div class="event-split">
+              <div class="event-text">Helped run an event with my friend Zahra for elementary school kids, turning math into games. <a href="https://zahrakvrz.github.io/#blog:~:text=Turning%20Math%20into%20Games%20at%20Ribazi" target="_blank" rel="noopener">Read more on Zahra's blog</a></div>
+              <a class="thumb-link" href="assets/ribazi/fig5.jpg" target="_blank" rel="noopener" title="Open full size"><img class="exp-thumb" src="assets/ribazi/fig5.jpg" alt="Ribazi event: elementary school students playing math games"></a>
             </div>
-          </a>
-
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ============ SKILLS ============ -->
-    <section id="skills">
-      <div class="section-inner">
-        <p class="section-label reveal">Technical Skills</p>
-        <div class="skills-grid">
+        <div class="exp-divider"></div>
 
-          <div class="skill-group reveal">
-            <span class="skill-cat">Programming Languages</span>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">C / C++</span>
-              <span class="tag">MATLAB / Octave</span>
-              <span class="tag">Bash</span>
+        <div class="exp-group reveal">
+          <h3 class="exp-role">Awards and competitions</h3>
+          <div class="exp-items">
+            <div class="exp-item reveal" style="--delay:0ms">
+              <div class="exp-item-head">
+                <span class="exp-inst">Rayan International AI Contest</span>
+                <span class="exp-date">Oct 2024 – Nov 2025</span>
+              </div>
+              <p class="exp-desc">Seven heterogeneous tasks, including dental segmentation on noisy imagery, zero-shot anomaly detection and composed image retrieval, under strict VRAM and latency limits.</p>
+              
+              
+              <div class="tags"><span class="badge-solid">Rank 7th of 400+ Teams</span></div>
+            </div>
+            <div class="exp-item reveal" style="--delay:80ms">
+              <div class="exp-item-head">
+                <span class="exp-inst">Prediction of Obstructive Sleep Apnea Challenge</span>
+                <span class="exp-date">Aug – Oct 2024</span>
+              </div>
+              <p class="exp-desc">Noise-robust dual-stream model using Mel-spectrograms and raw-waveform transformer latents.</p>
+              
+              
+              <div class="tags"><span class="badge-solid">Top 6 of 30+ Teams</span></div>
             </div>
           </div>
-
-          <div class="skill-group reveal" style="--delay:80ms">
-            <span class="skill-cat">ML &amp; Deep Learning</span>
-            <div class="tags">
-              <span class="tag">PyTorch</span>
-              <span class="tag">TensorFlow</span>
-              <span class="tag">Keras</span>
-              <span class="tag">JAX</span>
-              <span class="tag">HuggingFace</span>
-              <span class="tag">Diffusers</span>
-              <span class="tag">scikit-learn</span>
-              <span class="tag">OpenCV</span>
-            </div>
-          </div>
-
-          <div class="skill-group reveal" style="--delay:160ms">
-            <span class="skill-cat">Specializations</span>
-            <div class="tags">
-              <span class="tag">Self-Supervised Learning</span>
-              <span class="tag">Medical Imaging</span>
-              <span class="tag">Computer Vision</span>
-              <span class="tag">VLMs</span>
-              <span class="tag">LLMs</span>
-              <span class="tag">Signal Processing</span>
-            </div>
-          </div>
-
-          <div class="skill-group reveal" style="--delay:240ms">
-            <span class="skill-cat">Data &amp; Tools</span>
-            <div class="tags">
-              <span class="tag">NumPy</span>
-              <span class="tag">Pandas</span>
-              <span class="tag">Matplotlib</span>
-              <span class="tag">Git</span>
-              <span class="tag">Docker</span>
-              <span class="tag">CUDA</span>
-              <span class="tag">n8n</span>
-            </div>
-          </div>
-
         </div>
-      </div>
-    </section>
 
+    </div>
+  </section>
+
+  <section id="blog">
+    <div class="section-inner">
+      <p class="section-label reveal">Writing</p>
+      <div class="blog-grid">
+        <a class="blog-card reveal" href="projects/posts/eeg-fmri-borrow-personalize/">
+          <img class="blog-thumb" src="projects/posts/eeg-fmri-borrow-personalize/cover.png"
+               alt="Each person's gain of the personal map over borrowing in five datasets" loading="lazy">
+          <div class="blog-body">
+            <p class="blog-date">November 6, 2026</p>
+            <h3>Borrow, then personalize</h3>
+            <p>How I tried to predict a new person's brain responses from a few hundred images: a big shared network lost to a simple average of other people, and a small personal map on top of that average became the main result. With interactive charts.</p>
+            <p class="card-links"><span class="read-more">Read the walkthrough →</span></p>
+            <div class="tags"><span class="tag">EEG / fMRI</span><span class="tag">Walkthrough</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-inner">
+      <p class="section-label reveal">Skills</p>
+      <dl class="skills reveal">
+        <dt>Programming</dt>
+        <dd>Python, C/C++, MATLAB/Octave, Bash</dd>
+        <dt>ML frameworks</dt>
+        <dd>PyTorch, TensorFlow, Keras, JAX, scikit-learn, OpenCV, Diffusers, Hugging Face</dd>
+        <dt>Data and tools</dt>
+        <dd>NumPy, Pandas, Matplotlib, Git, Docker, Kaggle, n8n</dd>
+        <dt>Focus areas</dt>
+        <dd>Computer vision, medical imaging, self-supervised learning, computational neuroscience, remote sensing, VLMs, LLMs</dd>
+      </dl>
+    </div>
+  </section>
 
   </main>
 
   <footer>
-    <p>Shakib Hosseinzadeh &copy; 2026 &nbsp;&middot;&nbsp; Built with <a href="https://claude.ai" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Claude</a></p>
+    <p>Shakib Hosseinzadeh &copy; 2026 &nbsp;&middot;&nbsp; Thanks to <a href="https://claude.ai" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Claude</a></p>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=v2"></script>
 </body>
 </html>

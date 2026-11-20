@@ -8,7 +8,8 @@
   --border-hover: #3a3a3a;
   --text-1:       #f1f5f9;
   --text-2:       #a0b4c8;
-  --text-3:       #64748b;
+  --text-3:       #94a3b8;
+  --accent:       #93c5fd;
   --nav-h:        60px;
   --max-w:        1080px;
   --pad-section:  88px;
@@ -25,6 +26,7 @@
   --text-1:       #0f172a;
   --text-2:       #334155;
   --text-3:       #526a87;
+  --accent:       #1d4ed8;
 }
 
 [data-theme="light"] #nav {
@@ -195,28 +197,21 @@ ul { list-style: none; }
   height: 14px;
 }
 
-#icon-moon                         { display: none; }
-[data-theme="light"] #icon-sun     { display: none; }
-[data-theme="light"] #icon-moon    { display: block; }
 
-/* Sun — yellow tint */
-.theme-toggle #icon-sun {
-  color: #fbbf24;
-  stroke: #fbbf24;
-}
+
 
 /* Moon button — dark background in light theme so it pops against white */
 [data-theme="light"] .theme-toggle {
-  background: #111827;
-  border-color: #111827;
-  color: #c9d6e8;
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #f1f5f9;
   transition: color 0.2s, border-color 0.2s, background 0.2s;
 }
 
 [data-theme="light"] .theme-toggle:hover {
   background: #1f2937;
   border-color: #1f2937;
-  color: #f1f5f9;
+  color: #ffffff;
 }
 
 /* — Hamburger — */
@@ -314,7 +309,7 @@ section {
   object-fit: cover;
   border: 1px solid var(--border-hover);
   flex-shrink: 0;
-  filter: blur(0.4px) contrast(0.94) saturate(0.95);
+  filter: none;
 }
 
 .has-avatar .avatar {
@@ -995,3 +990,117 @@ footer {
 
   .project-card { padding: 22px; }
 }
+
+
+/* =========================================================
+   Version 2: live-site style with the local colours, order and text
+   ========================================================= */
+
+/* Blue accent, as in the local version */
+.hero-affiliation,
+.section-label,
+.card-date,
+.exp-date,
+.blog-date,
+.exp-role { color: var(--accent); }
+.section-label { font-weight: 600; }
+
+/* Hero paragraph: justified */
+.hero-bio {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+/* Institution first, courses below (local style) */
+.exp-inst { display: block; color: var(--text-1); font-weight: 600; }
+.exp-detail { margin: 2px 0 0; font-size: 0.87rem; color: var(--text-3); }
+
+/* Card links (Code, Walkthrough) */
+.card-links { margin: 14px 0 0; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 8px; }
+.card-links a {
+  align-self: flex-start;
+  height: auto;
+  line-height: 1.5;
+  font-size: 0.82rem;
+  padding: 4px 12px;
+  border: 1px solid var(--border-hover);
+  border-radius: 999px;
+  color: var(--text-1);
+  text-decoration: none;
+}
+.card-links a:hover { border-color: var(--accent); color: var(--accent); }
+.read-more { font-size: 0.85rem; color: var(--accent); }
+
+/* Writing card: whole card is a link */
+a.blog-card { text-decoration: none; color: inherit; display: block; }
+
+/* Skills: local two-column text layout */
+.skills {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px 24px;
+  margin: 0;
+  padding: 24px 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.skills dt { font-size: 0.85rem; color: var(--accent); font-weight: 500; }
+.skills dd { margin: 2px 0 0; color: var(--text-1); }
+@media (min-width: 620px) {
+  .skills { grid-template-columns: 170px 1fr; }
+  .skills dt { padding-top: 2px; }
+  .skills dd { margin: 0; }
+}
+[data-theme="light"] .skills { border-color: transparent; box-shadow: 0 1px 4px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.04); }
+
+/* Icons: sun (yellow) in dark theme; moon (white) on a black button in light theme */
+#icon-moon                         { display: none; }
+[data-theme="light"] #icon-sun     { display: none; }
+[data-theme="light"] #icon-moon    { display: block; }
+.theme-toggle #icon-sun {
+  color: #fbbf24;
+  stroke: #fbbf24;
+}
+[data-theme="light"] .theme-toggle #icon-moon {
+  color: #f1f5f9;
+  stroke: #f1f5f9;
+}
+
+/* Sun: white inner circle with yellow rays; moon: solid white */
+.theme-toggle #icon-sun circle { fill: #ffffff; }
+[data-theme="light"] .theme-toggle #icon-moon path { fill: #ffffff; }
+
+/* Sun: white centre with a clear yellow ring; thicker yellow rays */
+.theme-toggle #icon-sun circle { fill: #ffffff; stroke: #fbbf24; stroke-width: 2; }
+.theme-toggle #icon-sun path { stroke: #fbbf24; stroke-width: 2; }
+
+/* Sun: larger, with a wider white centre so it reads as white */
+.theme-toggle #icon-sun { width: 18px; height: 18px; }
+.theme-toggle #icon-sun circle { r: 5; stroke-width: 1.5; }
+.theme-toggle #icon-sun path { stroke-width: 1.6; }
+
+/* 'Read more' links in blue */
+.detail a, .exp-desc a { color: var(--accent); text-decoration: none; }
+.detail a:hover, .exp-desc a:hover { text-decoration: underline; }
+
+/* Ribazi event: text left, image right; stacks on phones */
+.event-split { display: flex; gap: 20px; align-items: flex-start; margin-top: 8px; }
+.event-split .event-text { flex: 1; min-width: 0; font-size: 0.93rem; line-height: 1.6; }
+.event-split .thumb-link { flex: 0 0 380px; display: block; }
+.event-split img { width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border); }
+@media (max-width: 620px) {
+  .event-split { flex-direction: column; }
+  .event-split .thumb-link { flex-basis: auto; width: 100%; }
+}
+
+/* Read more link in the Ribazi entry: blue, with underline on hover */
+.event-text a { color: var(--accent); text-decoration: none; }
+.event-text a:hover { text-decoration: underline; }
+
+/* Theme button sits at the right end of the nav, after Skills */
+.nav-right { display: flex; align-items: center; }
+.nav-right .nav-links { order: 1; }
+.nav-right .hamburger { order: 2; }
+.nav-right .theme-toggle { order: 3; margin-left: 14px; }
