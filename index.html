@@ -113,54 +113,65 @@
     <!-- ============ EDUCATION ============ -->
     <section id="education">
       <div class="section-inner">
-        <h2 class="section-label reveal">Education</h2>
-        <ol class="timeline">
+        <p class="section-label reveal">Education</p>
+        <div class="edu-grid">
 
-          <li class="timeline-item reveal">
-            <div class="timeline-when">
-              <span class="timeline-years">2023 – 2026</span>
-              <span class="timeline-badge">Rank 1 · GPA 4.0</span>
+          <div class="card reveal">
+            <div class="card-header">
+              <span class="card-degree">MSc Computer Science</span>
+              <span class="card-date">Sep 2023 – May 2026</span>
             </div>
-            <div class="timeline-body">
-              <h3 class="timeline-title">MSc Computer Science</h3>
-              <p class="timeline-inst">Amirkabir University of Technology, Tehran Polytechnic</p>
-              <p class="timeline-thesis"><span class="thesis-label">Thesis</span> Self-Supervised Learning of Robust Representations for Histopathology Images under Domain Shift</p>
-              <p class="timeline-desc">Contrastive pretraining, then latent diffusion conditioning, then segmentation fine-tuning. On MoNuSeg: <strong>AJI 0.6569</strong> and <strong>F1 0.8005</strong>, above several supervised baselines.</p>
-              <div class="tags">
-                <span class="tag">Self-Supervised Learning</span>
-                <span class="tag">Histopathology</span>
-                <span class="tag">Latent Diffusion</span>
-                <span class="tag">Domain Shift</span>
-              </div>
+            <p class="card-inst">Amirkabir University of Technology, Tehran Polytechnic</p>
+            <p class="card-thesis">
+              <span class="thesis-label">Thesis</span>
+              Self-Supervised Learning of Robust Representations for Histopathology Images under Domain Shift
+            </p>
+            <p class="card-desc">
+              A three-stage framework that learns global semantic embeddings via contrastive objectives,
+              conditions a latent diffusion process on those representations, then adapts toward
+              segmentation through task-specific fine-tuning. Validated on MoNuSeg:
+              <span class="metric">AJI 0.6569</span> &middot; <span class="metric">F1 0.8005</span>,
+              surpassing several supervised baselines.
+            </p>
+            <div class="tags">
+              <span class="tag">Self-Supervised Learning</span>
+              <span class="tag">Histopathology</span>
+              <span class="tag">Latent Diffusion</span>
+              <span class="tag">Domain Shift</span>
             </div>
-          </li>
+          </div>
 
-          <li class="timeline-item reveal" style="--delay:120ms">
-            <div class="timeline-when">
-              <span class="timeline-years">2018 – 2023</span>
-              <span class="timeline-badge">Rank 1 · Dept. record</span>
+          <div class="card reveal" style="--delay:120ms">
+            <div class="card-header">
+              <span class="card-degree">BSc Computer Science</span>
+              <span class="card-date">Sep 2018 – Feb 2023</span>
             </div>
-            <div class="timeline-body">
-              <h3 class="timeline-title">BSc Computer Science</h3>
-              <p class="timeline-inst">University of Science and Technology of Mazandaran</p>
-              <p class="timeline-thesis"><span class="thesis-label">Thesis</span> Improving Detection of Very Small Objects in Images</p>
-              <p class="timeline-desc">Designed a network that keeps fine spatial detail through high-to-low-dimensional projections. <strong>+12% recall</strong> on extremely small objects.</p>
-              <div class="tags">
-                <span class="tag">Object Detection</span>
-                <span class="tag">Small Objects</span>
-                <span class="tag">Spatial Representation</span>
-              </div>
+            <p class="card-inst">University of Science and Technology of Mazandaran</p>
+            <p class="card-thesis">
+              <span class="thesis-label">Thesis</span>
+              Improving Detection of Very Small Objects in Images
+            </p>
+            <p class="card-desc">
+              Analyzed the information bottleneck induced by high-to-low-dimensional projections
+              in deep architectures and designed a network to preserve fine-grained spatial
+              information critical for small-object representation.
+              Achieved a <span class="metric">+12% recall</span> improvement in extremely small object regimes.
+            </p>
+            <div class="tags">
+              <span class="tag">Object Detection</span>
+              <span class="tag">Small Objects</span>
+              <span class="tag">Spatial Representation</span>
             </div>
-          </li>
+          </div>
 
-        </ol>
+        </div>
       </div>
     </section>
 
     <!-- ============ EXPERIENCE ============ -->
     <section id="experience">
       <div class="section-inner">
-        <h2 class="section-label reveal">Experience</h2>
+        <p class="section-label reveal">Experience</p>
 
         <div class="exp-group reveal">
           <h3 class="exp-role">Teaching Assistant</h3>
@@ -288,7 +299,7 @@
     <!-- ============ PROJECTS ============ -->
     <section id="projects">
       <div class="section-inner">
-        <h2 class="section-label reveal">Projects</h2>
+        <p class="section-label reveal">Projects</p>
         <div class="projects-grid">
 
           <a class="project-card reveal"
@@ -377,7 +388,7 @@
     <!-- ============ BLOG ============ -->
     <section id="blog">
       <div class="section-inner">
-        <h2 class="section-label reveal">Blog</h2>
+        <p class="section-label reveal">Blog</p>
         <div class="blog-grid">
 
           <a class="blog-card reveal" href="projects/posts/eeg-fmri-borrow-personalize/">
@@ -405,7 +416,7 @@
     <!-- ============ SKILLS ============ -->
     <section id="skills">
       <div class="section-inner">
-        <h2 class="section-label reveal">Technical Skills</h2>
+        <p class="section-label reveal">Technical Skills</p>
         <div class="skills-grid">
 
           <div class="skill-group reveal">
